@@ -50,17 +50,12 @@ em{font-style:italic}
 .section-hero-lead:last-child{margin-bottom:0}
 .section-hero-lead strong{color:rgba(255,255,255,0.95);font-weight:400}
 
-/* ── How I Work — case blocks ── */
+/* ── How I Work — case stepper (shares arc stepper CSS) ── */
 #how-i-work{padding:0}
-.cases-wrap{padding:0 48px;max-width:1120px;margin:0 auto}
-.case-block{border-top:1px solid var(--rule);padding:52px 0}
-.case-block:last-child{border-bottom:1px solid var(--rule)}
 .case-title{font-family:var(--sans);font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin-bottom:8px}
 .case-meta{font-size:12px;color:var(--soft);font-weight:400;display:block;margin-bottom:36px;letter-spacing:.02em}
 .case-subhead{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#E8793A;display:block;margin:28px 0 10px}
-.case-subhead:first-of-type{margin-top:0}
-.case-block p{max-width:700px}
-.case-ai{background:#071830;border-top:2px solid #2d3d6e;padding:18px 22px 20px;margin-top:32px;border-radius:3px;color:#fff;max-width:700px}
+.case-ai{background:#071830;border-top:2px solid #2d3d6e;padding:18px 22px 20px;margin-top:32px;border-radius:3px;color:#fff}
 .case-ai summary{list-style:none;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px}
 .case-ai summary::-webkit-details-marker{display:none}
 .case-ai-icon{font-size:18px;font-weight:300;line-height:1;flex-shrink:0;transition:transform .2s;display:inline-block}
@@ -129,8 +124,6 @@ details.witness-item[open]::details-content{height:auto}
   .desk-label{display:none}
   .section-hero-inner{padding:48px 24px 44px}
   .section-hero-lead{font-size:15px}
-  .cases-wrap{padding:0 16px}
-  .case-block{padding:36px 0}
   .arc-tablist{padding:0 16px}
   .arc-panels-wrap{padding:0 16px}
   .arc-panel{padding:36px 0}
@@ -165,10 +158,29 @@ details.witness-item[open]::details-content{height:auto}
     </div>
   </div>
 
-  <div class="cases-wrap">
+  <!-- Case stepper tabs -->
+  <div class="arc-stepper-wrap" role="region" aria-label="Case studies navigation">
+    <div class="arc-tablist" role="tablist" aria-label="Case studies">
+      <button class="arc-tab" role="tab" aria-selected="true"  aria-controls="case-panel-01" id="case-tab-01" tabindex="0">
+        <span class="arc-tab-num">01</span>Without a Blueprint
+      </button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-02" id="case-tab-02" tabindex="-1">
+        <span class="arc-tab-num">02</span>From First Principles
+      </button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-03" id="case-tab-03" tabindex="-1">
+        <span class="arc-tab-num">03</span>Building in Complexity
+      </button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-04" id="case-tab-04" tabindex="-1">
+        <span class="arc-tab-num">04</span>A New School
+      </button>
+    </div>
+  </div>
+
+  <!-- Case panels -->
+  <div class="arc-panels-wrap">
 
     <!-- Case 1 -->
-    <article class="case-block fade-in">
+    <div id="case-panel-01" role="tabpanel" aria-labelledby="case-tab-01" class="arc-panel is-visible is-active">
       <h3 class="case-title">Change Without a Blueprint</h3>
       <span class="case-meta">Dentsu iProspect APAC · Singapore · 2018–2019</span>
 
@@ -191,10 +203,10 @@ details.witness-item[open]::details-content{height:auto}
         <p>AI would let me assess and process data and feedback in a fraction of the time. Creating custom platforms for the purpose and even maintaining a live feed. Reducing time for diagnosis and mapping by 2/3. DDO then could have been a platform every team could use instead of useful documentation, and every artifact could live online, connected, instead of in documents.</p>
         <p>I would also use AI to quickly build benchmark workflows and analyse current workflows or client engagements against them, to see where they differ and improve them. It would also allow us to create new services and products, taking them to market at speed, while maintaining consistency in our strategy and design approach.</p>
       </details>
-    </article>
+    </div>
 
     <!-- Case 2 -->
-    <article class="case-block fade-in">
+    <div id="case-panel-02" role="tabpanel" aria-labelledby="case-tab-02" class="arc-panel">
       <h3 class="case-title">Innovation from First Principles</h3>
       <span class="case-meta">Rainmaking / Engie Factory · Singapore · 2019–2020</span>
 
@@ -217,10 +229,10 @@ details.witness-item[open]::details-content{height:auto}
         <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
         <p>Reducing overall time for Pilot ID by 50% on account of screening startups faster. Increasing the number of modelled opportunities using AI models with known database APIs instead of human calibration and research. Incrementing the pilot identification and accuracy, as well as the tested solutions, resulting in upstream increase of success from 33% to potentially over 50%. And from SGD 4 million in future revenue or saved costs to 6. We would also have been able to productise it as a platform for subsequent cycles, with the same or different clients, building human and AI in the loop workflows and efficiencies.</p>
       </details>
-    </article>
+    </div>
 
     <!-- Case 3 -->
-    <article class="case-block fade-in">
+    <div id="case-panel-03" role="tabpanel" aria-labelledby="case-tab-03" class="arc-panel">
       <h3 class="case-title">Building in Complexity</h3>
       <span class="case-meta">Apple · Singapore · 2020–2023</span>
 
@@ -240,10 +252,10 @@ details.witness-item[open]::details-content{height:auto}
 
       <span class="case-subhead">Lasting Outcomes</span>
       <p>20→350 people in 3 years · 40 countries · 10× budget expansion · 85–110% KPI sustained results</p>
-    </article>
+    </div>
 
     <!-- Case 4 -->
-    <article class="case-block fade-in">
+    <div id="case-panel-04" role="tabpanel" aria-labelledby="case-tab-04" class="arc-panel">
       <h3 class="case-title">A New School for Unconventional Learners</h3>
       <span class="case-meta">Singular Solving · Spain · 2024–present · <em>In progress</em></span>
 
@@ -261,9 +273,9 @@ details.witness-item[open]::details-content{height:auto}
       <span class="case-subhead">Where It Stands Now</span>
       <p>Pivoting to full school build instead of just an alternative Masters program. In active design and in the process of buying a school in Spain to teach from Early Years to Year 12, plus the Masters program.</p>
       <p>This is the most important work I've been trusted with — and the closest in shape to what I imagine contributing to UWC with.</p>
-    </article>
+    </div>
 
-  </div><!-- /cases-wrap -->
+  </div><!-- /case panels -->
 </section>
 
 
@@ -697,10 +709,10 @@ window.addEventListener('scroll', function() {
   });
 });
 
-/* ── Arc stepper tabs ── */
-(function() {
-  var tabs = Array.from(document.querySelectorAll('.arc-tab[role="tab"]'));
-  var panels = Array.from(document.querySelectorAll('.arc-panel[role="tabpanel"]'));
+/* ── Stepper tabs — shared initialiser, scoped per tablist ── */
+function initStepper(tablistEl) {
+  var tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  var panels = tabs.map(function(t) { return document.getElementById(t.getAttribute('aria-controls')); });
 
   function activate(idx) {
     tabs.forEach(function(t, i) {
@@ -708,9 +720,9 @@ window.addEventListener('scroll', function() {
       t.setAttribute('tabindex', i === idx ? '0' : '-1');
     });
     panels.forEach(function(p, i) {
+      if (!p) return;
       if (i === idx) {
         p.classList.add('is-visible');
-        /* allow display:block to paint before fading in */
         requestAnimationFrame(function() {
           requestAnimationFrame(function() { p.classList.add('is-active'); });
         });
@@ -722,21 +734,22 @@ window.addEventListener('scroll', function() {
         });
       }
     });
-    /* scroll active tab into view on narrow viewports */
     tabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
   }
 
   tabs.forEach(function(tab, idx) {
-    tab.addEventListener('click', function() { activate(idx); tabs[idx].focus(); });
+    tab.addEventListener('click', function() { activate(idx); tab.focus(); });
     tab.addEventListener('keydown', function(e) {
-      var key = e.key;
-      if (key === 'ArrowRight') { e.preventDefault(); var n = (idx + 1) % tabs.length; activate(n); tabs[n].focus(); }
-      if (key === 'ArrowLeft')  { e.preventDefault(); var n = (idx - 1 + tabs.length) % tabs.length; activate(n); tabs[n].focus(); }
+      var key = e.key, n;
+      if (key === 'ArrowRight') { e.preventDefault(); n = (idx + 1) % tabs.length; activate(n); tabs[n].focus(); }
+      if (key === 'ArrowLeft')  { e.preventDefault(); n = (idx - 1 + tabs.length) % tabs.length; activate(n); tabs[n].focus(); }
       if (key === 'Home')       { e.preventDefault(); activate(0); tabs[0].focus(); }
       if (key === 'End')        { e.preventDefault(); activate(tabs.length - 1); tabs[tabs.length - 1].focus(); }
     });
   });
-})();
+}
+
+document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initStepper(tablist); });
 
 /* ── Witness <details> smooth animation ── */
 /* Only runs if ::details-content is not supported (legacy browsers) */
