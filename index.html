@@ -467,10 +467,9 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
 }
 
 /* ── Password gate ── */
-#pw-gate{position:fixed;inset:0;background:#111;z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s}
+#pw-gate{position:fixed;inset:0;background:rgba(15,15,15,0.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s}
 #pw-gate.pw-fade{opacity:0;pointer-events:none}
-#pw-wm{position:absolute;font-size:38vw;font-weight:900;color:rgba(255,255,255,0.028);user-select:none;pointer-events:none;letter-spacing:-.03em;line-height:1;white-space:nowrap}
-#pw-card{position:relative;z-index:1;max-width:380px;width:calc(100% - 48px);padding:40px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px}
+#pw-card{position:relative;z-index:1;max-width:380px;width:calc(100% - 48px);padding:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px}
 #pw-title{font-family:var(--font-body);font-size:17px;font-weight:600;color:#fff;margin:0 0 10px;line-height:1.4}
 #pw-sub{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.45);margin:0 0 28px;line-height:1.6}
 #pw-input{width:100%;box-sizing:border-box;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:16px;color:#fff;outline:none;margin-bottom:12px;font-family:var(--font-body);letter-spacing:.12em}
@@ -485,7 +484,6 @@ body.pw-locked{overflow:hidden}
 <body>
 
 <div id="pw-gate">
-  <div id="pw-wm">UWC</div>
   <div id="pw-card">
     <p id="pw-title">Enter password to access the site.</p>
     <p id="pw-sub">Password protection required, some projects are under NDA that requires it.</p>
