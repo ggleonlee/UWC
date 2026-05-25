@@ -1291,20 +1291,41 @@ function initStepper(tablistEl) {
     requestAnimationFrame(syncContainerHeight);
   }
 
+  /* ── Arc deactivate (mobile toggle-off) ── */
+  function arcDeactivate() {
+    activeIdx = -1;
+    stackOrder = [];
+    panelPlaced = {};
+    tabs.forEach(function(t) {
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    panels.forEach(function(p) {
+      if (!p) return;
+      p.classList.remove('arc-in-stack', 'arc-on-top', 'arc-appearing', 'arc-resurfacing');
+    });
+    if (panelsWrap) panelsWrap.style.minHeight = '0';
+  }
+
   /* ── Init: measure height → enable stacking → setup SVG ── */
   var initialIdx = tabs.findIndex(function(t) { return t.getAttribute('aria-selected') === 'true'; });
   if (initialIdx < 0) initialIdx = 0;
-  activeIdx = initialIdx; stackOrder = [initialIdx];
 
   requestAnimationFrame(function() {
+    var isMob0 = window.innerWidth <= 680;
+    if (isMob0) {
+      /* Mobile: start closed — nothing open by default */
+      tabs.forEach(function(t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+      if (theArcEl) theArcEl.classList.add('arc-stacked');
+      return;
+    }
+    /* Desktop: open first panel as before */
+    activeIdx = initialIdx; stackOrder = [initialIdx];
     var firstPanel = panels[initialIdx];
-    /* 1. Lock container height before going absolute */
     if (firstPanel && panelsWrap) panelsWrap.style.minHeight = (firstPanel.offsetHeight + 28) + 'px';
-    /* 2. Set permanent position for first panel, then enable arc-stacked */
     if (firstPanel) {
-      var isMob0 = window.innerWidth <= 680;
-      var rot0  = isMob0 ? 0 : (baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0);
-      var xOff0 = isMob0 ? 0 : (baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0);
+      var rot0  = baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0;
+      var xOff0 = baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0;
       firstPanel.style.setProperty('--arc-rot', rot0 + 'deg');
       firstPanel.style.left    = xOff0 + 'px';
       firstPanel.style.zIndex  = '1';
@@ -1318,7 +1339,15 @@ function initStepper(tablistEl) {
 
   /* ── Event listeners ── */
   tabs.forEach(function(tab, idx) {
-    tab.addEventListener('click', function() { arcActivate(idx); tab.focus({ preventScroll: true }); });
+    tab.addEventListener('click', function() {
+      var isMob = window.innerWidth <= 680;
+      if (isMob && idx === activeIdx) {
+        arcDeactivate();
+      } else {
+        arcActivate(idx);
+      }
+      tab.focus({ preventScroll: true });
+    });
     tab.addEventListener('keydown', function(e) {
       var key = e.key, n;
       if (key === 'ArrowRight') { e.preventDefault(); n = (idx+1)%tabs.length;              arcActivate(n); tabs[n].focus({preventScroll:true}); }
