@@ -122,6 +122,7 @@ mark.hl{background:none;color:inherit}
 
 .section-subtext{font-family:var(--font-body);font-size:18px;font-weight:400;line-height:1.65;color:var(--ink-soft);max-width:84ch;margin-bottom:14px}
 .section-subtext:last-child{margin-bottom:0}
+.arc-subtext-wrap{margin-top:50px}
 
 /* Image placeholder — first section only, right column */
 .section-intro-img{width:340px;flex-shrink:0;aspect-ratio:4/5;background:#F2F2F2;border:1.5px dashed #C8C8C8;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;min-height:320px}
@@ -282,6 +283,7 @@ details.witness-item[open]::details-content{height:auto}
   .section-intro-inner{flex-direction:column;gap:24px}
   .section-headline{font-size:clamp(30px,8.5vw,48px)}
   .section-subtext{font-size:16px;max-width:none}
+  .arc-subtext-wrap{margin-top:0}
   .section-intro-img{width:100%;min-height:220px;aspect-ratio:3/2}
   .section-intro-img--photo{aspect-ratio:auto;min-height:0}
   .polaroid{width:80%;margin:0 auto}
@@ -452,8 +454,11 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
   .iw-stat-label{font-size:11px}
   .iw-year-nav{gap:4px}
   .iw-year-btn{font-size:10px;padding:5px 10px}
-  .iw-card{padding:16px 16px 20px}
-  .iw-card-quote p{font-size:13px}
+  .iw-card-unit.mob-hide{display:none}
+  .iw-card{padding:14px 14px 18px}
+  .iw-card-name{font-size:10px}
+  .iw-card-role{font-size:10px}
+  .iw-card-quote p{font-size:12px}
 }
 </style>
 </head>
@@ -725,8 +730,10 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
       <div class="section-intro-text">
         <span class="section-intro-kicker">The Arc</span>
         <h2 class="section-headline">Seven chapters,<br> five countries,<br> one <mark class="hl">thread.</mark></h2>
-        <p class="section-subtext">I help organisations uncover their hidden patterns, improve meaningfully, and take strategic ideas all the way from whiteboard to impact.</p>
-        <p class="section-subtext">The journey explains this and why I want to collaborate with UWC.<br class="desk-br">Expand the chapters you are curious about, or read the whole arc.</p>
+        <div class="arc-subtext-wrap">
+          <p class="section-subtext">I help organisations uncover their hidden patterns, improve meaningfully, and take strategic ideas all the way from whiteboard to impact.</p>
+          <p class="section-subtext">The journey explains this and why I want to collaborate with UWC.<br class="desk-br">Expand the chapters you are curious about, or read the whole arc.</p>
+        </div>
       </div>
       <div class="section-intro-img section-intro-img--photo">
         <div class="polaroid-stack">
@@ -757,7 +764,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
   <div class="arc-panels-wrap">
 
     <!-- Panel 01 -->
-    <div id="arc-panel-01" role="tabpanel" aria-labelledby="arc-tab-01" class="arc-panel is-visible is-active">
+    <div id="arc-panel-01" role="tabpanel" aria-labelledby="arc-tab-01" class="arc-panel">
       <span class="arc-chapter-kicker">Chapter 01</span>
       <h2 class="arc-chapter-title">Finding a call</h2>
       <span class="arc-chapter-sub">Curiosity beyond curriculum.</span>
@@ -979,7 +986,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
           </div>
           <div class="iw-stat-sep" aria-hidden="true"></div>
           <div class="iw-stat" role="listitem">
-            <span class="iw-stat-num">6</span>
+            <span class="iw-stat-num">5</span>
             <span class="iw-stat-label">Countries<br class="mob-br"> and sectors</span>
           </div>
           <div class="iw-stat-sep" aria-hidden="true"></div>
@@ -997,17 +1004,17 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
     <div class="iw-inner">
 
       <nav class="iw-year-nav" aria-label="Jump to period">
-        <button class="iw-year-btn is-active" data-idx="0">Dentsu · London</button>
-        <button class="iw-year-btn" data-idx="2">Dentsu · APAC</button>
-        <button class="iw-year-btn" data-idx="5">Rainmaking</button>
-        <button class="iw-year-btn" data-idx="8">Apple</button>
-        <button class="iw-year-btn" data-idx="9">Recent</button>
+        <button class="iw-year-btn is-active" data-idx="0" data-mob-idx="0">Dentsu · London</button>
+        <button class="iw-year-btn" data-idx="2" data-mob-idx="1">Dentsu · APAC</button>
+        <button class="iw-year-btn" data-idx="5" data-mob-idx="2">Rainmaking</button>
+        <button class="iw-year-btn" data-idx="8" data-mob-idx="3">Apple</button>
+        <button class="iw-year-btn" data-idx="9" data-mob-idx="4">Recent</button>
       </nav>
 
       <div class="iw-track-clip">
         <div class="iw-track" id="iw-track">
 
-          <div class="iw-card-unit" data-period="Dentsu · London">
+          <div class="iw-card-unit mob-hide" data-period="Dentsu · London">
             <span class="iw-card-period-label">Dentsu · London</span>
             <article class="iw-card" tabindex="0">
               <header>
@@ -1040,7 +1047,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             </article>
           </div>
 
-          <div class="iw-card-unit" data-period="Dentsu · APAC">
+          <div class="iw-card-unit mob-hide" data-period="Dentsu · APAC">
             <span class="iw-card-period-label">Dentsu · APAC</span>
             <article class="iw-card" tabindex="0">
               <header>
@@ -1051,7 +1058,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             </article>
           </div>
 
-          <div class="iw-card-unit" data-period="Dentsu · APAC">
+          <div class="iw-card-unit mob-hide" data-period="Dentsu · APAC">
             <span class="iw-card-period-label">Dentsu · APAC</span>
             <article class="iw-card" tabindex="0">
               <header>
@@ -1073,7 +1080,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             </article>
           </div>
 
-          <div class="iw-card-unit" data-period="Rainmaking">
+          <div class="iw-card-unit mob-hide" data-period="Rainmaking">
             <span class="iw-card-period-label">Rainmaking</span>
             <article class="iw-card" tabindex="0">
               <header>
@@ -1084,7 +1091,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             </article>
           </div>
 
-          <div class="iw-card-unit" data-period="Rainmaking">
+          <div class="iw-card-unit mob-hide" data-period="Rainmaking">
             <span class="iw-card-period-label">Rainmaking</span>
             <article class="iw-card" tabindex="0">
               <header>
@@ -1318,25 +1325,27 @@ function initStepper(tablistEl) {
   requestAnimationFrame(function() {
     var isMob0 = window.innerWidth <= 680;
     if (isMob0) {
-      /* Mobile: start closed — nothing open by default */
-      tabs.forEach(function(t) { t.setAttribute('aria-selected','false'); t.setAttribute('tabindex','-1'); });
+      /* Mobile: pre-open first panel (same as desktop) */
       if (theArcEl) theArcEl.classList.add('arc-stacked');
+      arcActivate(initialIdx);
       return;
     }
-    /* Desktop: open first panel as before */
+    /* Desktop: pre-open first panel */
     activeIdx = initialIdx; stackOrder = [initialIdx];
-    var firstPanel = panels[initialIdx];
-    if (firstPanel && panelsWrap) panelsWrap.style.minHeight = (firstPanel.offsetHeight + 28) + 'px';
-    if (firstPanel) {
+    if (theArcEl) theArcEl.classList.add('arc-stacked');
+    /* Measure after arc-stacked styles settle so width/height are correct */
+    requestAnimationFrame(function() {
+      var firstPanel = panels[initialIdx];
+      if (!firstPanel) return;
       var rot0  = baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0;
       var xOff0 = baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0;
       firstPanel.style.setProperty('--arc-rot', rot0 + 'deg');
-      firstPanel.style.left    = xOff0 + 'px';
-      firstPanel.style.zIndex  = '1';
+      firstPanel.style.left   = xOff0 + 'px';
+      firstPanel.style.zIndex = '1';
       firstPanel.classList.add('arc-in-stack', 'arc-on-top');
       panelPlaced[initialIdx] = true;
-    }
-    if (theArcEl) theArcEl.classList.add('arc-stacked');
+      if (panelsWrap) panelsWrap.style.minHeight = (firstPanel.offsetHeight + 28) + 'px';
+    });
   });
 
   window.addEventListener('resize', syncContainerHeight);
@@ -1494,12 +1503,16 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
 (function(){
   var track    = document.getElementById('iw-track');
   if (!track) return;
-  var units    = Array.from(track.querySelectorAll('.iw-card-unit'));
+  var allUnits = Array.from(track.querySelectorAll('.iw-card-unit'));
   var yearBtns = Array.from(document.querySelectorAll('.iw-year-btn'));
   var gap      = 20;
   var cur      = 0;
 
-  function getVisible() { return window.innerWidth < 680 ? 1 : 3; }
+  function isMob() { return window.innerWidth < 680; }
+  function getVisible() { return isMob() ? 1 : 3; }
+  function getUnits() {
+    return isMob() ? allUnits.filter(function(u){ return !u.classList.contains('mob-hide'); }) : allUnits;
+  }
 
   function getCardW() {
     var clip    = track.parentElement;
@@ -1507,10 +1520,14 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
     return (clip.offsetWidth - gap * (visible - 1)) / visible;
   }
 
+  function getBtnIdx(btn) {
+    return parseInt(isMob() && btn.dataset.mobIdx !== undefined ? btn.dataset.mobIdx : btn.dataset.idx, 10);
+  }
+
   function updateYearNav(idx) {
-    var sortedIdxs = yearBtns.map(function(b){ return parseInt(b.dataset.idx, 10); }).sort(function(a,b){ return a-b; });
+    var sortedIdxs = yearBtns.map(function(b){ return getBtnIdx(b); }).sort(function(a,b){ return a-b; });
     yearBtns.forEach(function(btn) {
-      var bIdx  = parseInt(btn.dataset.idx, 10);
+      var bIdx  = getBtnIdx(btn);
       var nextI = Infinity;
       for (var i = 0; i < sortedIdxs.length; i++) {
         if (sortedIdxs[i] > bIdx) { nextI = sortedIdxs[i]; break; }
@@ -1520,6 +1537,7 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
   }
 
   function goTo(idx) {
+    var units   = getUnits();
     var visible = getVisible();
     var max     = Math.max(0, units.length - visible);
     idx = Math.max(0, Math.min(idx, max));
@@ -1537,7 +1555,7 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
   goTo(0);
 
   yearBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(){ goTo(parseInt(btn.dataset.idx, 10)); });
+    btn.addEventListener('click', function(){ goTo(getBtnIdx(btn)); });
   });
 
   /* Touch swipe */
