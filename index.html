@@ -445,9 +445,9 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
 
 @media(max-width:680px){
   .iw-groups{padding:40px 20px 56px}
-  .iw-stats{margin-top:32px;padding-top:24px;flex-wrap:wrap;gap:0}
+  .iw-stats{margin-top:32px;padding-top:24px;display:grid;grid-template-columns:repeat(3,1fr);align-items:start;gap:0}
   .iw-stat-sep{display:none}
-  .iw-stat{flex:1 1 0;padding:10px 4px;min-width:0}
+  .iw-stat{padding:10px 4px;min-width:0;flex:none}
   .iw-stat-num{font-size:28px}
   .iw-stat-label{font-size:11px}
   .iw-year-nav{gap:4px}
@@ -1440,11 +1440,8 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
     activeId = id;
 
     if (!wasOpen) {
-      /* 3. Open panel and scroll to it after one rAF (layout has settled) */
+      /* 3. Open panel — no auto-scroll; avoid fighting the height animation */
       panel.classList.add('is-open');
-      requestAnimationFrame(function() {
-        panel.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-      });
     }
     /* Already open + different card: content swapped above, no re-scroll */
   }
