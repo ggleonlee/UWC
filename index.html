@@ -1528,7 +1528,7 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
 
   function getCardW() {
     var clip = track.parentElement;
-    if (isMob()) return clip.offsetWidth - 60;
+    if (isMob()) return clip.offsetWidth;
     var visible = getVisible();
     return (clip.offsetWidth - gap * (visible - 1)) / visible;
   }
