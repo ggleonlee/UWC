@@ -1268,8 +1268,9 @@ function initStepper(tablistEl) {
 
     if (isFirstAppearance) {
       /* Set permanent position once — never moved again */
-      var rot  = baseRots[idx]    !== undefined ? baseRots[idx]    : 0;
-      var xOff = baseXOffset[idx] !== undefined ? baseXOffset[idx] : 0;
+      var isMob = window.innerWidth <= 680;
+      var rot  = isMob ? 0 : (baseRots[idx]    !== undefined ? baseRots[idx]    : 0);
+      var xOff = isMob ? 0 : (baseXOffset[idx] !== undefined ? baseXOffset[idx] : 0);
       targetPanel.style.setProperty('--arc-rot', rot + 'deg');
       targetPanel.style.left = xOff + 'px';
       panelPlaced[idx] = true;
@@ -1296,8 +1297,9 @@ function initStepper(tablistEl) {
     if (firstPanel && panelsWrap) panelsWrap.style.minHeight = (firstPanel.offsetHeight + 28) + 'px';
     /* 2. Set permanent position for first panel, then enable arc-stacked */
     if (firstPanel) {
-      var rot0  = baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0;
-      var xOff0 = baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0;
+      var isMob0 = window.innerWidth <= 680;
+      var rot0  = isMob0 ? 0 : (baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0);
+      var xOff0 = isMob0 ? 0 : (baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0);
       firstPanel.style.setProperty('--arc-rot', rot0 + 'deg');
       firstPanel.style.left    = xOff0 + 'px';
       firstPanel.style.zIndex  = '1';
