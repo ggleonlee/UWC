@@ -95,6 +95,7 @@ em{font-style:italic}
 
 .mob-label{display:none}
 .desk-label{display:inline}
+.mob-br{display:none}
 
 /* ── Section intro ── */
 .section-intro{background:var(--bg);width:100%;padding:80px 48px 72px;border-bottom:1px solid var(--rule)}
@@ -274,6 +275,7 @@ details.witness-item[open]::details-content{height:auto}
   .nav-link{font-size:10px;letter-spacing:.04em}
   .mob-label{display:inline}
   .desk-label{display:none}
+  .mob-br{display:inline}
   body{font-size:16px}
   p{max-width:none}
   .section-intro{padding:48px 24px 44px}
@@ -428,6 +430,7 @@ details.witness-item[open]::details-content{height:auto}
 .iw-card-quote{flex:1;display:flex;align-items:center}
 .iw-card-quote p{font-family:var(--font-body);font-size:13.5px;line-height:1.65;color:var(--ink);font-style:italic;margin-bottom:0}
 mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.5) 8%,rgba(255,222,0,0.5) 92%,rgba(255,222,0,0) 100%);color:inherit;border-radius:2px;padding:0 2px}
+#impact-witnesses mark.hl{background:linear-gradient(120deg,rgba(255,239,128,0) 0%,#FFEF80 8%,#FFEF80 92%,rgba(255,239,128,0) 100%)}
 
 /* Timeline carousel */
 .iw-year-nav{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap;justify-content:center}
@@ -965,7 +968,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
     <div class="section-intro-inner">
       <div class="section-intro-text">
         <span class="section-intro-kicker">Impact Witnesses</span>
-        <h2 class="section-headline">But don't just take it from <mark class="hl">me.</mark></h2>
+        <h2 class="section-headline">But don't just take it from me.</h2>
         <p class="section-subtext">The voices below come from CEOs, COOs, peers, direct reports, and clients across 10 years and different chapters, independently arriving at similar observations.</p>
 
         <!-- Stats row -->
@@ -977,7 +980,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
           <div class="iw-stat-sep" aria-hidden="true"></div>
           <div class="iw-stat" role="listitem">
             <span class="iw-stat-num">6</span>
-            <span class="iw-stat-label">Countries and sectors</span>
+            <span class="iw-stat-label">Countries<br class="mob-br"> and sectors</span>
           </div>
           <div class="iw-stat-sep" aria-hidden="true"></div>
           <div class="iw-stat" role="listitem">
