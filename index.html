@@ -11,126 +11,443 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Guzmán González — Change &amp; Transformation Lead" />
 <meta name="twitter:description" content="A pre-meeting artifact. Ten years embedding inside organisations to diagnose what blocks change — and building the conditions for it to last." />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Kalam:wght@400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--ink:#0e0e0e;--body:#222;--mid:#444;--soft:#666;--rule:#d0d0ce;--bg:#f8f8f6;--card:#efefed;--serif:'Libre Baskerville',Georgia,serif;--sans:'Inter',system-ui,sans-serif}
+
+/* ── Design tokens ── */
+:root{
+  --bg:#FFFFFF;
+  --surface:#F7F7F7;
+  --ink:#1A1A1A;
+  --ink-soft:#666666;
+  --mid:#444444;
+  --rule:#E5E5E5;
+  --highlight:#FFE14D;
+  --font-display:'Poppins',system-ui,sans-serif;
+  --font-body:'Lora',Georgia,serif;
+  --font-ui:'Inter',system-ui,sans-serif;
+  --radius:6px;
+  --radius-sm:3px;
+  --shadow:0 1px 8px rgba(0,0,0,0.06);
+  --shadow-hover:0 4px 24px rgba(0,0,0,0.12);
+  --ease:cubic-bezier(0.22,1,0.36,1);
+  --dur:250ms;
+  --dur-fast:150ms;
+  /* ── Impact Witnesses section tokens ── */
+  --iw-bg:#2D2A6E;
+  --iw-card-bg:#CFE6E0;
+  --iw-card-radius:12px;
+  --iw-card-shadow:0 4px 24px rgba(0,0,0,0.28),inset 0 1px 0 rgba(255,255,255,0.5);
+  --iw-text:#FFFFFF;
+  --iw-text-muted:rgba(255,255,255,0.72);
+  --iw-divider:rgba(255,255,255,0.18);
+  --iw-dot:rgba(255,255,255,0.28);
+  --iw-dot-active:#FFFFFF;
+  --iw-bg-negative:#D2D591;
+  --iw-map-opacity:0.11;
+  /* ── How I Work case card tokens ── */
+  --cs-img-ratio:16/10;
+  --cs-card-shadow:0 1px 3px rgba(0,0,0,0.06),0 2px 10px rgba(0,0,0,0.07);
+  --cs-card-shadow-active:0 4px 20px rgba(0,0,0,0.13);
+  --cs-panel-dur:320ms;
+}
+
 html{scroll-behavior:smooth}
 #how-i-work,#the-arc,#impact-witnesses{scroll-margin-top:64px}
-body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:16.5px;line-height:1.75;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);padding:0 28px}
-.nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center;height:48px}
-.nav-name{font-family:var(--sans);font-size:13px;font-weight:500;color:var(--ink);letter-spacing:-.01em;white-space:nowrap;text-decoration:none;padding-right:20px;margin-right:8px;border-right:1px solid var(--rule)}
-.nav-name:hover{color:var(--mid)}
-.nav-link{font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s;padding:4px 0;border-bottom:2px solid transparent;white-space:nowrap}
-.nav-link:hover,.nav-link.active{color:var(--ink);border-bottom-color:var(--ink)}
+
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);padding:0 48px}
+.nav-inner{max-width:1120px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:flex-start;height:56px}
+.nav-name{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--ink);letter-spacing:-.01em;white-space:nowrap;text-decoration:none;padding-right:24px;margin-right:8px;border-right:1px solid var(--rule);flex-shrink:0;transition:opacity var(--dur-fast) var(--ease)}
+.nav-name:hover{opacity:.65}
+.nav-link{font-family:var(--font-ui);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent;transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease);white-space:nowrap}
+.nav-link:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.nav-link.active{color:var(--ink);border-bottom-color:var(--ink)}
+.nav-link:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+
+/* ── Layout ── */
 .page-wide{max-width:1120px;margin:0 auto;padding:0 48px}
 .section-wrap{max-width:1120px;margin:0 auto;padding:0 48px}
-p{font-size:16.5px;color:var(--body);margin-bottom:14px;font-weight:400;line-height:1.75}
+
+/* ── Base type ── */
+p{font-family:var(--font-body);font-size:17px;color:var(--ink);margin-bottom:16px;font-weight:400;line-height:1.7;max-width:68ch}
 p:last-child{margin-bottom:0}
 strong{font-weight:600;color:var(--ink)}
 em{font-style:italic}
-.contact-links{display:flex;flex-wrap:wrap;gap:6px 20px}
-.contact-links a{font-size:14px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:border-color .2s}
-.contact-links a:hover{border-color:var(--ink)}
-.page-close{text-align:center;padding:64px 24px;background:var(--bg)}
-.page-close-name{font-family:var(--serif);font-size:13px;letter-spacing:.08em;color:rgba(14,14,14,0.35);display:block;margin-bottom:8px}
-.page-close-email{font-family:var(--sans);font-size:15px;color:var(--ink);text-decoration:none;border-bottom:1px solid #E8793A;padding-bottom:1px}
-.fade-in{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
-.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ── Footer ── */
+.page-close{text-align:center;padding:72px 24px;background:var(--bg);border-top:1px solid var(--rule)}
+.page-close-name{font-family:var(--font-body);font-style:italic;font-size:14px;letter-spacing:.02em;color:var(--ink-soft);display:block;margin-bottom:10px}
+.page-close-email{font-family:var(--font-ui);font-size:15px;color:var(--ink);text-decoration:none;border-bottom:2px solid var(--highlight);padding-bottom:2px;transition:opacity var(--dur-fast) var(--ease)}
+.page-close-email:hover{opacity:.65}
+
+/* ── Scroll-reveal ── */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.fade-in.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .fade-in{opacity:1!important;transform:none!important;transition:none!important}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
 .mob-label{display:none}
 .desk-label{display:inline}
 
-/* ── Section hero (dark intro at top of each section) ── */
-.section-hero{background:#071830;color:#fff;width:100%;margin:0;padding:0}
-.section-hero-inner{max-width:720px;margin:0 auto;padding:72px 24px 60px;text-align:center}
-.section-hero-kicker{display:inline-block;color:rgba(255,255,255,0.55);font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px}
-.section-hero-headline{font-family:var(--sans);font-size:clamp(30px,6vw,60px);font-weight:600;letter-spacing:-0.02em;color:#fff;line-height:1.1;margin-bottom:28px;display:block}
-.section-hero-lead{font-family:var(--sans);font-size:17px;font-weight:300;color:rgba(255,255,255,0.75);line-height:1.75;max-width:580px;margin:0 auto 14px}
-.section-hero-lead:last-child{margin-bottom:0}
-.section-hero-lead strong{color:rgba(255,255,255,0.95);font-weight:400}
+/* ── Section intro ── */
+.section-intro{background:var(--bg);width:100%;padding:80px 48px 72px;border-bottom:1px solid var(--rule)}
+#the-arc,#impact-witnesses{border-top:1px solid var(--rule)}
+.section-intro-inner{max-width:1120px;margin:0 auto;display:flex;align-items:flex-start;gap:56px}
+.section-intro-text{flex:1;min-width:0}
+.cs-engagement-ideas{flex:0 0 auto;width:340px;height:289px;position:relative;background:#ebcbef;border-radius:4px;padding:26px 28px;box-sizing:border-box;transform:rotate(2.8deg);box-shadow:1px 2px 3px rgba(0,0,0,0.12),3px 6px 10px rgba(0,0,0,0.15),6px 14px 28px rgba(0,0,0,0.13),0 1px 2px rgba(0,0,0,0.08);align-self:flex-start;margin-top:4px;display:flex;flex-direction:column;justify-content:flex-start}
+.cs-engagement-label{font-family:var(--font-ui);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a4fbf;display:block;margin-bottom:4px;padding-bottom:6px}
+.cs-engagement-label::after{content:'';display:block;height:7px;margin-top:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 7'%3E%3Cpath d='M2,5 C45,1 95,7 145,4 C168,2 185,5 198,4' stroke='%231a4fbf' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat left center;background-size:100% 100%}
+.cs-engagement-ideas ul{list-style:none;padding:0;margin:0}
+.cs-engagement-ideas li{font-family:'Kalam',cursive;font-size:17.5px;font-weight:700;color:#1a4fbf;line-height:1.45;padding:4px 0}
+.cs-engagement-ideas ul{margin-top:auto;margin-bottom:auto}
+.section-intro--wide .section-intro-text{max-width:720px}
 
-/* ── How I Work — case stepper (shares arc stepper CSS) ── */
+.section-intro-kicker{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:20px}
+
+.section-headline{font-family:var(--font-display);font-size:clamp(34px,6.4vw,71px);font-weight:700;line-height:1.04;letter-spacing:-0.025em;color:var(--ink);margin-bottom:8px}
+
+/* Yellow highlighter — flat rectangular block behind the word */
+mark.hl{background:none;color:inherit}
+
+/* Hand-drawn squiggle accent */
+.hero-squiggle{display:block;margin:16px 0 24px}
+
+.section-subtext{font-family:var(--font-body);font-size:18px;font-weight:400;line-height:1.65;color:var(--ink-soft);max-width:84ch;margin-bottom:14px}
+.section-subtext:last-child{margin-bottom:0}
+
+/* Image placeholder — first section only, right column */
+.section-intro-img{width:340px;flex-shrink:0;aspect-ratio:4/5;background:#F2F2F2;border:1.5px dashed #C8C8C8;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;min-height:320px}
+.section-intro-img-label{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#B0B0B0}
+/* Polaroid photo treatment */
+.section-intro-img--photo{background:none;border:none;aspect-ratio:auto;min-height:0;align-items:flex-start;border-radius:0;width:450px}
+/* Polaroid wall — The Arc section (7 photos)
+   Frame: 156px × 176px | Z: Family(6)>Shanghai(5)>London(4)>Leon(3)=Asturias(3)=Singapore(3)>Harvard(2)
+   Asturias: left/high — Singapore: right/low */
+.polaroid-stack{position:relative;width:100%;height:530px;overflow:visible}
+.polaroid-stack .polaroid{position:absolute;width:156px;transform:none}
+.polaroid-stack .polaroid:nth-child(1){left:0;   top:130px;transform:rotate(1.5deg); z-index:3}
+.polaroid-stack .polaroid:nth-child(2){left:120px;top:0;   transform:rotate(-2.5deg);z-index:6}
+.polaroid-stack .polaroid:nth-child(3){left:132px;top:150px;transform:rotate(-1.5deg);z-index:4}
+.polaroid-stack .polaroid:nth-child(4){left:254px;top:12px;transform:rotate(2deg);   z-index:5}
+.polaroid-stack .polaroid:nth-child(5){left:262px;top:163px;transform:rotate(1.5deg);z-index:3}
+.polaroid-stack .polaroid:nth-child(6){left:166px;top:310px;transform:rotate(-0.5deg);z-index:2}
+.polaroid-stack .polaroid:nth-child(7){left:306px;top:340px;transform:rotate(-1.5deg);z-index:3}
+@media(max-width:680px){
+  .polaroid-stack{height:360px}
+  .polaroid-stack .polaroid{width:100px}
+  .polaroid-stack .polaroid:nth-child(1){left:0;   top:83px;}
+  .polaroid-stack .polaroid:nth-child(2){left:77px;top:0;  }
+  .polaroid-stack .polaroid:nth-child(3){left:85px;top:96px;}
+  .polaroid-stack .polaroid:nth-child(4){left:163px;top:8px;}
+  .polaroid-stack .polaroid:nth-child(5){left:168px;top:105px;}
+  .polaroid-stack .polaroid:nth-child(6){left:106px;top:199px;}
+  .polaroid-stack .polaroid:nth-child(7){left:196px;top:218px;}
+}
+.polaroid{display:inline-block;background:#fff;padding:16px 16px 36px;box-shadow:0 4px 24px rgba(0,0,0,0.13),0 1px 6px rgba(0,0,0,0.07);transform:rotate(-1.5deg);line-height:0;border-radius:1px}
+.polaroid img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;object-position:center;border-radius:0}
+@media(prefers-reduced-motion:reduce){.polaroid{transform:none}}
+
+/* ── Cases (How I Work) ── */
 #how-i-work{padding:0}
-.case-title{font-family:var(--sans);font-size:clamp(20px,3vw,28px);font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin-bottom:8px}
-.case-meta{font-size:12px;color:var(--soft);font-weight:400;display:block;margin-bottom:36px;letter-spacing:.02em}
-.case-subhead{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#E8793A;display:block;margin:28px 0 10px}
-.case-ai{background:#071830;border-top:2px solid #2d3d6e;padding:18px 22px 20px;margin-top:32px;border-radius:3px;color:#fff}
-.case-ai summary{list-style:none;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px}
+#how-i-work .arc-panels-wrap{padding:48px 48px 64px}
+#how-i-work .arc-panel{background:var(--surface);border:1px solid var(--rule);border-radius:var(--radius);padding:40px 48px;box-shadow:var(--shadow)}
+@media(hover:hover){
+  #how-i-work .arc-panel{transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  #how-i-work .arc-panel:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+}
+@media(prefers-reduced-motion:reduce){#how-i-work .arc-panel:hover{transform:none}}
+
+.case-title{font-family:var(--font-display);font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:8px}
+.case-meta{font-family:var(--font-ui);font-size:12px;color:var(--ink-soft);font-weight:400;display:block;margin-bottom:32px;letter-spacing:.02em}
+.cs-panel-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 56px;align-items:start}
+.cs-panel-col{min-width:0}
+@media(max-width:760px){.cs-panel-cols{grid-template-columns:1fr}}
+.case-subhead{font-family:var(--font-ui);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--iw-bg);display:block;margin:28px 0 10px}
+
+.case-ai{background:var(--iw-bg);border-left:3px solid rgba(255,255,255,0.3);padding:18px 22px 20px;margin-top:32px;border-radius:var(--radius-sm)}
+.case-ai summary{font-family:var(--font-ui);list-style:none;cursor:pointer;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:28px}
 .case-ai summary::-webkit-details-marker{display:none}
-.case-ai-icon{font-size:18px;font-weight:300;line-height:1;flex-shrink:0;transition:transform .2s;display:inline-block}
+.case-ai-icon{font-size:18px;font-weight:300;line-height:1;flex-shrink:0;transition:transform var(--dur-fast) var(--ease);display:inline-block}
 .case-ai[open] .case-ai-icon{transform:rotate(45deg)}
-.case-ai p{font-size:15px;line-height:1.72;color:rgba(255,255,255,0.9);font-weight:400;margin-bottom:10px;margin-top:14px;max-width:none}
+.case-ai p{font-family:var(--font-ui);font-size:15px;line-height:1.7;color:rgba(255,255,255,0.88);font-weight:400;margin-bottom:10px;margin-top:14px;max-width:none}
 .case-ai p:last-child{margin-bottom:0}
 
-/* ── The Arc — stepper tabs ── */
+/* ── Stepper — shared by Cases and Arc ── */
 #the-arc{padding:0}
-.arc-stepper-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--rule)}
+.arc-stepper-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid var(--rule);background:var(--bg)}
 .arc-stepper-wrap::-webkit-scrollbar{height:2px}
-.arc-stepper-wrap::-webkit-scrollbar-thumb{background:var(--rule)}
-.arc-tablist{display:flex;min-width:max-content;padding:0 48px;max-width:1120px;margin:0 auto}
-.arc-tab{flex:none;background:none;border:none;border-bottom:2px solid transparent;padding:18px 18px 16px;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);cursor:pointer;transition:color .2s,border-color .2s;touch-action:manipulation;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:5px;margin-bottom:-1px}
-.arc-tab:hover{color:var(--mid)}
-.arc-tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
-.arc-tab-num{font-size:10px;color:var(--soft);letter-spacing:.06em;font-weight:500}
-.arc-tab[aria-selected="true"] .arc-tab-num{color:#E8793A}
+.arc-stepper-wrap::-webkit-scrollbar-thumb{background:var(--rule);border-radius:2px}
+.arc-tablist{display:flex;min-width:max-content;padding:12px 48px;max-width:1120px;margin:0 auto;gap:4px}
+.arc-tab{flex:none;background:none;border:none;padding:8px 16px;border-radius:100px;font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);cursor:pointer;transition:color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease);touch-action:manipulation;white-space:nowrap;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.arc-tab:hover{color:var(--ink);background:rgba(26,26,26,.07)}
+.arc-tab[aria-selected="true"]{color:#fff;background:var(--ink)}
+.arc-tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
 .arc-panels-wrap{padding:0 48px;max-width:1120px;margin:0 auto}
-.arc-panel{display:none;padding:48px 0;max-width:700px;opacity:0;transition:opacity .22s ease}
+.arc-panel{display:none;padding:52px 0;max-width:700px;opacity:0;transition:opacity .22s var(--ease);scroll-margin-top:60px}
 .arc-panel.is-visible{display:block}
 .arc-panel.is-active{opacity:1}
-.arc-chapter-kicker{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#E8793A;display:block;margin-bottom:8px}
-.arc-chapter-title{font-family:var(--sans);font-size:clamp(18px,2.8vw,24px);font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin-bottom:6px}
-.arc-chapter-sub{font-size:15px;color:var(--soft);font-style:italic;font-weight:400;display:block;margin-bottom:36px}
+
+
+/* ── Arc: paper-card stack (activated after JS init) ── */
+#the-arc.arc-stacked .arc-panels-wrap{position:relative;overflow:visible}
+#the-arc.arc-stacked .arc-panel{display:block!important;position:absolute;top:0;width:875px;max-width:100%;visibility:hidden;opacity:1!important;background:#FAFAF7;border:1px solid rgba(0,0,0,0.07);border-radius:6px;box-shadow:0 2px 16px rgba(0,0,0,0.09),0 0 0 0.5px rgba(0,0,0,0.04);padding:48px 65px;transform-origin:50% 0;transform:rotate(var(--arc-rot,0deg));transition:box-shadow .25s ease}
+#the-arc.arc-stacked .arc-panel.arc-in-stack{visibility:visible}
+#the-arc.arc-stacked .arc-panel.arc-on-top{box-shadow:0 6px 32px rgba(0,0,0,0.14),0 0 0 0.5px rgba(0,0,0,0.06)}
+@keyframes arc-appear{from{opacity:0;transform:translateY(10px) rotate(var(--arc-rot,0deg))}to{opacity:1;transform:translateY(0) rotate(var(--arc-rot,0deg))}}
+@keyframes arc-resurface{0%,100%{transform:rotate(var(--arc-rot,0deg))}40%{transform:rotate(var(--arc-rot,0deg)) scale(1.018)}}
+#the-arc.arc-stacked .arc-panel.arc-appearing{animation:arc-appear .32s ease forwards}
+#the-arc.arc-stacked .arc-panel.arc-resurfacing{animation:arc-resurface .28s ease}
+@media(prefers-reduced-motion:reduce){#the-arc.arc-stacked .arc-panel{transition:none;animation:none!important}}
+@media(max-width:780px){#the-arc.arc-stacked .arc-panel{width:100%;left:0!important;--arc-rot:0deg}}
+@media(max-width:680px){#the-arc.arc-stacked .arc-panel{padding:28px 20px}}
+
+.arc-chapter-kicker{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:8px}
+.arc-chapter-title{font-family:var(--font-display);font-size:clamp(18px,2.8vw,26px);font-weight:700;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px}
+.arc-chapter-sub{font-family:var(--font-body);font-size:15px;color:var(--ink-soft);font-style:italic;font-weight:400;display:block;margin-bottom:40px}
 .arc-episode{margin-bottom:36px}
 .arc-episode:last-of-type{margin-bottom:0}
-.arc-episode-title{font-family:var(--sans);font-size:16.5px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.arc-episode-meta{font-size:12px;color:var(--soft);font-weight:400;display:block;margin-bottom:14px;letter-spacing:.02em}
+.arc-episode-title{font-family:var(--font-ui);font-size:16px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.arc-episode-meta{font-family:var(--font-ui);font-size:12px;color:var(--ink-soft);font-weight:400;display:block;margin-bottom:14px;letter-spacing:.02em}
 .arc-concurrent{border-top:1px solid var(--rule);padding-top:20px;margin-top:36px}
-.arc-concurrent-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);display:block;margin-bottom:10px}
+.arc-concurrent-label{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:12px}
 .arc-concurrent ul{list-style:none;padding:0;margin:0}
-.arc-concurrent li{font-size:13.5px;color:var(--mid);font-weight:400;padding:4px 0 4px 14px;position:relative;line-height:1.65}
-.arc-concurrent li::before{content:'·';position:absolute;left:0;color:var(--soft)}
+.arc-concurrent li{font-family:var(--font-ui);font-size:13.5px;color:var(--mid);font-weight:400;padding:4px 0 4px 16px;position:relative;line-height:1.65}
+.arc-concurrent li::before{content:'–';position:absolute;left:2px;color:var(--ink-soft)}
+.arc-clip-note{position:absolute;top:0;right:-18px;width:292px;background:#FFEF80;padding:8px 14px 2px;box-shadow:3px 4px 14px rgba(0,0,0,0.13),0 1px 3px rgba(0,0,0,0.08);transform:rotate(-2.5deg);font-family:'Kalam',cursive;font-size:15.5px;font-weight:700;line-height:1.55;color:#333;pointer-events:none;z-index:10}
+.arc-clip-note::before{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:17px;height:52px;border:2.5px solid #b0b0b0;border-radius:9px;background:transparent;box-shadow:1px 0 3px rgba(0,0,0,0.12),-1px 0 2px rgba(0,0,0,0.07);z-index:11}
+.arc-clip-note::after{content:none}
+.arc-clip-note-label{display:block;font-size:15.5px;font-weight:500;letter-spacing:.02em;color:#555;margin-bottom:10px}
+.arc-clip-note ul{list-style:none;padding:0;margin:0}
+.arc-clip-note li{padding:3px 0 3px 16px;position:relative}
+.arc-clip-note li::before{content:'•';position:absolute;left:0;color:#999;font-style:normal}
+@media(max-width:780px){.arc-clip-note{display:none}}
+.arc-clip-note--side{top:30px;right:0;transform:rotate(2deg);padding-bottom:18px}
+.arc-clip-note--side::before{top:22px;left:auto;right:0px;transform:rotate(90deg)}
 
 /* ── Impact Witnesses ── */
 #impact-witnesses{padding:0}
-.witnesses-wrap{padding:48px 48px 64px;max-width:1120px;margin:0 auto}
-.witnesses-group{margin-bottom:48px}
+.witnesses-wrap{padding:56px 48px 72px;max-width:1120px;margin:0 auto}
+.witnesses-group{margin-bottom:52px}
 .witnesses-group:last-child{margin-bottom:0}
-.witnesses-group-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);display:block;padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:0}
+.witnesses-group-label{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);display:block;padding-bottom:14px;border-bottom:2px solid var(--rule);margin-bottom:0}
+
 details.witness-item{border-top:1px solid var(--rule)}
 details.witness-item:last-child{border-bottom:1px solid var(--rule)}
-details.witness-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;cursor:pointer;touch-action:manipulation;user-select:none;min-height:56px}
+details.witness-item summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 4px;cursor:pointer;touch-action:manipulation;user-select:none;min-height:56px;transition:opacity var(--dur-fast) var(--ease)}
 details.witness-item summary::-webkit-details-marker{display:none}
-details.witness-item summary:focus-visible{outline:2px solid #E8793A;outline-offset:2px}
-.witness-name-line{font-size:15px;font-weight:500;color:var(--ink);line-height:1.4}
-.witness-chevron{width:20px;height:20px;border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--soft);line-height:1;transition:transform .25s,border-color .2s}
-details.witness-item[open] .witness-chevron{transform:rotate(45deg);border-color:var(--ink);color:var(--ink)}
-.witness-quote{padding-bottom:22px}
-.witness-quote blockquote{border-left:2px solid var(--ink);padding-left:16px;max-width:640px}
-.witness-quote blockquote p{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--ink);line-height:1.7;margin-bottom:0}
+details.witness-item summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:var(--radius-sm)}
+.witness-name-line{font-family:var(--font-ui);font-size:15px;font-weight:500;color:var(--ink);line-height:1.4}
+details.witness-item:hover summary{opacity:.7}
 
-/* Smooth <details> expand — progressive enhancement */
-details.witness-item::details-content{overflow:hidden;height:0;transition:height .3s ease,content-visibility .3s ease allow-discrete}
+.witness-chevron{width:24px;height:24px;border:1.5px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--ink-soft);line-height:1;transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease),background var(--dur-fast) var(--ease)}
+details.witness-item[open] .witness-chevron{transform:rotate(45deg);border-color:var(--ink);color:var(--ink);background:rgba(26,26,26,.07)}
+
+.witness-quote{padding-bottom:24px;padding-left:4px}
+.witness-quote blockquote{border-left:2px solid var(--ink);padding-left:20px;max-width:640px}
+.witness-quote blockquote p{font-family:var(--font-body);font-size:16px;font-style:italic;color:var(--mid);line-height:1.72;margin-bottom:0;max-width:none}
+
+/* Smooth <details> expand */
+details.witness-item::details-content{overflow:hidden;height:0;transition:height .3s var(--ease),content-visibility .3s var(--ease) allow-discrete}
 details.witness-item[open]::details-content{height:auto}
 
 /* ── Mobile ── */
 @media(max-width:680px){
   #how-i-work,#the-arc,#impact-witnesses{scroll-margin-top:68px}
   .nav{padding:0 16px}
-  .nav-inner{gap:0;justify-content:space-between;height:52px}
-  .nav-name{font-size:13px;flex-shrink:0;border-right:1px solid var(--rule);padding-right:14px;margin-right:0}
-  .nav-link{font-size:10.5px;letter-spacing:.05em}
+  .nav-inner{gap:16px;height:52px;justify-content:flex-start}
+  .nav-name{font-size:13px;flex-shrink:0;padding-right:16px;margin-right:0}
+  .nav-link{font-size:10px;letter-spacing:.04em}
   .mob-label{display:inline}
   .desk-label{display:none}
-  .section-hero-inner{padding:48px 24px 44px}
-  .section-hero-lead{font-size:15px}
-  .arc-tablist{padding:0 16px}
+  body{font-size:16px}
+  p{max-width:none}
+  .section-intro{padding:48px 24px 44px}
+  .section-intro-inner{flex-direction:column;gap:24px}
+  .section-headline{font-size:clamp(30px,8.5vw,48px)}
+  .section-subtext{font-size:16px;max-width:none}
+  .section-intro-img{width:100%;min-height:220px;aspect-ratio:3/2}
+  .section-intro-img--photo{aspect-ratio:auto;min-height:0}
+  .polaroid{width:80%;margin:0 auto}
+  .arc-tablist{padding:10px 16px}
   .arc-panels-wrap{padding:0 16px}
   .arc-panel{padding:36px 0}
-  .witnesses-wrap{padding:36px 16px 48px}
+  #how-i-work .arc-panels-wrap{padding:24px 16px 40px}
+  #how-i-work .arc-panel{padding:28px 20px;border-radius:var(--radius-sm)}
+  .witnesses-wrap{padding:36px 16px 52px}
   .section-wrap{padding:0 16px}
+  /* Engagement card: full-width, no tilt, auto height */
+  .cs-engagement-ideas{width:100%;height:auto;transform:none;margin-top:0;padding:20px 20px 24px}
+  .cs-engagement-ideas li{font-size:16px}
 }
-@media print{.fade-in{opacity:1!important;transform:none!important}.nav{display:none}}
+
+/* ── Landing intro section ── */
+#intro{background:var(--iw-bg);padding:96px 48px 88px;scroll-margin-top:56px;position:relative;overflow:hidden}
+.intro-inner{max-width:1120px;margin:0 auto}
+.intro-headline{font-family:var(--font-display);font-size:clamp(36px,6.5vw,76px);font-weight:700;letter-spacing:-0.025em;line-height:1.07;color:#fff;margin-bottom:32px}
+.intro-accent{color:var(--highlight)}
+.intro-subtext{font-family:var(--font-body);font-size:18px;font-weight:400;line-height:1.72;color:rgba(255,255,255,0.88);max-width:88ch;margin-bottom:0}
+@media(max-width:680px){
+  #intro{padding:64px 24px 56px}
+  .intro-subtext{font-size:16px}
+  .desk-br{display:none}
+}
+
+@media print{
+  .fade-in{opacity:1!important;transform:none!important}
+  .nav{display:none}
+}
+
+/* ── How I Work: case card grid + expand panel ── */
+.cs-outer{max-width:1368px;margin:0 auto;padding:32px 32px 0}
+.cs-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-bottom:8px}
+
+.cs-card{background:var(--bg);border:1px solid var(--rule);border-radius:var(--radius);box-shadow:var(--cs-card-shadow);cursor:pointer;text-align:left;padding:0;overflow:visible;display:flex;flex-direction:column;transition:box-shadow var(--dur) var(--ease),transform var(--dur) var(--ease),border-color var(--dur) var(--ease);position:relative}
+.cs-card:hover{box-shadow:var(--cs-card-shadow-active);transform:translateY(-2px)}
+.cs-card.is-active{border-color:var(--ink);box-shadow:var(--cs-card-shadow-active)}
+.cs-card:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.cs-card,.cs-card:hover{transition:none;transform:none}}
+
+.cs-card-img{width:100%;aspect-ratio:var(--cs-img-ratio);background:#EFEFEF;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--rule);border-radius:var(--radius) var(--radius) 0 0;overflow:hidden}
+.cs-card-img::after{content:'Image';font-family:var(--font-ui);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#C0C0C0}
+.cs-card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.cs-carousel-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;opacity:0;transition:opacity .35s var(--ease)}
+.cs-carousel-slide.is-active{opacity:1}
+.cs-carousel-btn{position:absolute;inset:0;width:100%;height:100%;background:none;border:none;cursor:pointer;z-index:2;padding:0}
+.cs-carousel-dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:3;pointer-events:none;background:rgba(0,0,0,0.45);padding:5px 10px;border-radius:20px;backdrop-filter:blur(4px)}
+.cs-carousel-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.45);transition:background .2s}
+.cs-carousel-dot.is-active{background:#fff}
+.cs-carousel-count{position:absolute;bottom:10px;right:10px;z-index:3;pointer-events:none;background:rgba(0,0,0,0.45);color:#fff;font-family:var(--font-ui);font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:.04em;backdrop-filter:blur(4px)}
+
+.cs-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.cs-kicker{font-family:var(--font-ui);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:7px}
+.cs-title{font-family:var(--font-display);font-size:17px;font-weight:700;letter-spacing:-0.01em;color:var(--ink);line-height:1.3;margin-bottom:9px}
+.cs-teaser{font-family:var(--font-body);font-size:14px;font-style:italic;color:var(--ink-soft);line-height:1.6;flex:1;margin-bottom:14px;max-width:none}
+.cs-cta{font-family:var(--font-ui);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px;display:block}
+.cs-card.is-active .cs-cta{opacity:.6}
+
+/* Indigo 4th card — reuses Impact Witnesses indigo token for single source of truth */
+.cs-card--indigo{background:var(--iw-bg);border-color:var(--iw-bg)}
+.cs-card--indigo .cs-card-img{background:var(--iw-bg);border-bottom-color:rgba(255,255,255,0.12)}
+.cs-card-img--query{background:var(--iw-bg);border-bottom-color:rgba(255,255,255,0.12)}
+.cs-card-img--query::after{content:none}
+.cs-query-mark{color:#ffffff;font-family:var(--font-display);font-size:156px;font-weight:700;line-height:1;display:block;-webkit-font-smoothing:antialiased}
+.cs-card--indigo .cs-card-img{background:rgba(255,255,255,0.1);border-bottom-color:rgba(255,255,255,0.12)}
+.cs-card--indigo .cs-card-img::after{color:rgba(255,255,255,0.38)}
+.cs-card--indigo .cs-kicker{color:rgba(255,255,255,0.58)}
+.cs-card--indigo .cs-title{color:#fff}
+.cs-card--indigo .cs-teaser{color:rgba(255,255,255,0.72)}
+.cs-card--indigo .cs-cta{color:#fff;text-decoration-color:rgba(255,255,255,0.5)}
+.cs-card--indigo.is-active{border-color:rgba(255,255,255,0.6);box-shadow:var(--cs-card-shadow-active)}
+.cs-card--indigo:focus-visible{outline-color:rgba(255,255,255,0.8)}
+
+/* How I Work mobile carousel dots */
+.cs-dots{display:none;justify-content:center;align-items:center;gap:7px;margin-top:12px}
+.cs-dot{width:7px;height:7px;border-radius:50%;background:rgba(26,26,26,0.2);border:none;padding:0;cursor:pointer;transition:background var(--dur-fast) var(--ease),transform var(--dur-fast) var(--ease)}
+.cs-dot--active{background:var(--ink);transform:scale(1.3)}
+.cs-dot:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* Expand panel — grid height animation */
+.cs-panel-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows var(--cs-panel-dur) var(--ease);scroll-margin-top:68px;margin-top:16px}
+.cs-panel-wrap.is-open{grid-template-rows:1fr;padding-bottom:48px}
+.cs-panel-clip{overflow:hidden;opacity:0;transition:opacity var(--cs-panel-dur) var(--ease)}
+.cs-panel-wrap.is-open .cs-panel-clip{opacity:1}
+@media(prefers-reduced-motion:reduce){.cs-panel-wrap,.cs-panel-clip{transition:none}}
+.cs-panel-inner{border:1px solid var(--rule);border-radius:var(--radius);background:var(--surface);padding:40px 48px 48px;box-shadow:var(--shadow);margin-bottom:2px}
+.cs-panel-content[hidden]{display:none}
+
+/* Tablet: 2×2 grid */
+@media(max-width:880px){
+  .cs-grid{grid-template-columns:repeat(2,1fr)}
+}
+/* Mobile: horizontal scroll-snap carousel */
+@media(max-width:680px){
+  .cs-outer{padding:24px 16px 0}
+  .cs-grid{display:flex!important;overflow-x:scroll;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:14px;padding-bottom:8px}
+  .cs-grid::-webkit-scrollbar{display:none}
+  .cs-card{flex:0 0 calc(100% - 28px);scroll-snap-align:start;min-width:0}
+  .cs-panel-inner{padding:28px 20px 32px}
+  .cs-dots{display:flex}
+}
+
+/* ═══════════════════════════════════════════════════════
+   Impact Witnesses — deep indigo section
+   ═══════════════════════════════════════════════════════ */
+#impact-witnesses{background:var(--iw-bg);position:relative;border-top:none;overflow:hidden;padding:0}
+
+/* World map — absolute, covers full section */
+.iw-world-map{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:var(--iw-map-opacity)}
+
+/* Override shared section-intro for dark bg */
+#impact-witnesses .section-intro{background:transparent;border-bottom:none;position:relative;z-index:1}
+#impact-witnesses .section-intro-kicker{color:rgba(255,255,255,0.6)}
+#impact-witnesses .section-headline{color:var(--iw-text)}
+#impact-witnesses .section-subtext{color:rgba(255,255,255,0.88);max-width:84ch}
+
+/* Stats row */
+.iw-stats{display:flex;align-items:center;margin-top:40px;padding-top:32px;border-top:1px solid var(--iw-divider)}
+.iw-stat{flex:1;text-align:center;padding:8px 12px}
+.iw-stat-num{display:block;font-family:var(--font-display);font-size:clamp(34px,4.5vw,54px);font-weight:700;color:var(--iw-text);line-height:1.1;letter-spacing:-0.025em}
+.iw-stat-label{display:block;font-family:var(--font-ui);font-size:13px;font-weight:400;color:var(--iw-text-muted);margin-top:5px;line-height:1.3}
+.iw-stat-sep{width:1px;height:52px;background:var(--iw-divider);flex-shrink:0;align-self:center}
+
+/* Groups wrapper */
+.iw-groups{position:relative;z-index:1;padding:52px 48px 72px}
+.iw-inner{max-width:1120px;margin:0 auto}
+.iw-group{margin-bottom:52px}
+.iw-group:last-child{margin-bottom:0}
+.iw-group-label{font-family:var(--font-ui);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.5);display:block;margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--iw-divider)}
+
+/* Paper-note card */
+.iw-card{background:#fff;border-radius:var(--iw-card-radius);box-shadow:var(--iw-card-shadow);padding:22px 22px 26px;display:flex;flex-direction:column;gap:12px;height:100%;box-sizing:border-box}
+@media(hover:hover){
+  .iw-card{transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+  .iw-card:hover{transform:translateY(-3px);box-shadow:0 10px 40px rgba(0,0,0,0.38)}
+}
+@media(prefers-reduced-motion:reduce){.iw-card:hover{transform:none}}
+.iw-card:focus-visible{outline:2px solid rgba(255,255,255,0.75);outline-offset:3px;border-radius:var(--iw-card-radius)}
+.iw-card-name{display:block;font-family:var(--font-ui);font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:underline;text-underline-offset:3px;margin-bottom:3px}
+.iw-card-role{display:block;font-family:var(--font-ui);font-size:11.5px;color:var(--mid);font-weight:400;line-height:1.4}
+.iw-card-quote{flex:1;display:flex;align-items:center}
+.iw-card-quote p{font-family:var(--font-body);font-size:13.5px;line-height:1.65;color:var(--ink);font-style:italic;margin-bottom:0}
+mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.5) 8%,rgba(255,222,0,0.5) 92%,rgba(255,222,0,0) 100%);color:inherit;border-radius:2px;padding:0 2px}
+
+/* Timeline carousel */
+.iw-year-nav{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap}
+.iw-year-btn{font-family:var(--font-ui);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.4);cursor:pointer;padding:6px 14px;border-radius:100px;transition:color .2s,background .2s,border-color .2s;white-space:nowrap}
+.iw-year-btn:hover{color:rgba(255,255,255,0.8);border-color:rgba(255,255,255,0.4)}
+.iw-year-btn.is-active{color:#fff;background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35)}
+.iw-track-clip{overflow:hidden}
+.iw-track{display:flex;gap:20px;transition:transform .42s cubic-bezier(.25,.46,.45,.94);will-change:transform;align-items:stretch}
+.iw-card-unit{flex-shrink:0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.iw-card-period-label{font-family:var(--font-ui);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);display:block;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.1);transition:color .3s}
+.iw-card-unit.is-visible .iw-card-period-label{color:rgba(255,255,255,0.65)}
+.iw-track-nav{display:flex;gap:10px;justify-content:center;margin-top:22px}
+.iw-arrow{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s;line-height:1;padding:0}
+.iw-arrow:hover{background:rgba(255,255,255,0.22)}
+.iw-arrow:disabled{opacity:0.25;cursor:default;pointer-events:none}
+
+@media(max-width:680px){
+  .iw-groups{padding:40px 20px 56px}
+  .iw-stats{margin-top:32px;padding-top:24px;flex-wrap:wrap;gap:0}
+  .iw-stat-sep{display:none}
+  .iw-stat{flex:1 1 45%;padding:10px 8px}
+  .iw-stat-num{font-size:28px}
+  .iw-stat-label{font-size:11px}
+  .iw-year-nav{gap:4px}
+  .iw-year-btn{font-size:10px;padding:5px 10px}
+  .iw-arrow{width:44px;height:44px;font-size:20px}
+  .iw-card{padding:16px 16px 20px}
+  .iw-card-quote p{font-size:13px}
+  .iw-track-nav{margin-top:28px;gap:16px}
+}
 </style>
 </head>
 <body>
@@ -145,137 +462,249 @@ details.witness-item[open]::details-content{height:auto}
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════
+     INTRO — Landing hero (no nav item)
+     ═══════════════════════════════════════════════════════ -->
+<section id="intro">
+  <svg class="iw-world-map" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
+    <g fill="white">
+      <path d="M80,75 L165,60 L250,65 L310,90 L340,140 L330,180 L295,205 L260,225 L210,225 L175,200 L145,175 L105,155 L70,130 L60,100 Z"/>
+      <path d="M255,22 L350,18 L368,42 L345,65 L280,70 L255,50 Z"/>
+      <path d="M235,240 L285,230 L325,245 L385,270 L405,310 L395,370 L360,420 L315,445 L275,445 L248,420 L235,370 L228,305 Z"/>
+      <path d="M460,62 L510,58 L538,78 L530,108 L505,122 L478,118 L460,102 L450,80 Z"/>
+      <path d="M502,60 L526,55 L542,73 L535,97 L510,105 L498,87 Z"/>
+      <path d="M455,78 L468,70 L478,82 L470,96 L455,92 Z"/>
+      <path d="M455,150 L510,145 L545,165 L560,210 L558,275 L540,340 L508,390 L472,408 L444,398 L422,368 L410,305 L412,238 L432,178 Z"/>
+      <path d="M553,330 L563,318 L573,342 L567,382 L555,385 L545,363 Z"/>
+      <path d="M540,55 L640,48 L740,52 L845,58 L938,65 L985,95 L975,165 L930,200 L860,218 L790,215 L720,205 L670,215 L620,195 L580,170 L555,140 L545,105 Z"/>
+      <path d="M665,210 L695,255 L688,302 L668,295 L655,258 L655,212 Z"/>
+      <path d="M785,205 L845,210 L875,230 L862,248 L830,248 L795,230 Z"/>
+      <path d="M882,110 L900,106 L910,122 L898,136 L882,130 Z"/>
+      <path d="M800,295 L875,280 L935,300 L958,340 L952,395 L905,415 L840,415 L790,388 L778,350 L785,310 Z"/>
+      <path d="M960,388 L968,372 L978,388 L972,408 L960,404 Z"/>
+      <path d="M278,195 L314,192 L316,202 L298,207 L278,202 Z"/>
+    </g>
+  </svg>
+  <div class="intro-inner" style="position:relative;z-index:1">
+    <h1 class="intro-headline">Pursuing a timeless mission<br class="desk-br"> <span style="white-space:nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
+    <p class="intro-subtext">A pre-meeting artifact to show the kind of work I can support UWC with.<br class="desk-br">To show I've lived the kind of life UWC tries to encourage its students to live.<br class="desk-br">And to think together about a first step or project.</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
      SECTION 1 — HOW I WORK
      ═══════════════════════════════════════════════════════ -->
 <section id="how-i-work">
 
-  <div class="section-hero fade-in visible">
-    <div class="section-hero-inner">
-      <span class="section-hero-kicker">How I Work</span>
-      <span class="section-hero-headline">3+1 cases that show how we can work together</span>
-      <p class="section-hero-lead">Three completed engagements, one in progress. Different industries, different scales, but the same structural footprint of any organisation trying to do meaningful work in complexity, packed with diversity, and demanding KPIs.</p>
-      <p class="section-hero-lead">Here you can see how I lead strategic projects across departments, how I surface the real challenges and the incentive systems, and how I partner with different departments and functions to fill the gaps and make sure great ideas survive contact with reality in a way traditional consultants cannot.</p>
+  <div class="section-intro fade-in visible">
+    <div class="section-intro-inner">
+      <div class="section-intro-text">
+        <span class="section-intro-kicker">How I Work</span>
+        <h2 class="section-headline">3+1 <mark class="hl">examples.</mark></h2>
+
+        <p class="section-subtext">Three finished plus one ongoing cases in different organistions,<br class="desk-br"> all trying to do meaningful work in complexity.</p>
+      </div>
+      <div class="cs-engagement-ideas">
+        <span class="cs-engagement-label">Some Engagement Ideas for UWC</span>
+        <ul>
+          <li>Cross-function projects lead</li>
+          <li>Embedded change lead supporting strategy</li>
+          <li>Diagnosis of current initiatives or functions</li>
+        </ul>
+      </div>
     </div>
   </div>
 
   <!-- Case stepper tabs -->
-  <div class="arc-stepper-wrap" role="region" aria-label="Case studies navigation">
-    <div class="arc-tablist" role="tablist" aria-label="Case studies">
-      <button class="arc-tab" role="tab" aria-selected="true"  aria-controls="case-panel-01" id="case-tab-01" tabindex="0">
-        <span class="arc-tab-num">01</span>Without a Blueprint
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-02" id="case-tab-02" tabindex="-1">
-        <span class="arc-tab-num">02</span>From First Principles
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-03" id="case-tab-03" tabindex="-1">
-        <span class="arc-tab-num">03</span>Building in Complexity
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="case-panel-04" id="case-tab-04" tabindex="-1">
-        <span class="arc-tab-num">04</span>A New School
-      </button>
-    </div>
-  </div>
+  <!-- Case card grid + shared expand panel -->
+  <div class="cs-outer">
+    <div class="cs-grid">
 
-  <!-- Case panels -->
-  <div class="arc-panels-wrap">
+      <!-- Card 1: Dentsu -->
+      <div class="cs-card" role="button" tabindex="0" aria-expanded="false" aria-controls="cs-panel" data-case="1">
+        <div class="cs-card-img"><img src="Photos/DDO%20CS.png" alt="DDO operating system, Dentsu iProspect APAC"></div>
+        <div class="cs-card-body">
+          <span class="cs-kicker">Dentsu iProspect APAC</span>
+          <h3 class="cs-title">Change Without a Blueprint</h3>
+          <p class="cs-teaser">Rebuilding how a 400-person APAC agency works, from the incentives up.</p>
+          <span class="cs-cta" aria-hidden="true">Learn More</span>
+        </div>
+      </div>
 
-    <!-- Case 1 -->
-    <div id="case-panel-01" role="tabpanel" aria-labelledby="case-tab-01" class="arc-panel is-visible is-active">
-      <h3 class="case-title">Change Without a Blueprint</h3>
-      <span class="case-meta">Dentsu iProspect APAC · Singapore · 2018–2019</span>
+      <!-- Card 2: Rainmaking / Engie -->
+      <div class="cs-card" role="button" tabindex="0" aria-expanded="false" aria-controls="cs-panel" data-case="2">
+        <div class="cs-card-img cs-carousel">
+          <img src="Photos/Engie%20Factory.jpg" alt="Engie Factory innovation lab, Singapore" class="cs-carousel-slide is-active">
+          <img src="Photos/Engie%20Factory%20stakeholders.png" alt="Engie Factory stakeholders" class="cs-carousel-slide">
+          <img src="Photos/Strategic%20program%20control.png" alt="Strategic program control" class="cs-carousel-slide">
+          <button class="cs-carousel-btn" aria-label="Next photo"></button>
+          <div class="cs-carousel-dots" aria-hidden="true">
+            <span class="cs-carousel-dot is-active"></span>
+            <span class="cs-carousel-dot"></span>
+            <span class="cs-carousel-dot"></span>
+          </div>
+          <span class="cs-carousel-count" aria-hidden="true">1 / 3</span>
+        </div>
+        <div class="cs-card-body">
+          <span class="cs-kicker">Rainmaking / Engie Factory</span>
+          <h3 class="cs-title">Innovation from First Principles</h3>
+          <p class="cs-teaser">Attempting the unprecedented as a team to support strategic sutainable goals</p>
+          <span class="cs-cta" aria-hidden="true">Learn More</span>
+        </div>
+      </div>
 
-      <span class="case-subhead">The Challenge</span>
-      <p>400-person APAC agency in Singapore. Nine function heads each owning their own strategy. High churn, margins under pressure, scope creep, multiple failed change initiatives. KPIs spanning commercial, delivery, talent, and culture.</p>
+      <!-- Card 3: Apple -->
+      <div class="cs-card" role="button" tabindex="0" aria-expanded="false" aria-controls="cs-panel" data-case="3">
+        <div class="cs-card-img"><img src="Photos/Apple.jpeg" alt="Apple Services global program operations"></div>
+        <div class="cs-card-body">
+          <span class="cs-kicker">Apple</span>
+          <h3 class="cs-title">Building in Complexity</h3>
+          <p class="cs-teaser">Trying to keep a global program coherent as it grew 10× in three years</p>
+          <span class="cs-cta" aria-hidden="true">Learn More</span>
+        </div>
+      </div>
 
-      <span class="case-subhead">The Diagnosis</span>
-      <p>The voiced problem was process and consistency. The behavioural read revealed the real one: the organisation was only rewarding revenue gain, and success measurement pushed every function toward conflicting KPIs while the organisation didn't clear the conflict of priorities, leaving it to cascade down across teams. This led to situations in which profitability wasn't even accounted for in some client engagements as long as revenue goals were hit.</p>
+      <!-- Card 4: Singular Solving — indigo, in progress -->
+      <div class="cs-card cs-card--indigo" role="button" tabindex="0" aria-expanded="false" aria-controls="cs-panel" data-case="4">
+        <div class="cs-card-img cs-card-img--query" aria-hidden="true"><span class="cs-query-mark">?</span></div>
+        <div class="cs-card-body">
+          <span class="cs-kicker">Singular Solving · In Progress</span>
+          <h3 class="cs-title">A New School for Unconventional Learners</h3>
+          <p class="cs-teaser">Designing a school from the ground up, for the world students are heading into</p>
+          <span class="cs-cta" aria-hidden="true">Learn More</span>
+        </div>
+      </div>
 
-      <span class="case-subhead">The Approach</span>
-      <p>I like a dual workstream approach when starting new. While I run diagnosis I volunteer to work on the hardest problem the teams have (in this case a large demanding client) to earn trust fast, share accountability, and map the real organisation. Both workstreams feed each other and allow me to contribute better and understand the organisation. Within months, the work was cross-functional by necessity. Partnered across functions on the cross-cuts each of them owned a piece of but none could close alone.</p>
-      <p>At the same time, I was coordinating strategic cross-function projects like implementation of new technologies, staff learning and development, company-wide culture improvement, and building new products and services. I mapped how each team worked, their playbooks, workflows, pain points, handovers with other teams, and the opportunities for automation, new technology, outsourcing, and more strategic and valuable work. After surfacing the real organisation, I co-designed a new operating system, DDO, with inputs from all teams, anchoring it in helping clients by helping those creating the experience for our clients. Tested with one team, scaled across nine. Built feedback loops and empowered champions so it could run without me. The APAC CEO eventually asked me to become interim Chief of Staff to formalise a role I was already doing.</p>
+    </div><!-- /cs-grid -->
 
-      <span class="case-subhead">Lasting Outcomes</span>
-      <p>These outcomes cannot be uniquely attributed to my work but to a combination of efforts across departments. Reduced employee churn by 50% in 6 months · Increased pitch success by 33% while reducing number of pitches · From 28% unprofitable clients to 0 · 1 day/week saved per employee in removed inefficiencies.</p>
-      <p>DDO still in use after I left. Several function heads took it to their next organisations. Including the most contrarian stakeholders.</p>
+    <!-- Mobile carousel dots (hidden on desktop via CSS) -->
+    <div class="cs-dots" aria-label="Card navigation" role="group"></div>
 
-      <details class="case-ai">
-        <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
-        <p>AI would let me assess and process data and feedback in a fraction of the time. Creating custom platforms for the purpose and even maintaining a live feed. Reducing time for diagnosis and mapping by 2/3. DDO then could have been a platform every team could use instead of useful documentation, and every artifact could live online, connected, instead of in documents.</p>
-        <p>I would also use AI to quickly build benchmark workflows and analyse current workflows or client engagements against them, to see where they differ and improve them. It would also allow us to create new services and products, taking them to market at speed, while maintaining consistency in our strategy and design approach.</p>
-      </details>
-    </div>
+    <!-- Shared expand panel — reveals below all cards -->
+    <div class="cs-panel-wrap" id="cs-panel" role="region" aria-label="Case study details" aria-live="polite">
+      <div class="cs-panel-clip">
+        <div class="cs-panel-inner">
 
-    <!-- Case 2 -->
-    <div id="case-panel-02" role="tabpanel" aria-labelledby="case-tab-02" class="arc-panel">
-      <h3 class="case-title">Innovation from First Principles</h3>
-      <span class="case-meta">Rainmaking / Engie Factory · Singapore · 2019–2020</span>
+          <!-- Case 1 content -->
+          <div class="cs-panel-content" data-for="1" hidden>
+            <h3 class="case-title">Change Without a Blueprint</h3>
+            <span class="case-meta">Dentsu iProspect APAC · Singapore · 2018–2019</span>
+            <div class="cs-panel-cols">
+              <div class="cs-panel-col">
+                <span class="case-subhead">The Challenge</span>
+                <p>A 400-person APAC agency in Singapore, part of a 1,500-person regional team. Nine function heads each owned their own strategy, alongside a separate regional leadership team. High churn, margins under pressure, scope creep, and multiple failed change initiatives — against KPIs spanning commercial, delivery, talent, and culture.</p>
+                <span class="case-subhead">The Diagnosis</span>
+                <p>The voiced problem was process and consistency. My behavioural read found the real one: the organisation rewarded only revenue gain, pushing every function toward conflicting KPIs. Profitability was an afterthought as long as revenue targets were hit — which created problems everywhere downstream.</p>
+                <span class="case-subhead">The Approach</span>
+                <p>With no formal authority, I took a dual approach. One workstream ran a company-wide diagnosis — mapping every department's workflows, pain points, tech, and high- vs low-value work to build playbooks and improvement benchmarks. The other had me volunteering on the team's hardest challenges as a cross-function project manager, sharing the pain. That earned trust fast and showed me the organisation as it behaved, not as people described it in interviews.</p>
+                <p>It led to more work, and soon I was coordinating a strategic cross-function portfolio for the C-suite and head of strategy: new technology, learning and development, vendor partnerships, new-client pitches, large-account onboarding, culture initiatives, and new products and services.</p>
+              </div>
+              <div class="cs-panel-col">
+                <p>We couldn't fix everything at once, so we resourced the top priorities and then focused on the single simplest intervention that could snowball the biggest behavioural change. We co-designed a new operating system — DDO — spanning pitch to onboarding, built with input from every team, anchored on one idea: becoming the best agency in APAC at scoping work. Better scoping meant better pricing, controlled profitability, and productised engagements instead of starting from scratch each time. Tested with one team, scaled to nine, with feedback loops and champions so it ran without me.</p>
+                <span class="case-subhead">Lasting Outcomes</span>
+                <p>Not attributable to me alone, but to combined effort across departments: churn down 50% in six months · pitch success up 33% on fewer pitches · unprofitable clients from 28% to 0 · ~1 day/week saved per employee. DDO is still partly in use, and several function heads took it with them to their next organisations.</p>
+                <details class="case-ai">
+                  <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
+                  <p>Diagnosis. I could do two-thirds of the diagnosis in weeks instead of months — and add a fourth source alongside behavioural observation, existing documents and systems, and interviews: reading behaviour directly from the data the organisation produces.</p>
+                  <p>DDO. Instead of a documented playbook, DDO would become a live tool — an AI-powered OS that guides projects and catches one veering off course while there's still time to fix it.</p>
+                  <p>The human part. It wouldn't handle the trust-building, the shared accountability, or the care and positive influence — but it would give me far more time to spend there, where success actually lives.</p>
+                </details>
+              </div>
+            </div>
+          </div>
 
-      <span class="case-subhead">The Challenge</span>
-      <p>Build an open innovation lab and program for Engie Factory in APAC (global energy multinational). New sector, no pre-existing methodology, unprecedented project, six months, team of three. The VPs we needed to collaborate with to identify new opportunities and build pilots had no P&amp;L incentive to participate. I had no hierarchy to ask them, I had to lead by influence — good ideas or methodology alone wouldn't move them.</p>
+          <!-- Case 2 content -->
+          <div class="cs-panel-content" data-for="2" hidden>
+            <h3 class="case-title">Innovation from First Principles</h3>
+            <span class="case-meta">Rainmaking / Engie Factory · Singapore · 2019–2020</span>
+            <div class="cs-panel-cols">
+              <div class="cs-panel-col">
+                <span class="case-subhead">The Challenge</span>
+                <p>Build an open innovation lab and a new program for Engie Factory in APAC (a global energy multinational). New sector, no pre-existing methodology, an unprecedented project — six months, team of four. We had to work with Engie executives, the Engie Factory team, the seven VPs who each owned the strategy and P&amp;L of a vertical, their teams, and startups around the globe. The goal: identify new opportunities, design tech pilots, and test them as business cases aligned with the 2030 SDG goals. I had no hierarchy to lean on — I had to lead by influence, because good ideas and methodology alone wouldn't move anyone.</p>
+                <span class="case-subhead">The Diagnosis</span>
+                <p>The strategic logic of the lab wasn't built around the VPs' incentives, and no pilot would survive until that changed. They were measured on commercial and budget-driven KPIs that included no innovation at all. Only a couple of VPs were naturally inclined toward it; most tried to avoid it as a distraction from their real targets — hoping the initiative would disappear if it failed fast enough.</p>
+                <span class="case-subhead">The Approach</span>
+                <p>I designed and ran the program with the Rainmaking team around the VPs' actual incentives, partnering with Engie Factory's leadership as primary client. We started by making an example of the VPs most willing to collaborate — but when the others' engagement stalled, I took the elevator to the top floor and ambushed Engie's CEO: first to convince him I actually worked there, then to propose that each VP tie a minimum 3% of next year's revenue to a product or service line that hadn't existed the year before. From that point the lab was a strategic partner to the VPs, not a nice-to-have.</p>
+              </div>
+              <div class="cs-panel-col">
+                <p>We then productised a custom methodology built around how the VPs and startups actually worked, split into two phases: Pilot ID (2 months) and Co-Pilot (4 months) — building the business models and the agreements between startups and the corporate. We adapted it to remote delivery mid-COVID. I gave each team member the lead on the area they most wanted to grow in — public speaking, business modelling, Design Sprint facilitation — while I stayed accountable for the whole.</p>
+                <span class="case-subhead">Lasting Outcomes</span>
+                <p>A commercial engagement with skin in the game: we profited only if we succeeded.</p>
+                <p>1,000+ startups screened · 5 concurrent pilots · SGD 4M in future revenue approved by the client's CEO · 33% pilot success rate.</p>
+                <p>Our custom Pilot ID and Co-Pilot approaches were adopted by Rainmaking for other clients and geographies.</p>
+                <details class="case-ai">
+                  <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
+                  <p>Sourcing. Screening 1,000+ partly with AI would scan and shortlist against each vertical's strategy and the SDG goals in days.</p>
+                  <p>Modelling. Ai would generate first pass business cases and the startup–corporate agreements for specific market or vertical terms and scenarios fast, so the team could spend its hours refining, judging, and negotiating rather than building from scratch — letting us run 10 pilots where we could only run 5, and lifting the hit rate potentially past 50%.</p>
+                  <p>Repeatability. Best of all, the whole thing could be productised as a platform — human-and-AI-in-the-loop workflows we'd reuse cycle after cycle for each pilot or client. Our custom methodology would have been built to scale from day one.</p>
+                  <p>The human part. It wouldn't get me into the CEO's office or tie the VPs' incentives to the lab or trained and upskill my team. It would just free far more of my time for exactly that.</p>
+                </details>
+              </div>
+            </div>
+          </div>
 
-      <span class="case-subhead">The Diagnosis</span>
-      <p>Incentive misalignment at VP level. The strategic logic of the lab and the strategic logic of each business unit weren't connected. No pilot would survive until that changed. They were asked to meet KPIs that didn't include any innovation, only commercial and budget-driven goals. But since the CEO wanted them to also run innovation without adapting the incentive systems or KPIs, some were genuinely interested, some were sceptical, and some openly tried to avoid it as a distraction from their actual KPIs — hoping the initiative would go away if proved unsuccessful fast.</p>
+          <!-- Case 3 content -->
+          <div class="cs-panel-content" data-for="3" hidden>
+            <h3 class="case-title">Building in Complexity</h3>
+            <span class="case-meta">Apple · Singapore · 2020–2023</span>
+            <div class="cs-panel-cols">
+              <div class="cs-panel-col">
+                <span class="case-subhead">The Challenge</span>
+                <p>Help build and scale a global program from almost nothing, mid-pandemic — from 20 people in 10 countries to 350 across 40, serving 12 products and 4 business lines, in under three years, while budgets grew 10× (4M → 40M per quarter). Remote, across very different cultures, to Apple's standards — and with the complexity itself increasing as we grew: more products, more markets, more regulation, more demanding KPIs each quarter. We were building the ship while sailing it: either we proved we could absorb more scale and complexity while hitting a minimum 95% of our growing quarterly KPIs, or we risked losing the budget.</p>
+                <span class="case-subhead">The Diagnosis</span>
+                <p>There was no stable "before" to fix — the ground moved every quarter. So the goal couldn't be the perfect system; one designed for this quarter's complexity would be obsolete by the next. The real need was different: keep everyone working from as much shared context as possible, so 40 people one quarter could act as coherently as 90 the next — without waiting on a few overloaded people who became bottlenecks, and without a head office trying to control every step across every timezone. Coherence, not control: I couldn't see any other way to scale.</p>
+                <span class="case-subhead">The Approach</span>
+                <p>So I designed for coherence over perfection. In practice it came down to five things — which I didn't conjure so much as discover: they presented themselves as the only viable way to both hit the goals and operate with integrity, sometimes later than I'd have liked. In order:</p>
+                <p>Hire smart people with high integrity, committed to the challenge — not the job description.<br>
+                Continuously create shared context and quality expectations.<br>
+                Design how decisions and work flow.<br>
+                Align incentives with our KPIs and how we wanted to hit them — so the system rewarded the behaviours we actually needed.<br>
+                Then get out of the way — or elevate. Stay available to lift others and improve things, rather than wasting their time with noise or politics.</p>
+              </div>
+              <div class="cs-panel-col">
+                <p>As one of the leadership team, my role was building and holding those conditions — governance, playbooks, training architecture, the full employee lifecycle, service levels, AI workflows — designed with the heads of all 9 departments, against KPIs that shifted every quarter, and optimised for async work across 40 countries.</p>
+                <span class="case-subhead">Lasting Outcomes</span>
+                <p>It never broke. Through 10× growth in three years it held — even though the system was never finished. We kept proving we could take on more scale and complexity, and we kept the program.</p>
+                <p>20→350 people · 400+ onboarded · 100+ offboarded · 40 countries · budget 10× (USD 4M → 40M per quarter) · 85–110% KPI sustained quarterly.</p>
+                <details class="case-ai">
+                  <summary>How I Would Take It Further With AI <span class="case-ai-icon">+</span></summary>
+                  <p>We built custom AI automation back then, but it ran steps. Today it would carry the coherence itself — and reach the next frontier: not just processing data and workflows, but recommending solutions and improvements live.</p>
+                  <p>Shared context on demand. The hardest part was keeping 40 countries working from the same picture. An AI layer over our playbooks, decisions, and history would let anyone get a situated answer instantly.</p>
+                  <p>Anticipating complexity before it hits. We could model future growth and let AI read our own operational data to surface where the next bottleneck or drift was forming — before it landed.</p>
+                  <p>The human part. The human complexity, the critical thinking, the on-the-go judgment stay ours. But AI would bring more transparency to people's workloads — so we could design for fairness before the work overwhelmed anyone.</p>
+                </details>
+              </div>
+            </div>
+          </div>
 
-      <span class="case-subhead">The Approach</span>
-      <p>Designed and ran the program with the Rainmaking team, partnering with Engie Factory's leadership as primary client. Making an example with the VPs more inclined to collaborate. When overall VP engagement stalled, I took the elevator to the top floor, ambushed Engie's CEO to first convince him I actually worked there, then to propose each business unit tie a percentage of next year's revenue to a product or service line that didn't exist the year before as a clear, unmistakable KPI. Our lab then became a strategic partner, no longer a nice to have. VP engagement followed.</p>
-      <p>Productised the methodology as Pilot ID and Co-Pilot. To identify and test five concurrent pilots working with technology from startups from all over the world for new use cases aligned with Engie's 2030 SDG agenda. Building business models and agreements between startups and corporate. Adapted to remote delivery mid-COVID.</p>
+          <!-- Case 4 content -->
+          <div class="cs-panel-content" data-for="4" hidden>
+            <h3 class="case-title">A New School for Unconventional Learners</h3>
+            <span class="case-meta">Singular Solving · Spain · 2024–present · <em>In progress</em></span>
+            <div class="cs-panel-cols">
+              <div class="cs-panel-col">
+                <span class="case-subhead">The Challenge</span>
+                <p>Design and launch a new education program outside conventional university logic — built for neurodivergent, gifted, and unconventional learners who want to learn differently, in ways aligned with what the future will actually demand of them. The aim isn't to share knowledge, but to build operators who can act in complexity and uncertainty. They asked me to contribute to both the vision and the execution, giving me a blank canvas, a deadline, and the freedom to choose who I worked with to get the vision defined first.</p>
+                <span class="case-subhead">The Diagnosis</span>
+                <p>Most educational design starts from the curriculum and works outward to the student. For the learners this serves, that order produces predictable failure — the student is either flattened to fit the model or judged unfit for it. Most "innovation" in education makes a version of the same mistake: it invents new curricula, then drops them inside 20th-century structures — the perfect setup for the container to eat the content. So we started from the challenge itself, so we could make a falsifiable promise rather than the kind of average mission claim that's engineered to never be wrong: how do you develop balanced generalists who can solve complex problems under uncertainty, with AI in the loop? People with the critical thinking to navigate systems, the integrity and courage to pursue futures worth following, and no interest in accumulating credentials?</p>
+                <span class="case-subhead">The Approach</span>
+                <p>First, listening before designing. We started with students, parents, teachers, school leaders, and the companies that will employ the next generation — and went deep on what neurodivergent and gifted profiles, and families drawn to different ways of learning, actually need (broadly 2–10% of the population).</p>
+              </div>
+              <div class="cs-panel-col">
+                <p>Second, committing to the problem, not the idea or the solution. It's easy to get enamoured with an elegant concept — especially if it's your own. The harder discipline is staying loyal to the challenge, understanding the real conditions, then changing either the solution or the conditions — usually a mix of both. For example, we began aiming only at neurodivergent and gifted profiles, then decided to widen the reach; and we committed to an existing regulated curriculum, but changed how it's taught, using all the flexibility we could find.</p>
+                <p>Third, sizing for quality of delivery first. The original plan was a two-speed build: run the in-person program while developing the digital version on a three-month lag. We stopped it — it split our focus. Instead we're getting one in-person cohort done right first, while separately working out how to translate that experience online, without just copy-pasting a classroom through a screen.</p>
+                <p>I do this in a limited, part-time capacity, alongside Singular Solving's leadership — a complex-problem-solving consultancy, turned foundation, that I've worked with before, with a close relationship and a proven history of care for neurodivergence.</p>
+                <span class="case-subhead">Where It Stands Now</span>
+                <p>The original project was an alternative to the first year of university. It's now pivoting to a full school: an unexpected chance came up to acquire a complete school in Madrid, which would let us build the long-term vision from the ground up. We're in talks to make that happen.</p>
+              </div>
+            </div>
+          </div>
 
-      <span class="case-subhead">Lasting Outcomes</span>
-      <p>Built on a commercial model with skin in the game — profit only if we succeeded.</p>
-      <p>1,000+ startups screened · 5 concurrent pilots · SGD 4M revenue approved · 33% pilot success rate</p>
-      <p>Our custom Pilot ID and Co-Pilot approaches were adopted by Rainmaking for other clients and geographies.</p>
+        </div><!-- /cs-panel-inner -->
+      </div><!-- /cs-panel-clip -->
+    </div><!-- /cs-panel-wrap -->
 
-      <details class="case-ai">
-        <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
-        <p>Reducing overall time for Pilot ID by 50% on account of screening startups faster. Increasing the number of modelled opportunities using AI models with known database APIs instead of human calibration and research. Incrementing the pilot identification and accuracy, as well as the tested solutions, resulting in upstream increase of success from 33% to potentially over 50%. And from SGD 4 million in future revenue or saved costs to 6. We would also have been able to productise it as a platform for subsequent cycles, with the same or different clients, building human and AI in the loop workflows and efficiencies.</p>
-      </details>
-    </div>
-
-    <!-- Case 3 -->
-    <div id="case-panel-03" role="tabpanel" aria-labelledby="case-tab-03" class="arc-panel">
-      <h3 class="case-title">Building in Complexity</h3>
-      <span class="case-meta">Apple · Singapore · 2020–2023</span>
-
-      <span class="case-subhead">The Challenge</span>
-      <p>Build a global program from scratch during the pandemic as Head of Operations and Organisational Design — from 20 people in 10 countries to 350 across 40, serving 12 Apple products and 4 business lines, in under three years, while budgets grew 10× (4M → 40M per quarter). No operating model. No measurement system. No internal tech. 14 regulated markets, with compliance and local institutional requirements as a constant, and with the high expectations Apple has for design of solutions and ways of working.</p>
-
-      <span class="case-subhead">The Diagnosis</span>
-      <p>Building from zero in such complexity and ambiguity in the middle of the pandemic, and at that scale and pace, didn't allow for perfection. It was like building a scale-up backed by Apple instead of by a VC. Multiple workstreams, sometimes conflicting, so I realised a sequential operating model would always be lagging behind reality and would have us reacting constantly. We needed operational coherence over perfection.</p>
-
-      <span class="case-subhead">The Approach</span>
-      <p>I wanted to maximise shared context and facilitate access to information, prioritising coherence over perfection.</p>
-      <p>I was one of the core members of the leadership team, but my role was building the infrastructure and designing the operating conditions that made it scalable as complexity grew with Apple standards: governance, incentive structures, automation, workflow, playbooks, tech, training architecture, the full employee lifecycle, service levels, supporting strategy and delivery teams.</p>
-      <p>This included partnering with the heads of all 9 departments on operating model design, adoption, and continuous improvement to meet our evolving goals and KPIs each quarter.</p>
-      <p>Onboarded 400+ people. Offboarded 50+. Ran 100+ training sessions. Introduced AI automation through custom-built workflow systems, building tech bespoke to our workflows and needs.</p>
-      <p>Built a dual project portfolio seed. We had so many initiatives it was impossible to cater to all of them at the same time, so we prioritised our portfolio the same as a product backlog — thinking of our organisation as a product meant to operate in a certain way, provide certain experience and services to different stakeholders, including the very people inside the organisation. Then tackled the top priorities a few at a time, reassessing the backlog often to keep us nimble, but also acted behaviourally, looking at the overall pattern and the single simplest behavioural intervention that could produce the most positive snowball effect towards our KPIs. We called it Cornerstone. This was optimised for asynchronous work and coherence over perfection.</p>
-      <p>I managed day-to-day operations, the Cornerstone program, and the portfolio of strategic initiatives across 12 product lines, 4 business lines, 9 departments, and dozens of platform vendors — which contributed to a sustained 85–110% KPI quarterly as we 10×'d in 3 years.</p>
-
-      <span class="case-subhead">Lasting Outcomes</span>
-      <p>20→350 people in 3 years · 40 countries · 10× budget expansion · 85–110% KPI sustained results</p>
-    </div>
-
-    <!-- Case 4 -->
-    <div id="case-panel-04" role="tabpanel" aria-labelledby="case-tab-04" class="arc-panel">
-      <h3 class="case-title">A New School for Unconventional Learners</h3>
-      <span class="case-meta">Singular Solving · Spain · 2024–present · <em>In progress</em></span>
-
-      <span class="case-subhead">The Challenge</span>
-      <p>Design and launch a new Masters outside conventional university logic, built for neurodivergent, gifted, and unconventional learners. For the students, parents and teachers that values-driven institutions most want to serve but find hardest to fit into existing models. Optimising for critical thinking, integrity, and the capacity to act under accelerating complexity rather than credential accumulation. They asked me to contribute to the vision and execution, giving me a blank canvas, a deadline, and the freedom to choose the team to work with.</p>
-
-      <span class="case-subhead">The Diagnosis</span>
-      <p>Most educational design starts from the curriculum and works outward to the student. For the population this Masters serves, that order produces predictable failure — the student is either flattened to fit the model, or judged unfit for it. We also didn't want to come up with alternative ways of learning that we would put inside 20th-century education models, which is what most innovation in education ends up doing — creating the perfect scenario for the container to eat the content. We wanted to start by committing to the challenge: how do we build systems navigators in complexity that lead with integrity and courage.</p>
-
-      <span class="case-subhead">The Approach</span>
-      <p>We asked students, parents, and teachers. And we researched how others are solving this challenge elsewhere. We also deeply investigated what neurodivergent and gifted profiles need — broadly 2 to 10% of the population. Building a bridge between the vision and execution alongside Singular Solving's leadership.</p>
-      <p>The work spans curriculum architecture, learning environment design, faculty selection criteria, assessment methodology, and the institutional conditions that have to hold for any of it to survive contact with reality.</p>
-      <p>I also started teaching Systems Transformation beyond default optimisation logics and current IB standards to test it as part of the Masters' core content.</p>
-
-      <span class="case-subhead">Where It Stands Now</span>
-      <p>Pivoting to full school build instead of just an alternative Masters program. In active design and in the process of buying a school in Spain to teach from Early Years to Year 12, plus the Masters program.</p>
-      <p>This is the most important work I've been trusted with — and the closest in shape to what I imagine contributing to UWC with.</p>
-    </div>
-
-  </div><!-- /case panels -->
+  </div><!-- /cs-outer -->
 </section>
 
 
@@ -284,38 +713,37 @@ details.witness-item[open]::details-content{height:auto}
      ═══════════════════════════════════════════════════════ -->
 <section id="the-arc">
 
-  <div class="section-hero fade-in">
-    <div class="section-hero-inner">
-      <span class="section-hero-kicker">The Arc</span>
-      <span class="section-hero-headline">Seven chapters, five countries, one thread.</span>
-      <p class="section-hero-lead">Helping organisations uncover their hidden patterns, improve meaningfully, and take ideas all the way from whiteboard to impact.</p>
-      <p class="section-hero-lead">This is the journey that explains how I got to this point and why I want to collaborate with UWC achieving its mission and modernising how they do it. Expand the chapters you are curious about, or read the whole arc of experiences.</p>
+  <div class="section-intro section-intro--with-image fade-in">
+    <div class="section-intro-inner">
+      <div class="section-intro-text">
+        <span class="section-intro-kicker">The Arc</span>
+        <h2 class="section-headline">Seven chapters,<br> five countries,<br> one <mark class="hl">thread.</mark></h2>
+        <p class="section-subtext">I help organisations uncover their hidden patterns, improve meaningfully, and take strategic ideas all the way from whiteboard to impact.</p>
+        <p class="section-subtext">The journey explains this and why I want to collaborate with UWC.<br class="desk-br">Expand the chapters you are curious about, or read the whole arc.</p>
+      </div>
+      <div class="section-intro-img section-intro-img--photo">
+        <div class="polaroid-stack">
+          <div class="polaroid"><img src="Photos/Asturias.jpeg"      loading="lazy" alt="Asturias"></div>
+          <div class="polaroid"><img src="Photos/Family%20Photo.png" loading="lazy" alt="Guzmán with his family hiking in Spain"></div>
+          <div class="polaroid"><img src="Photos/London.jpeg"        loading="lazy" alt="London"></div>
+          <div class="polaroid"><img src="Photos/Shanghai.webp"      loading="lazy" alt="Shanghai"></div>
+          <div class="polaroid"><img src="Photos/Leon.jpeg"          loading="lazy" alt="León, Spain"></div>
+          <div class="polaroid"><img src="Photos/Harvard.jpeg"       loading="lazy" alt="Harvard"></div>
+          <div class="polaroid"><img src="Photos/Singapore.jpeg"     loading="lazy" alt="Singapore"></div>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="arc-stepper-wrap" role="region" aria-label="Career chapters navigation">
     <div class="arc-tablist" role="tablist" aria-label="Career chapters">
-      <button class="arc-tab" role="tab" aria-selected="true"  aria-controls="arc-panel-01" id="arc-tab-01" tabindex="0">
-        <span class="arc-tab-num">01</span>Finding a call
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-02" id="arc-tab-02" tabindex="-1">
-        <span class="arc-tab-num">02</span>Seeking adventure
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-03" id="arc-tab-03" tabindex="-1">
-        <span class="arc-tab-num">03</span>Failure &amp; mistakes
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-04" id="arc-tab-04" tabindex="-1">
-        <span class="arc-tab-num">04</span>A bet on us
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-05" id="arc-tab-05" tabindex="-1">
-        <span class="arc-tab-num">05</span>Elevated work
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-06" id="arc-tab-06" tabindex="-1">
-        <span class="arc-tab-num">06</span>Return home
-      </button>
-      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-07" id="arc-tab-07" tabindex="-1">
-        <span class="arc-tab-num">07</span>Seeking adventure 2
-      </button>
+      <button class="arc-tab" role="tab" aria-selected="true"  aria-controls="arc-panel-01" id="arc-tab-01" tabindex="0">Finding a call</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-02" id="arc-tab-02" tabindex="-1">Seeking adventure</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-03" id="arc-tab-03" tabindex="-1">Failure &amp; mistakes</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-04" id="arc-tab-04" tabindex="-1">A bet on us</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-05" id="arc-tab-05" tabindex="-1">Higher stakes</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-06" id="arc-tab-06" tabindex="-1">Return home</button>
+      <button class="arc-tab" role="tab" aria-selected="false" aria-controls="arc-panel-07" id="arc-tab-07" tabindex="-1">For our sons</button>
     </div>
   </div>
 
@@ -330,15 +758,14 @@ details.witness-item[open]::details-content{height:auto}
       <div class="arc-episode">
         <h3 class="arc-episode-title">A small medieval city</h3>
         <span class="arc-episode-meta">Spain · Late 90s</span>
-        <p>As a teenager I grew up in a small medieval city in the north of Spain called León. Other than playing basketball at national level, reading and writing a lot, I also used to skip English or Maths support lessons to go to the public library to investigate and write for hours about the age of explorers, antimatter, or how the brain works. I believe kids can only dream of becoming what they know exists, and that is why I chose Investigative Journalism from the narrow window I had to the world.</p>
+        <p>I grew up in a small medieval city in the north of Spain. Other than playing basketball, reading and writing a lot, I also used to skip English support lessons to go to the public library and simply pick other subjects to read and write about. I'd always believed kids can only dream of becoming what they know exists, and that is how, from the narrow window I had to the world, I chose Investigative Journalism.</p>
       </div>
 
       <div class="arc-episode">
         <h3 class="arc-episode-title">University and early success</h3>
         <span class="arc-episode-meta">Spain · 2002–2007</span>
-        <p>I worked in a newspaper during university while studying Journalism and Law in two different universities, one in the morning, the other in the afternoon. Passing everything proved too much, so I dropped out of Law after 2 years.</p>
-        <p>I thought I would be a journalist for life, because early on I authored award-winning investigations, including nation-wide work collaborating with the Attorney General on education that led to new laws and an improved system. This is the beginning of a 15-year pursuit of better education as a side quest that I am now gradually trying to make my main story.</p>
-        <p>I would spend half my small salary buying second-hand books, and the second half handing over at home. I also used all my leave to do the most UWC thing I could do at the time — getting grants to participate in multicultural ethnographic expeditions with students from different countries, or getting a grant to film a 3-month documentary in Cuba. I didn't know it then, but those instincts became the foundation for everything I do.</p>
+        <p>I worked in a newspaper while studying Journalism and Law in two different universities. Eventually dropping out from law. I thought I would be a journalist for life, because early on I authored award-winning investigations, and collaborations with the Attorney General on Education that led to new laws. Which was the beginning of a 15-year pursuit of better education as a side quest that I am now gradually trying to make my main story.</p>
+        <p>I also used all my leave to do the most UWC thing I could do at the time — getting grants to participate in ethnographic expeditions with students from different countries, or filming a 3-month documentary in Cuba.</p>
       </div>
     </div>
 
@@ -346,26 +773,25 @@ details.witness-item[open]::details-content{height:auto}
     <div id="arc-panel-02" role="tabpanel" aria-labelledby="arc-tab-02" class="arc-panel">
       <span class="arc-chapter-kicker">Chapter 02</span>
       <h2 class="arc-chapter-title">Seeking adventure, first unknowns</h2>
-      <span class="arc-chapter-sub">Leaving the safety of language and home.</span>
+      <span class="arc-chapter-sub">Leaving a language and home.</span>
 
       <div class="arc-episode">
         <h3 class="arc-episode-title">"No English"</h3>
         <span class="arc-episode-meta">Boston · 2007–2008</span>
-        <p>I was a naive 23-year-old who didn't speak a word of English. During my last year of university it occurred to me that before starting a full-time journalism career, and to be able to write anything worth reading, I had to live things worth experiencing, understand how other cultures think and feel, and see the world.</p>
-        <p>Learning English seemed like a good way to start, so 15 days after arriving from a project in Cuba I flew to Boston. I knew if I went to the UK I would jump on the next flight back home, scared to bits. The agreement with my parents was I had seven months to be admitted to a couple of Harvard summer programs in International Relations, otherwise I would owe them the money. I barely made it, but I did.</p>
+        <p>At 23 I didn't speak a word of English but during my last year of university it occurred to me that to be able to write anything worth reading, I had to live things worth sharing, see the world. Two weeks after arriving from running a documentary in Cuba I flew to Boston. I had seven months to be admitted to Harvard summer program, otherwise I would owe my parents the money.</p>
       </div>
 
       <div class="arc-episode">
         <h3 class="arc-episode-title">Coordinating APAC for a Spanish gov rep office</h3>
         <span class="arc-episode-meta">Shanghai · 2008–2011</span>
-        <p>Returned to Spain to a promised job that had vanished in the financial crisis. But the world had grown smaller for me; I wanted to see Asia. The occupation was secondary, but I had no way there or money to risk. I won a government grant for a Master's in International Management I applied to on the last day. I saw it as my ticket to Asia. If I finished top 5 I could choose a worldwide destination for the second phase.</p>
-        <p>I moved to Shanghai to coordinate a small rep office for the Spanish government supporting Spanish firms expanding into APAC. I was responsible for China, Japan, Singapore and Hong Kong. I wasn't ready for that role. I had to deliver in a culture and operating system alien to me, learning with no senior to ask, supporting our two local employees. Yet, our office ranked 5th for results while 18th in budget. It did cost me my first balding spot though. Biggest achievement was convincing who is now my wife to move to China with me, where she continued teaching in an International School and learning languages.</p>
+        <p>Returned to Spain to a promised job that vanished to nepotism in the financial crisis. So I decided to not pursue Journalism anymore, and instead move to Asia but had no way to get there. So I got a full grant for a government backed program for a Master's that if finished top 5 would allow me to choose foreign office destination.</p>
+        <p>I moved to Shanghai to coordinate a small rep office supporting Spanish firms expanding to China, Japan, Singapore and Hong Kong. I wasn't ready for that role. I had to deliver in a culture and operating system alien to me, learning with no senior to ask and being responsible for my own small team at 24. Yet, our office ranked 5th while 18th in budget. It did cost me my first balding spot though. Biggest KPI achieved was convincing my now wife to move to China.</p>
       </div>
 
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
+      <div class="arc-clip-note">
         <ul>
-          <li>Master's in International Management (Economic, Commercial, Legal &amp; Social Dimensions, JAPAC focus) — ESIC Business &amp; Marketing School.</li>
+          <li>International Relations and US Foreign Policy Summer Programs — Harvard Kennedy School</li>
+          <li>Master's in International Management (APAC focus) — ESIC Business &amp; Marketing School</li>
         </ul>
       </div>
     </div>
@@ -379,24 +805,22 @@ details.witness-item[open]::details-content{height:auto}
       <div class="arc-episode">
         <h3 class="arc-episode-title">Government-backed venture building program</h3>
         <span class="arc-episode-meta">Spain · 2011–2012</span>
-        <p>We returned from Shanghai to continue with the government program, this time leading two venture-building projects that failed. It now helps me diagnose teams with well-intentioned people working hard inside a system that wouldn't let the work succeed.</p>
+        <p>We returned from Shanghai to continue the program, this time leading two venture-building projects that failed the way well-intentioned people without the ability to read systems and affect change fail inside institutions that aren't designed for that type of work. Learned a lesson I'll apply in the future.</p>
       </div>
 
       <div class="arc-episode">
-        <h3 class="arc-episode-title">Startups, the full operational stack</h3>
+        <h3 class="arc-episode-title">Startups</h3>
         <span class="arc-episode-meta">Barcelona · 2012–2016</span>
-        <p>Joined a growing architecture and design studio, moving from Shanghai to Barcelona. It operated like a startup but worked in high-end mixed-use large developments (oil camps, universities, luxury hotels) and the high-end residential arena globally.</p>
-        <p>Supported the CEO and shareholders as Head of Operations and People, but also managing strategic projects, to translate strategy into day-to-day execution. The full stack of practical operational reality, from managing large programs in Asia and shareholder events in Zurich to re-stocking our toilet paper. Main achievement was justifying and proving right raising every employee's salaries and conditions, which I unlocked by excluding mine.</p>
-        <p>We went after multimillion design, architecture, manufacturing, shipping and installation of residential, mixed-use, FF&amp;E, OS&amp;E and IOT projects. e.g. Jumeirah at Etihad Towers (USD 6M) and Weatherford Oil Camp in Iraq (USD 8M).</p>
-        <p>I did this while studying at night and playing semi-pro basketball. Then, at 28, I tore my Achilles. Soon after, my wife and I quit our jobs because we felt we had the comfort and consistency we would like in our 60s, but not in our late 20s — we wanted one more new culture to learn from. So we moved to London without a job or savings to support us.</p>
+        <p>Received a call from a global architecture and design studio, moving headquarters from Shanghai to Barcelona. It operated like a startup designing and building large mix hotel-offices-residential developments and supplying with everything that falls if they flip them upside down (furniture, equipment, etc).</p>
+        <p>Supported the CEO and board as Chief of Staff managing operations and a strategic projects portfolio: from managing large programs in Asia and events in Zurich, to the practical reality of re-stocking our toilet paper and raising every employee's salaries and conditions, excluding mine to unlock it.</p>
+        <p>I was also studying and playing semi-pro basketball. Then, at 28, I tore my Achilles. Soon after, we quit our jobs and moved to London without a plan but in search for a new challenge and one more culture to learn.</p>
       </div>
 
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
+      <div class="arc-clip-note">
         <ul>
-          <li>Digital Innovation Strategy — ICEMD (12-week onsite).</li>
-          <li>Innovation in Logistics &amp; Supply Chain — ICIL (12-week onsite).</li>
-          <li>La Salle BCN — Master's in Change &amp; Digital Transformation / Project Management (9 months part-time).</li>
+          <li>Digital Marketing — ICEMD (12-week onsite).</li>
+          <li>Procurement &amp; Supply Chain — ICIL (12-week onsite).</li>
+          <li>Master's in Change &amp; Digital Project Management (9 months part-time).</li>
           <li>PMP certification.</li>
         </ul>
       </div>
@@ -411,20 +835,19 @@ details.witness-item[open]::details-content{height:auto}
       <div class="arc-episode">
         <h3 class="arc-episode-title">Immigrants in UK</h3>
         <span class="arc-episode-meta">London · 2016–2018</span>
-        <p>We arrived in London without a safety net. Brexit hit. And we quickly realised our experience elsewhere wasn't valued because it wasn't from London. The first months were humbling in ways that don't survive on a regular CV. We took on whatever jobs we could to make ends meet as we each pursued our passions. Learned to trap mice and lived off yellow-labelled supermarket food.</p>
-        <p>Eventually I made it into tech working for Dentsu and its tech-driven advertising agency, and Rosa, my wife, started working as a teacher in Putney High.</p>
-        <p>I was hired to manage client onboarding and establish best practices for large client account teams. But I quickly stretched my agency and scope to meet the real challenges, identifying structural barriers no one had shaped or owned but everyone suffered. I also took over from pre-existing Big 4 work that had created no impact, and delivered meaningful change — creating a portfolio of strategic internal projects while understanding the organisation, the people, why we couldn't adopt change, and what type of innovation we needed. I did this until it became my official job.</p>
-        <p>As a side quest, I set up a not-for-profit with my wife to bring innovation to schools. We were seeing the disconnect between what education institutions propose and what the real world demanded — between what institutions say they are and care about, and how little impact that had on how they chose to operate, their ways of working, or their internal culture. We also pioneered inclusivity programs for high-functioning neurodivergent students to find their first work experience in our firm, in collaboration with local institutions in London.</p>
+        <p>We arrived in London looking for a job. Brexit hit. And we quickly realised it was going to be a lot harder than anticipated. The first months were humbling in ways that don't survive on a regular CV. We took on whatever jobs we could to make ends meet, learned to trap mice, and lived off yellow-labelled food.</p>
+        <p>Eventually I made it into tech. Entering as project manager for Dentsu and its tech-driven agency, and Rosa, my wife, after subbing for months in difficult schools, Michelle Pfeiffer style, started working as a teacher in Putney High.</p>
+        <p>I was hired to manage client and internal strategic projects and introduce best practices. But I quickly stretched my agency and scope to meet the real challenges, identifying structural problems no one owned but everyone suffered. I also took over from pre-existing Big 4 work that had created no impact, and delivered meaningful change.</p>
+        <p>As a side quest, I started reaching out cold door to anyone who claimed to be doing innovation well, across any industry, to learn from them. And we set up a not-for-profit to bring innovation to schools because we were seeing the disconnect between what institutions say they are and how they chose to operate, their ways of working, or their internal culture. I also pioneered a bridge program for high-functioning neurodivergent students to find their first work experience.</p>
       </div>
 
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
+      <div class="arc-clip-note">
         <ul>
-          <li>Designing for Change — IDEO U.</li>
-          <li>Design Thinking for Educators — IDEO U.</li>
+          <li>Designing for Change — IDEO.</li>
+          <li>Design Thinking for Educators — IDEO.</li>
           <li>Certified Agile Scrum Master &amp; Product Owner — Scrum Alliance.</li>
           <li>Game Design — MIT (8-week online course).</li>
-          <li>Google Square Grant — Graduated top 10 globally.</li>
+          <li>Google Square Grant — Graduated top 3% globally.</li>
         </ul>
       </div>
     </div>
@@ -432,48 +855,28 @@ details.witness-item[open]::details-content{height:auto}
     <!-- Panel 05 -->
     <div id="arc-panel-05" role="tabpanel" aria-labelledby="arc-tab-05" class="arc-panel">
       <span class="arc-chapter-kicker">Chapter 05</span>
-      <h2 class="arc-chapter-title">Elevated work and high stakes</h2>
-      <span class="arc-chapter-sub">Designing the operating system, not just the project.</span>
+      <h2 class="arc-chapter-title">Higher stakes</h2>
+      <span class="arc-chapter-sub">Delivering in complexity and ambiguity.</span>
 
       <div class="arc-episode">
         <h3 class="arc-episode-title">Parachuted into a new system</h3>
         <span class="arc-episode-meta">Singapore · 2018–2019</span>
-        <p>After 2 years in London we wanted to move back to Asia. And I wanted to elevate the type of innovation and transformation work I was doing, working at the level where I could influence the system incentives. I learned our global innovation lab was in Singapore, so I sold my comic collection and borrowed money to fly to Singapore and pitch for a role that didn't exist.</p>
-        <p>Once in Singapore, our APAC CEO asked me to design and build a new distributed operating system, introduce strategic project management best practices, increase innovation, implement new technology, and bring together a fragmented leadership team — filling the gaps to build new products, improve the culture, and develop cross-agency services. The agency was 2,000 people across APAC, 400 in Singapore. High churn, siloed teams, weak margins, no consistent commercial, delivery, or operations method, and high scepticism after failed change attempts.</p>
-        <p>My approach, different to traditional consulting teams, is a dual work-stream: volunteering time to work on the team's hardest challenge, sharing the pain and accountability, while conducting organisational diagnostic. They both feed each other and eliminate the most common biases Big 4 have: overuse of off-the-shelf solutions, and drawing conclusions based on opinions instead of behaviours.</p>
-        <p>That gap between what a system claims to be and need, and what the behaviours actually reward and explain, is what makes the difference between strategy and interventions that work or don't.</p>
-        <p>I redesigned our workflows and increased pitch success: 18% → 32%. Profit margins: 8% → 18%, and culture approval. While reducing annual churn: 48% → 26% and shipping new products and services to market 1.8× faster. I also led the build of a cross-agency product and service foundry no other agency in the region had, and was promoted to APAC Business Transformation Lead and interim Chief of Staff before global layoffs sent me home.</p>
-      </div>
-
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
-        <ul>
-          <li>Neuroscience, Sociology, Anthropology — self-taught.</li>
-          <li>Taught Systems Transformation — NewCampus.</li>
-        </ul>
+        <p>We wanted to move back to Asia. Our global innovation lab was in Singapore, so I flew there and pitched for a role that didn't exist. Our CEO asked me to uncover our challenges, introduce project based work, and help strategy deliver meaningful change. 400 people. High churn, siloed teams, weak margins, and skepticism after various failed initiatives.</p>
+        <p>I volunteered to work on the team's hardest challenge while running an org-wide diagnostic. This let me build trust fast and see behaviours and incentives at play, not just opinions.</p>
+        <p>I mapped all 12 functions (HR, Finance, etc…), surfacing pain points, opportunities, and needs (new tech, better comms, clearer KPIs, new ways of working, etc) which led to a redesign that improved margins, transparency, and culture. I was promoted to APAC Chief of Staff two weeks before global layoffs.</p>
       </div>
 
       <div class="arc-episode" style="margin-top:36px">
         <h3 class="arc-episode-title">Meaningful innovation</h3>
         <span class="arc-episode-meta">Singapore · 2019–2020</span>
-        <p>I turned down offers from BCG, Deloitte, and a SaaS leadership role to join a small Nordic venture studio that paid me way less, choosing meaning and people-fit over money. At Rainmaking they were contributing to building ventures and new technology that positively impacted the world, aligned with the 2030 Sustainable Development Goals agenda.</p>
-        <p>They hired me to do something I had never done before. Co-designed Engie's corporate–startup innovation lab in APAC, leading a small team of consultants to build pathways from exploration to commercial validation for technologies that could reduce emissions, energy waste, and similar. Within less than a year we secured USD 4 million in future revenue approved by our client's CEO.</p>
-        <p>Then COVID hit. Lost a retrenching client. Was offered a relocation to Copenhagen but our first son was due in two months. Couldn't relocate. So we stayed. Our CEO offered to cut down his salary to 50% to give me a longer runway, and I matched it on the spot to give my own team a longer runway too. During that time my wife was teaching at UWC.</p>
+        <p>I turned down better offers to join a Nordic innovation studio in Singapore, choosing meaning and people-fit. They hired me to co-design Engie's corporate–startup innovation lab, leading a small team of consultants to build pathways from exploration to commercial validation for new technologies that contributed to their 2030 SDG agenda. The program was a success.</p>
+        <p>Then COVID hit. First lockdown. Moved all to remote. But the client, now in retrenchment, cancelled our renewal. I was offered a relocation to Copenhagen, but our first son was due soon, so we stayed. I cut my salary to 50% during the last few months to give my team a longer runway, anonymously. During that time my wife was teaching at UWC.</p>
       </div>
 
-      <div class="arc-episode" style="margin-top:36px">
-        <h3 class="arc-episode-title">Building the Death Star</h3>
-        <span class="arc-episode-meta">Singapore · 2020–2023</span>
-        <p>Joined Apple during the pandemic, once a former manager called me in. I was part of the core team building and scaling a global digital performance program for Apple Services from 20 to 350 people across 14 countries in three years, while budgets grew 10× (4M → 40M per quarter).</p>
-        <p>My role was not just building the infrastructure but designing the operating conditions that made it scalable as complexity grew — governance, incentive structures, automation, workflow, playbooks, tech, training architecture, the full employee lifecycle, service levels, strategy, delivery. Onboarded 400+ people. Offboarded 100+. Ran 300+ training sessions across all functions. Introduced AI automation through custom-built workflow systems. Reduced workload ~28%, errors ~33%, delay probability ~60%. Capacity ROI +20%.</p>
-        <p>Cross-functional delivery at scale: managed the portfolio of strategic initiatives across 12 product lines, 4 business lines, 9 departments, and dozens of platform vendors. Sustained 85–110% OKR and service level performance for three years.</p>
-        <p>But three years of that cognitive load, at that pace, with a child under three and another on the way, eventually had a health cost. I asked for help. None came, so I took a break to recover after our second son was born.</p>
-      </div>
-
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
+      <div class="arc-clip-note arc-clip-note--side">
         <ul>
-          <li>Product and Experience Design — Hyper Island.</li>
+          <li>Neuroscience, Sociology, Anthropology — self-taught.</li>
+          <li>Teacher of Systems Transformation and Project Management — NewCampus.</li>
         </ul>
       </div>
     </div>
@@ -482,46 +885,44 @@ details.witness-item[open]::details-content{height:auto}
     <div id="arc-panel-06" role="tabpanel" aria-labelledby="arc-tab-06" class="arc-panel">
       <span class="arc-chapter-kicker">Chapter 06</span>
       <h2 class="arc-chapter-title">Return home</h2>
-      <span class="arc-chapter-sub">A one way trip that became a u-turn.</span>
+      <span class="arc-chapter-sub">A one way trip after the pandemic that became a u-turn.</span>
 
       <div class="arc-episode">
-        <h3 class="arc-episode-title">False sabbatical</h3>
-        <span class="arc-episode-meta">Spain · 2023–2024</span>
-        <p>Moved back to Spain with the intention of taking a sabbatical to look after the kids full-time — then 3 and 1 — DIY our new home, and teach. Ended up receiving calls from ex-colleagues and ex-managers to support them in their own projects.</p>
-        <p>So I consulted full-time, almost exclusively for Singapore clients, while designing my own Executive Master's in Org Complexity — a self-directed study period combining research, writing, and part-time transformation work. But after 6 months we missed Asia, and we realised our kids wouldn't remember any of that experience. Which was the deciding factor to move back to Singapore, this time trailing my wife but intentionally building experiences for our kids.</p>
+        <h3 class="arc-episode-title">Building the Death Star</h3>
+        <span class="arc-episode-meta">Singapore · 2020–2023</span>
+        <p>Joined Apple. I was part of the core team scaling a global digital performance program for Apple Services. Like building a fully remote startup, backed by Apple instead of a VC, to improve their online presence across 40+ countries. My role was designing the operating conditions that kept it scalable as complexity grew — governance, incentive structures, AI–human workflows, playbooks, tech, training architecture, the full employee lifecycle, service levels, strategy support. I also managed the strategic initiatives that didn't sit neatly in one vertical.</p>
+        <p>Three years of that cognitive load — during COVID, at that pace, with a child under three and a newborn — eventually had a health cost. I asked for help. None came, so we moved back to Spain.</p>
       </div>
 
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
-        <ul>
-          <li>Studying my self-designed Master's in Organisational Complexity — 6 months.</li>
-          <li>Teaching Change and Strategic Implementation to Heads of HR, Design and Strategy in APAC — NewCampus.</li>
-        </ul>
+      <div class="arc-episode" style="margin-top:36px">
+        <h3 class="arc-episode-title">False sabbatical</h3>
+        <span class="arc-episode-meta">Spain · 2023–2024</span>
+        <p>Moved back to Spain where we started over and set up my own practice working mostly with ex-colleagues and ex-managers, and teaching Systems Transformation to Heads of People and Strategy in APAC.</p>
+        <p>But after 6 months we missed Asia a lot, and we realised our kids wouldn't remember any of that experience. Which was the deciding factor to move back to Singapore, this time trailing my wife to intentionally build experiences for our kids, even if it meant a financial hit (closing my practice).</p>
       </div>
     </div>
 
     <!-- Panel 07 -->
     <div id="arc-panel-07" role="tabpanel" aria-labelledby="arc-tab-07" class="arc-panel">
       <span class="arc-chapter-kicker">Chapter 07</span>
-      <h2 class="arc-chapter-title">Seeking adventure 2, for our sons this time</h2>
-      <span class="arc-chapter-sub">Mission-aligned work, saying no to better-paid alternatives.</span>
+      <h2 class="arc-chapter-title">For our sons</h2>
+      <span class="arc-chapter-sub">Mission-aligned work.</span>
 
       <div class="arc-episode">
         <h3 class="arc-episode-title">Independent practice</h3>
         <span class="arc-episode-meta">Singapore · 2024–present</span>
-        <p>Independent consulting work with mission-aligned institutions and people, saying no to better-paid projects or full-time positions.</p>
-        <p><strong>Singular Solving (Spain).</strong> Leading the vision and execution for a new Masters launching outside conventional university logic — built for neurodivergent, gifted, and unconventional learners. Part of the team building a new school for unconventional learners, designed to cater to new ways of learning and what the future is demanding, aimed at building original critical thinking, solving complex problems, and developing integrity and courage.</p>
-        <p><strong>Form-Three.</strong> Cross-functional transformation projects for C-level clients across APAC, mixing People, Operations, Technology, Design, and Behavioural Insights. e.g. Building an AI workflow platform for better operations and product design.</p>
-        <p><strong>Global NGO.</strong> Remote operating redesign for a values-driven organisation scaling 40 → 150 people across new APAC geographies while integrating native AI workflows in contracts, knowledge management, and ways of working.</p>
-        <p><strong>Pro-bono.</strong> Innovation and learning design with international schools. Advisory to families navigating kids diagnosed with giftedness and to late-diagnosed adults.</p>
-        <p><strong>Writing.</strong> Futures Worth Following — half philosophy on navigating complexity with integrity, half tactical operating system for building organisations and products worth following into the new world we're building.</p>
+        <p>I parented my kids full time for a few months, during the relocation, and self-directed a study period combining research and writing, savoring the pause after 15 years of work. Then I started taking in independent consulting work with mission-aligned institutions and people, saying no to better-paid projects or full-time positions.</p>
+        <p><strong>Singular Solving (Spain).</strong> Supporting an alternative consulting firm in Spain with complex problems that traditional consultancies don't tackle, mostly helping startups improve product, operations and strategy. More recently contributing to the vision and execution for a new school outside conventional education logic.</p>
+        <p><strong>Form-Three (Singapore).</strong> A Design studio where I led cross-functional projects to design new services and enable new product and strategy implementation. I am currently contributing in the design and implementation of a new AI workflow platform for better product design: flow-three.</p>
+        <p><strong>Global NGO.</strong> Ran a 6 months diagnostic, redesign and change implementation program for a global NGO scaling 40 → 150 people across new geographies through M&amp;A while integrating native AI workflows. </p>
+        <p><strong>Pro-bono.</strong> Advisory to families navigating kids diagnosed with giftedness and to late-diagnosed adults.</p>
       </div>
 
-      <div class="arc-concurrent">
-        <span class="arc-concurrent-label">Concurrently</span>
+      <div class="arc-clip-note">
         <ul>
           <li>Studying Philosophy as a Creative Advantage.</li>
           <li>Product Design and Creativity — Pulso.</li>
+          <li>Writing <em>Futures Worth Following</em> — a book half philosophy half tactics on navigating complexity with integrity.</li>
           <li>IB curriculum — self-taught.</li>
         </ul>
       </div>
@@ -536,147 +937,192 @@ details.witness-item[open]::details-content{height:auto}
      ═══════════════════════════════════════════════════════ -->
 <section id="impact-witnesses">
 
-  <div class="section-hero fade-in">
-    <div class="section-hero-inner">
-      <span class="section-hero-kicker">Impact Witnesses</span>
-      <span class="section-hero-headline">Don't just take it from me.</span>
-      <p class="section-hero-lead">The voices below come from CEOs, COOs, peers, direct reports, and clients across 10 years and different chapters, independently arriving at similar observations.</p>
+  <!-- Faint world-map silhouette covering the full section background -->
+  <svg class="iw-world-map" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice">
+    <g fill="white">
+      <path d="M80,75 L165,60 L250,65 L310,90 L340,140 L330,180 L295,205 L260,225 L210,225 L175,200 L145,175 L105,155 L70,130 L60,100 Z"/>
+      <path d="M255,22 L350,18 L368,42 L345,65 L280,70 L255,50 Z"/>
+      <path d="M235,240 L285,230 L325,245 L385,270 L405,310 L395,370 L360,420 L315,445 L275,445 L248,420 L235,370 L228,305 Z"/>
+      <path d="M460,62 L510,58 L538,78 L530,108 L505,122 L478,118 L460,102 L450,80 Z"/>
+      <path d="M502,60 L526,55 L542,73 L535,97 L510,105 L498,87 Z"/>
+      <path d="M455,78 L468,70 L478,82 L470,96 L455,92 Z"/>
+      <path d="M455,150 L510,145 L545,165 L560,210 L558,275 L540,340 L508,390 L472,408 L444,398 L422,368 L410,305 L412,238 L432,178 Z"/>
+      <path d="M553,330 L563,318 L573,342 L567,382 L555,385 L545,363 Z"/>
+      <path d="M540,55 L640,48 L740,52 L845,58 L938,65 L985,95 L975,165 L930,200 L860,218 L790,215 L720,205 L670,215 L620,195 L580,170 L555,140 L545,105 Z"/>
+      <path d="M665,210 L695,255 L688,302 L668,295 L655,258 L655,212 Z"/>
+      <path d="M785,205 L845,210 L875,230 L862,248 L830,248 L795,230 Z"/>
+      <path d="M882,110 L900,106 L910,122 L898,136 L882,130 Z"/>
+      <path d="M800,295 L875,280 L935,300 L958,340 L952,395 L905,415 L840,415 L790,388 L778,350 L785,310 Z"/>
+      <path d="M960,388 L968,372 L978,388 L972,408 L960,404 Z"/>
+      <path d="M278,195 L314,192 L316,202 L298,207 L278,202 Z"/>
+    </g>
+  </svg>
+
+  <!-- Section intro — colours flipped to white via CSS overrides -->
+  <div class="section-intro section-intro--wide fade-in visible">
+    <div class="section-intro-inner">
+      <div class="section-intro-text">
+        <span class="section-intro-kicker">Impact Witnesses</span>
+        <h2 class="section-headline">But don't just take it from <mark class="hl">me.</mark></h2>
+        <p class="section-subtext">The voices below come from CEOs, COOs, peers, direct reports, and clients across 10 years and different chapters, independently arriving at similar observations.</p>
+
+        <!-- Stats row -->
+        <div class="iw-stats" role="list">
+          <div class="iw-stat" role="listitem">
+            <span class="iw-stat-num">30+</span>
+            <span class="iw-stat-label">References</span>
+          </div>
+          <div class="iw-stat-sep" aria-hidden="true"></div>
+          <div class="iw-stat" role="listitem">
+            <span class="iw-stat-num">6</span>
+            <span class="iw-stat-label">Countries and sectors</span>
+          </div>
+          <div class="iw-stat-sep" aria-hidden="true"></div>
+          <div class="iw-stat" role="listitem">
+            <span class="iw-stat-num">15</span>
+            <span class="iw-stat-label">Years</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="witnesses-wrap">
+  <!-- Witness cards -->
+  <div class="iw-groups fade-in">
+    <div class="iw-inner">
 
-    <!-- Group: London -->
-    <div class="witnesses-group fade-in">
-      <span class="witnesses-group-label">London 2016–2018</span>
+      <nav class="iw-year-nav" aria-label="Jump to period">
+        <button class="iw-year-btn is-active" data-idx="0">Dentsu · London</button>
+        <button class="iw-year-btn" data-idx="2">Dentsu · APAC</button>
+        <button class="iw-year-btn" data-idx="5">Rainmaking</button>
+        <button class="iw-year-btn" data-idx="8">Apple</button>
+        <button class="iw-year-btn" data-idx="9">Recent</button>
+      </nav>
 
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Nader Ezzat — Head of Project Management, Dentsu</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"Guzman joined to introduce governance and best project management practices in an agency lacking both. But he quickly stretched his scope to also modernise how we worked and lead strategic projects across functions. Our team wasn't built around design, change, or systems thinking so he elevated everyone by bringing us along. To this day there are improvements he introduced that are still impactful on how we work."</p>
-          </blockquote>
+      <div class="iw-track-clip">
+        <div class="iw-track" id="iw-track">
+
+          <div class="iw-card-unit" data-period="Dentsu · London">
+            <span class="iw-card-period-label">Dentsu · London</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Nader Ezzat</span>
+                <span class="iw-card-role">Head of Project Management, Dentsu</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"Guzman joined to introduce project management practices in an agency lacking them. But he quickly stretched to <mark class="hl">also modernise how we worked</mark> and led strategic projects across functions. To this day there are improvements he introduced that are still impactful on how we work."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Dentsu · London">
+            <span class="iw-card-period-label">Dentsu · London</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Estefania Landaluce</span>
+                <span class="iw-card-role">Head of Strategy, Dentsu</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"He's one of those rare people who just makes everything better. He walks into tense meetings and somehow gets everyone actually talking to each other. He has this way of listening that makes <mark class="hl">people feel like their ideas actually matter</mark>, then he asks exactly the right question that gets to the heart of what's really going on."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Dentsu · APAC">
+            <span class="iw-card-period-label">Dentsu · APAC</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Jacob Kvist</span>
+                <span class="iw-card-role">APAC Chief Operating Officer at Dentsu (direct manager)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"Guzman had to hit the ground running in a challenging organisation not used to working with internal transformation resources. His ability to analyse situations quickly and distil how to maximise his impact is quite impressive. He walks the talk and <mark class="hl">builds trust quickly</mark>."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Dentsu · APAC">
+            <span class="iw-card-period-label">Dentsu · APAC</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Jack Cantwell</span>
+                <span class="iw-card-role">Global Client Partner and Strategy Lead at Dentsu</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"I struggle to think of a more intelligent colleague. When approaching complicated challenges he is <mark class="hl">composed and always has a plan</mark>. He not only delivers in spades but is widely acclaimed in the business as a man who would do anything to help you."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Dentsu · APAC">
+            <span class="iw-card-period-label">Dentsu · APAC</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Matthew Schone</span>
+                <span class="iw-card-role">APAC Chief Product Officer at Dentsu</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"It became apparent quite quickly that he was the 'go-to-guy' for anyone who wanted to understand how things actually got done... only 6 months after he joined. Having been part of several $100m+ ROI projects in my career <mark class="hl">I wanted him across all my initiatives</mark>."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Rainmaking">
+            <span class="iw-card-period-label">Rainmaking</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Samuel Hall</span>
+                <span class="iw-card-role">CEO, Rainmaking APAC (direct manager)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"His impact has been nothing short of phenomenal. Even in the face of challenging and demanding circumstances, he retains his poise, his compassion and his positivity — thinking of others first and himself second. His MO is to support, guide and <mark class="hl">inspire the people he works with</mark>."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Rainmaking">
+            <span class="iw-card-period-label">Rainmaking</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Amanda Chen</span>
+                <span class="iw-card-role">Strategy and Operations at Rainmaking (direct report)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"He played a big role in helping me get exposure in project and workshop delivery and stakeholder management. His balance of trust and support when we need it has <mark class="hl">helped us grow tremendously</mark>, professionally and personally. He demonstrated admirable leadership skills and genuine care for his team."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Rainmaking">
+            <span class="iw-card-period-label">Rainmaking</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Quentin Vaquette</span>
+                <span class="iw-card-role">Engie Factory MD (client)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"Guzman worked with us for almost a year on innovation strategy, opportunity identification, and project execution. I have been <mark class="hl">impressed by the quality of his work and the enthusiasm</mark> and structure with which complex problems were tackled and moved forward."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Apple">
+            <span class="iw-card-period-label">Apple</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Jose Campon</span>
+                <span class="iw-card-role">Apple Services Global Partner (direct manager)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"I cannot think of a single person who was not impressed by the quality and the impact of his work — business impact and making everyone around him better. He is a mastermind of change and applies <mark class="hl">coherence in line with the big picture</mark> but in a way that is simple and fair."</p></blockquote>
+            </article>
+          </div>
+
+          <div class="iw-card-unit" data-period="Recent">
+            <span class="iw-card-period-label">Recent</span>
+            <article class="iw-card" tabindex="0">
+              <header>
+                <span class="iw-card-name">Kamil Gottwald</span>
+                <span class="iw-card-role">Founder at Form-three Singapore (client)</span>
+              </header>
+              <blockquote class="iw-card-quote"><p>"One of the most <mark class="hl">thoughtful</mark>, impact-driven humans you'll ever work with."</p></blockquote>
+            </article>
+          </div>
+
         </div>
-      </details>
+      </div>
 
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Estefania Landaluce — Head of Strategy, Dentsu</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"He's one of those rare people who just makes everything better. He walks into tense meetings and somehow gets everyone actually talking to each other. He has this way of listening that makes people feel like their ideas actually matter, then he asks exactly the right question that gets to the heart of what's really going on. When working with him people want to do their best work."</p>
-          </blockquote>
-        </div>
-      </details>
+      <div class="iw-track-nav">
+        <button class="iw-arrow" id="iw-prev" aria-label="Previous">&#8592;</button>
+        <button class="iw-arrow" id="iw-next" aria-label="Next">&#8594;</button>
+      </div>
+
     </div>
+  </div>
 
-    <!-- Group: Singapore -->
-    <div class="witnesses-group fade-in">
-      <span class="witnesses-group-label">Singapore 2019–2026</span>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Jacob Kvist — APAC Chief Operating Officer at Dentsu (direct manager)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"Guzman had to hit the ground running in a challenging organisation not particularly used to working with internal transformation resources. His ability to analyse situations quickly and distil how to maximise his impact is quite impressive. He rolls up his sleeves and walks the talk. He uses empathy and creativity to build trust quickly and effectively at multiple levels."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Jack Cantwell — Global Client Partner and Strategy Lead at Dentsu</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"I struggle to think of a more intelligent colleague than Guzman. When approaching complicated business challenges — new business, client onboarding, human complexity, or any structural change — he is composed and always has a plan. He not only delivers in spades but is widely acclaimed as a man who would do anything to help you regardless of your role or seniority."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Matthew Schone — APAC Chief Product Officer at Dentsu</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"It became apparent quite quickly that he was the 'go-to-guy' for anyone who wanted to understand how things actually got done in the business. Having been part of several $100m+ ROI projects in my career and seen how others operate, I did intentionally seek him to implement and improve my strategic vision for new products and services in the region."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Samuel Hall — CEO, Rainmaking APAC (direct manager)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"The impact Guzman has had in such a short period of time has been nothing short of phenomenal. Even in the face of challenging and demanding circumstances, he retains his poise, his compassion and his positivity — thinking of others first and himself second. His MO is to support, guide and inspire the people he works with. He is the embodiment of a team player."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Amanda Chen — Strategy and Operations at Rainmaking (direct report)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"He played a big role in helping me get exposure in project and workshop delivery and stakeholder management. His capability of striking the right balance of trusting the team's execution whilst providing support when we need it has helped the team grow tremendously, professionally and personally. He demonstrated admirable leadership skills in leading projects and having genuine care for his team."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Quentin Vaquette — Engie Factory MD (client)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"Guzman worked with us for almost a year on innovation strategy, opportunity identification, and project execution. I have been impressed by the quality of his work and the enthusiasm and structure with which complex problems were tackled and moved forward."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Jose Campon — Apple Services Global Partner (direct manager)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"I cannot think of a single person who was not impressed by the quality and the impact of his work — creating business impact and making everyone around him better and happier professionals. He is a mastermind of change and applies rigor in line with the big picture but in a way that is simple, coherent, fair; he is first through the gate on the most difficult challenges, and brings people together."</p>
-          </blockquote>
-        </div>
-      </details>
-
-      <details class="witness-item">
-        <summary>
-          <span class="witness-name-line">Kamil Gottwald — Founder at Form-three Singapore (client)</span>
-          <span class="witness-chevron" aria-hidden="true">+</span>
-        </summary>
-        <div class="witness-quote">
-          <blockquote>
-            <p>"If you're reading this and thinking 'should I reach out to Guzman?', the answer is absolutely yes. One of the most thoughtful, impact-driven humans you'll ever work with."</p>
-          </blockquote>
-        </div>
-      </details>
-    </div>
-
-  </div><!-- /witnesses-wrap -->
 </section>
 
 
@@ -687,13 +1133,21 @@ details.witness-item[open]::details-content{height:auto}
 
 
 <script>
-/* ── Fade-in on scroll ── */
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+/* ── Scroll-reveal (respects prefers-reduced-motion) ── */
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('.fade-in');
+  if (reduced) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ obs.observe(el); });
+})();
 
 /* ── Nav active state on scroll ── */
 window.addEventListener('scroll', function() {
@@ -711,40 +1165,168 @@ window.addEventListener('scroll', function() {
 
 /* ── Stepper tabs — shared initialiser, scoped per tablist ── */
 function initStepper(tablistEl) {
-  var tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
-  var panels = tabs.map(function(t) { return document.getElementById(t.getAttribute('aria-controls')); });
+  var tabs    = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+  var panels  = tabs.map(function(t) { return document.getElementById(t.getAttribute('aria-controls')); });
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var isArc   = !!tablistEl.closest('#the-arc');
 
-  function activate(idx) {
-    tabs.forEach(function(t, i) {
-      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
-      t.setAttribute('tabindex', i === idx ? '0' : '-1');
-    });
-    panels.forEach(function(p, i) {
-      if (!p) return;
-      if (i === idx) {
-        p.classList.add('is-visible');
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() { p.classList.add('is-active'); });
-        });
-      } else {
-        p.classList.remove('is-active');
-        p.addEventListener('transitionend', function handler() {
-          p.classList.remove('is-visible');
-          p.removeEventListener('transitionend', handler);
-        });
-      }
-    });
-    tabs[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+  function scrollTabHorizontal(idx) {
+    var wrapper = tablistEl.closest('.arc-stepper-wrap');
+    if (!wrapper) return;
+    var tab = tabs[idx];
+    var tabLeft  = tab.offsetLeft - wrapper.offsetLeft;
+    var tabRight = tabLeft + tab.offsetWidth;
+    if (tabLeft < wrapper.scrollLeft)                            wrapper.scrollLeft = tabLeft - 16;
+    else if (tabRight > wrapper.scrollLeft + wrapper.clientWidth) wrapper.scrollLeft = tabRight - wrapper.clientWidth + 16;
   }
 
+  /* ── Generic (non-Arc) behaviour — original logic ── */
+  if (!isArc) {
+    function genericActivate(idx) {
+      tabs.forEach(function(t, i) {
+        t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        t.setAttribute('tabindex',      i === idx ? '0'    : '-1');
+      });
+      panels.forEach(function(p) { if (p) p.classList.remove('is-visible', 'is-active'); });
+      var target = panels[idx];
+      if (!target) return;
+      target.classList.add('is-visible');
+      scrollTabHorizontal(idx);
+      requestAnimationFrame(function() {
+        target.classList.add('is-active');
+        target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      });
+    }
+    tabs.forEach(function(tab, idx) {
+      tab.addEventListener('click', function() { genericActivate(idx); tab.focus({ preventScroll: true }); });
+      tab.addEventListener('keydown', function(e) {
+        var key = e.key, n;
+        if (key === 'ArrowRight') { e.preventDefault(); n = (idx+1)%tabs.length;               genericActivate(n); tabs[n].focus({preventScroll:true}); }
+        if (key === 'ArrowLeft')  { e.preventDefault(); n = (idx-1+tabs.length)%tabs.length;   genericActivate(n); tabs[n].focus({preventScroll:true}); }
+        if (key === 'Home')       { e.preventDefault(); genericActivate(0);                    tabs[0].focus({preventScroll:true}); }
+        if (key === 'End')        { e.preventDefault(); genericActivate(tabs.length-1);        tabs[tabs.length-1].focus({preventScroll:true}); }
+      });
+    });
+    return;
+  }
+
+  /* ══════════════════════════════════════════════════════
+     ARC-SPECIFIC: paper stack + journey line + no-scroll
+     ══════════════════════════════════════════════════════ */
+
+  var theArcEl    = document.getElementById('the-arc');
+  var wrap        = tablistEl.closest('.arc-stepper-wrap');
+  var panelsWrap  = theArcEl && theArcEl.querySelector('.arc-panels-wrap');
+
+  /* Per-panel base rotations and horizontal spread positions */
+  var baseRots    = [-0.7,  1.3, -1.6,  0.8, -0.5,  1.9, -1.2];
+  var baseXOffset = [   0,  240,  320,   80,  280,   140,  260]; /* px from left when under */
+
+  /* Stack state */
+  var stackOrder  = [];   /* panel indices, last = top */
+  var activeIdx   = 0;
+  var panelPlaced = {};   /* tracks panels whose position has been set */
+
+  function syncContainerHeight() {
+    if (!panelsWrap) return;
+    var maxH = 0;
+    stackOrder.forEach(function(panelIdx) {
+      var p = panels[panelIdx];
+      if (p) maxH = Math.max(maxH, p.scrollHeight);
+    });
+    if (maxH > 0) panelsWrap.style.minHeight = (maxH + 28) + 'px';
+  }
+
+  /* ── Arc activate ── */
+  function arcActivate(idx) {
+    activeIdx = idx;
+
+    tabs.forEach(function(t, i) {
+      t.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+      t.setAttribute('tabindex',      i === idx ? '0'    : '-1');
+    });
+    scrollTabHorizontal(idx);
+
+    /* Determine if this is the first time this panel has appeared */
+    var isFirstAppearance = stackOrder.indexOf(idx) === -1;
+
+    /* Update stack order (no duplicates; re-select moves to top) */
+    var pos = stackOrder.indexOf(idx);
+    if (pos !== -1) stackOrder.splice(pos, 1);
+    stackOrder.push(idx);
+
+    /* Update z-index and arc-on-top for all stacked panels */
+    stackOrder.forEach(function(panelIdx, stackPos) {
+      var p = panels[panelIdx];
+      if (!p) return;
+      p.style.zIndex = String(stackPos + 1);
+      if (stackPos === stackOrder.length - 1) {
+        p.classList.add('arc-on-top');
+      } else {
+        p.classList.remove('arc-on-top');
+      }
+    });
+
+    var targetPanel = panels[idx];
+    if (!targetPanel) {
+      setLineTo(furthestIdx, true);
+      setNibAt(idx, true);
+      requestAnimationFrame(syncContainerHeight);
+      return;
+    }
+
+    if (isFirstAppearance) {
+      /* Set permanent position once — never moved again */
+      var rot  = baseRots[idx]    !== undefined ? baseRots[idx]    : 0;
+      var xOff = baseXOffset[idx] !== undefined ? baseXOffset[idx] : 0;
+      targetPanel.style.setProperty('--arc-rot', rot + 'deg');
+      targetPanel.style.left = xOff + 'px';
+      panelPlaced[idx] = true;
+
+      targetPanel.classList.add('arc-in-stack', 'arc-appearing');
+      setTimeout(function() { targetPanel.classList.remove('arc-appearing'); }, 320);
+    } else {
+      /* Resurface: position never changes, just animate */
+      targetPanel.classList.add('arc-resurfacing');
+      setTimeout(function() { targetPanel.classList.remove('arc-resurfacing'); }, 280);
+    }
+
+    requestAnimationFrame(syncContainerHeight);
+  }
+
+  /* ── Init: measure height → enable stacking → setup SVG ── */
+  var initialIdx = tabs.findIndex(function(t) { return t.getAttribute('aria-selected') === 'true'; });
+  if (initialIdx < 0) initialIdx = 0;
+  activeIdx = initialIdx; stackOrder = [initialIdx];
+
+  requestAnimationFrame(function() {
+    var firstPanel = panels[initialIdx];
+    /* 1. Lock container height before going absolute */
+    if (firstPanel && panelsWrap) panelsWrap.style.minHeight = (firstPanel.offsetHeight + 28) + 'px';
+    /* 2. Set permanent position for first panel, then enable arc-stacked */
+    if (firstPanel) {
+      var rot0  = baseRots[initialIdx]    !== undefined ? baseRots[initialIdx]    : 0;
+      var xOff0 = baseXOffset[initialIdx] !== undefined ? baseXOffset[initialIdx] : 0;
+      firstPanel.style.setProperty('--arc-rot', rot0 + 'deg');
+      firstPanel.style.left    = xOff0 + 'px';
+      firstPanel.style.zIndex  = '1';
+      firstPanel.classList.add('arc-in-stack', 'arc-on-top');
+      panelPlaced[initialIdx] = true;
+    }
+    if (theArcEl) theArcEl.classList.add('arc-stacked');
+  });
+
+  window.addEventListener('resize', syncContainerHeight);
+
+  /* ── Event listeners ── */
   tabs.forEach(function(tab, idx) {
-    tab.addEventListener('click', function() { activate(idx); tab.focus(); });
+    tab.addEventListener('click', function() { arcActivate(idx); tab.focus({ preventScroll: true }); });
     tab.addEventListener('keydown', function(e) {
       var key = e.key, n;
-      if (key === 'ArrowRight') { e.preventDefault(); n = (idx + 1) % tabs.length; activate(n); tabs[n].focus(); }
-      if (key === 'ArrowLeft')  { e.preventDefault(); n = (idx - 1 + tabs.length) % tabs.length; activate(n); tabs[n].focus(); }
-      if (key === 'Home')       { e.preventDefault(); activate(0); tabs[0].focus(); }
-      if (key === 'End')        { e.preventDefault(); activate(tabs.length - 1); tabs[tabs.length - 1].focus(); }
+      if (key === 'ArrowRight') { e.preventDefault(); n = (idx+1)%tabs.length;              arcActivate(n); tabs[n].focus({preventScroll:true}); }
+      if (key === 'ArrowLeft')  { e.preventDefault(); n = (idx-1+tabs.length)%tabs.length;  arcActivate(n); tabs[n].focus({preventScroll:true}); }
+      if (key === 'Home')       { e.preventDefault(); arcActivate(0);                       tabs[0].focus({preventScroll:true}); }
+      if (key === 'End')        { e.preventDefault(); arcActivate(tabs.length-1);           tabs[tabs.length-1].focus({preventScroll:true}); }
     });
   });
 }
@@ -779,6 +1361,193 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
           content.removeEventListener('transitionend', h);
         });
       }
+    });
+  });
+})();
+
+/* ── How I Work: case card expand-below panel ── */
+(function(){
+  var reduced  = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var cards    = Array.from(document.querySelectorAll('.cs-card[data-case]'));
+  var panel    = document.getElementById('cs-panel');
+  if (!cards.length || !panel) return;
+  var contents = Array.from(panel.querySelectorAll('.cs-panel-content'));
+  var activeId = null;
+
+  function setCta(card, open) {
+    var el = card.querySelector('.cs-cta');
+    if (el) el.textContent = open ? 'Close' : 'Learn More';
+  }
+
+  function close() {
+    panel.classList.remove('is-open');
+    cards.forEach(function(c) {
+      c.classList.remove('is-active');
+      c.setAttribute('aria-expanded', 'false');
+      setCta(c, false);
+    });
+    activeId = null;
+  }
+
+  function open(card) {
+    var id      = card.getAttribute('data-case');
+    var wasOpen = panel.classList.contains('is-open');
+    var same    = activeId === id;
+
+    if (same && wasOpen) { close(); return; }
+
+    /* 1. Swap content synchronously — layout settles at correct height */
+    contents.forEach(function(c) { c.hidden = (c.getAttribute('data-for') !== id); });
+
+    /* 2. Update active card state */
+    cards.forEach(function(c) {
+      var active = c === card;
+      c.classList.toggle('is-active', active);
+      c.setAttribute('aria-expanded', active ? 'true' : 'false');
+      setCta(c, active);
+    });
+    activeId = id;
+
+    if (!wasOpen) {
+      /* 3. Open panel and scroll to it after one rAF (layout has settled) */
+      panel.classList.add('is-open');
+      requestAnimationFrame(function() {
+        panel.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+      });
+    }
+    /* Already open + different card: content swapped above, no re-scroll */
+  }
+
+  cards.forEach(function(card) {
+    card.addEventListener('click', function() { open(card); });
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(card); }
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && activeId !== null) { close(); }
+  });
+})();
+
+/* ── How I Work mobile carousel dots ── */
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var grid    = document.querySelector('.cs-grid');
+  var dotsEl  = document.querySelector('.cs-dots');
+  if (!grid || !dotsEl) return;
+  var cards = Array.from(grid.querySelectorAll('.cs-card'));
+  if (cards.length < 2) return;
+
+  cards.forEach(function(card, i) {
+    var dot = document.createElement('button');
+    dot.className = 'cs-dot' + (i === 0 ? ' cs-dot--active' : '');
+    dot.setAttribute('aria-label', 'Card ' + (i + 1) + ' of ' + cards.length);
+    dot.addEventListener('click', function() {
+      var left = card.offsetLeft - grid.offsetLeft;
+      grid.scrollTo({ left: left, behavior: reduced ? 'auto' : 'smooth' });
+    });
+    dotsEl.appendChild(dot);
+  });
+
+  grid.addEventListener('scroll', function() {
+    var activeIdx = 0, minDist = Infinity;
+    cards.forEach(function(card, i) {
+      var dist = Math.abs((card.offsetLeft - grid.offsetLeft) - grid.scrollLeft);
+      if (dist < minDist) { minDist = dist; activeIdx = i; }
+    });
+    dotsEl.querySelectorAll('.cs-dot').forEach(function(d, i) {
+      d.classList.toggle('cs-dot--active', i === activeIdx);
+    });
+  }, { passive: true });
+})();
+
+/* ── Impact Witnesses timeline carousel ── */
+(function(){
+  var track    = document.getElementById('iw-track');
+  if (!track) return;
+  var units    = Array.from(track.querySelectorAll('.iw-card-unit'));
+  var yearBtns = Array.from(document.querySelectorAll('.iw-year-btn'));
+  var prevBtn  = document.getElementById('iw-prev');
+  var nextBtn  = document.getElementById('iw-next');
+  var gap      = 20;
+  var cur      = 0;
+
+  function getVisible() { return window.innerWidth < 680 ? 1 : 3; }
+
+  function getCardW() {
+    var clip    = track.parentElement;
+    var visible = getVisible();
+    return (clip.offsetWidth - gap * (visible - 1)) / visible;
+  }
+
+  function updateYearNav(idx) {
+    var sortedIdxs = yearBtns.map(function(b){ return parseInt(b.dataset.idx, 10); }).sort(function(a,b){ return a-b; });
+    yearBtns.forEach(function(btn) {
+      var bIdx  = parseInt(btn.dataset.idx, 10);
+      var nextI = Infinity;
+      for (var i = 0; i < sortedIdxs.length; i++) {
+        if (sortedIdxs[i] > bIdx) { nextI = sortedIdxs[i]; break; }
+      }
+      btn.classList.toggle('is-active', idx >= bIdx && idx < nextI);
+    });
+  }
+
+  function goTo(idx) {
+    var visible = getVisible();
+    var max     = Math.max(0, units.length - visible);
+    idx = Math.max(0, Math.min(idx, max));
+    cur = idx;
+    var cardW = getCardW();
+    units.forEach(function(u) { u.style.width = cardW + 'px'; });
+    track.style.transform = 'translateX(-' + (idx * (cardW + gap)) + 'px)';
+    units.forEach(function(u, i) {
+      u.classList.toggle('is-visible', i >= idx && i < idx + visible);
+    });
+    updateYearNav(idx);
+    if (prevBtn) prevBtn.disabled = idx === 0;
+    if (nextBtn) nextBtn.disabled = idx >= max;
+  }
+
+  /* Init */
+  goTo(0);
+
+  if (prevBtn) prevBtn.addEventListener('click', function(){ goTo(cur - 1); });
+  if (nextBtn) nextBtn.addEventListener('click', function(){ goTo(cur + 1); });
+  yearBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(){ goTo(parseInt(btn.dataset.idx, 10)); });
+  });
+
+  /* Touch swipe */
+  var tx = 0;
+  track.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   function(e){
+    var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) goTo(cur + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  /* Resize */
+  var rsz;
+  window.addEventListener('resize', function(){ clearTimeout(rsz); rsz = setTimeout(function(){ goTo(cur); }, 150); });
+})();
+
+/* ── Card image carousel ── */
+(function(){
+  document.querySelectorAll('.cs-carousel').forEach(function(el) {
+    var slides  = Array.from(el.querySelectorAll('.cs-carousel-slide'));
+    var dots    = Array.from(el.querySelectorAll('.cs-carousel-dot'));
+    var btn     = el.querySelector('.cs-carousel-btn');
+    var counter = el.querySelector('.cs-carousel-count');
+    if (!btn || slides.length < 2) return;
+    var idx = 0;
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      slides[idx].classList.remove('is-active');
+      dots[idx].classList.remove('is-active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('is-active');
+      dots[idx].classList.add('is-active');
+      if (counter) counter.textContent = (idx + 1) + ' / ' + slides.length;
     });
   });
 })();
