@@ -1041,7 +1041,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Jacob Kvist</span>
-                <span class="iw-card-role">APAC Chief Operating Officer at Dentsu (direct manager)</span>
+                <span class="iw-card-role">APAC Chief Operating Officer at Dentsu<br class="mob-br"> (direct manager)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"Guzman had to hit the ground running in a challenging organisation not used to working with internal transformation resources. His ability to analyse situations quickly and distil how to maximise his impact is quite impressive. He walks the talk and <mark class="hl">builds trust quickly</mark>."</p></blockquote>
             </article>
@@ -1074,7 +1074,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Samuel Hall</span>
-                <span class="iw-card-role">CEO, Rainmaking APAC (direct manager)</span>
+                <span class="iw-card-role">CEO, Rainmaking APAC<br class="mob-br"> (direct manager)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"His impact has been nothing short of phenomenal. Even in the face of challenging and demanding circumstances, he retains his poise, his compassion and his positivity — thinking of others first and himself second. His MO is to support, guide and <mark class="hl">inspire the people he works with</mark>."</p></blockquote>
             </article>
@@ -1085,7 +1085,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Amanda Chen</span>
-                <span class="iw-card-role">Strategy and Operations at Rainmaking (direct report)</span>
+                <span class="iw-card-role">Strategy and Operations at Rainmaking<br class="mob-br"> (direct report)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"He played a big role in helping me get exposure in project and workshop delivery and stakeholder management. His balance of trust and support when we need it has <mark class="hl">helped us grow tremendously</mark>, professionally and personally. He demonstrated admirable leadership skills and genuine care for his team."</p></blockquote>
             </article>
@@ -1096,7 +1096,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Quentin Vaquette</span>
-                <span class="iw-card-role">Engie Factory MD (client)</span>
+                <span class="iw-card-role">Engie Factory MD<br class="mob-br"> (client)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"Guzman worked with us for almost a year on innovation strategy, opportunity identification, and project execution. I have been <mark class="hl">impressed by the quality of his work and the enthusiasm</mark> and structure with which complex problems were tackled and moved forward."</p></blockquote>
             </article>
@@ -1107,7 +1107,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Jose Campon</span>
-                <span class="iw-card-role">Apple Services Global Partner (direct manager)</span>
+                <span class="iw-card-role">Apple Services Global Partner<br class="mob-br"> (direct manager)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"I cannot think of a single person who was not impressed by the quality and the impact of his work — business impact and making everyone around him better. He is a mastermind of change and applies <mark class="hl">coherence in line with the big picture</mark> but in a way that is simple and fair."</p></blockquote>
             </article>
@@ -1118,7 +1118,7 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
             <article class="iw-card" tabindex="0">
               <header>
                 <span class="iw-card-name">Kamil Gottwald</span>
-                <span class="iw-card-role">Founder at Form-three Singapore (client)</span>
+                <span class="iw-card-role">Founder at Form-three Singapore<br class="mob-br"> (client)</span>
               </header>
               <blockquote class="iw-card-quote"><p>"One of the most <mark class="hl">thoughtful</mark>, impact-driven humans you'll ever work with."</p></blockquote>
             </article>
@@ -1537,9 +1537,10 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
   }
 
   function goTo(idx) {
-    var units   = getUnits();
-    var visible = getVisible();
-    var max     = Math.max(0, units.length - visible);
+    var units     = getUnits();
+    var visible   = getVisible();
+    var max       = Math.max(0, units.length - visible);
+    var requested = idx;                          /* keep pre-clamp for nav highlight */
     idx = Math.max(0, Math.min(idx, max));
     cur = idx;
     var cardW = getCardW();
@@ -1548,7 +1549,7 @@ document.querySelectorAll('[role="tablist"]').forEach(function(tablist) { initSt
     units.forEach(function(u, i) {
       u.classList.toggle('is-visible', i >= idx && i < idx + visible);
     });
-    updateYearNav(idx);
+    updateYearNav(requested);
   }
 
   /* Init */
