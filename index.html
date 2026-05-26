@@ -102,11 +102,11 @@ em{font-style:italic}
 #the-arc,#impact-witnesses{border-top:1px solid var(--rule)}
 .section-intro-inner{max-width:1120px;margin:0 auto;display:flex;align-items:flex-start;gap:56px}
 .section-intro-text{flex:1;min-width:0}
-.cs-engagement-ideas{flex:0 0 auto;width:340px;height:289px;position:relative;background:#ebcbef;border-radius:4px;padding:26px 28px;box-sizing:border-box;transform:rotate(2.8deg) scale(1.09);box-shadow:1px 2px 3px rgba(0,0,0,0.12),3px 6px 10px rgba(0,0,0,0.15),6px 14px 28px rgba(0,0,0,0.13),0 1px 2px rgba(0,0,0,0.08);align-self:flex-start;margin-top:4px;display:flex;flex-direction:column;justify-content:flex-start}
+.cs-engagement-ideas{flex:0 0 auto;width:500px;height:auto;position:relative;background:transparent;padding:26px 28px;box-sizing:border-box;align-self:flex-start;margin-top:4px;margin-left:-160px;display:flex;flex-direction:column;justify-content:flex-start}
 .cs-engagement-label{font-family:'Reenie Beanie',cursive;font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1a4fbf;display:block;margin-bottom:4px;padding-bottom:6px}
 .cs-engagement-label::after{content:'';display:block;height:7px;margin-top:4px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none' viewBox='0 0 200 7'%3E%3Cpath d='M2,5 C45,1 95,7 145,4 C168,2 185,5 198,4' stroke='%231a4fbf' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat left center;background-size:100% 100%}
 .cs-engagement-ideas ul{list-style:none;padding:0;margin:0}
-.cs-engagement-ideas li{font-family:'Reenie Beanie',cursive;font-size:25px;font-weight:700;color:#1a4fbf;line-height:1.45;padding:4px 0}
+.cs-engagement-ideas li{font-family:'Reenie Beanie',cursive;font-size:30px;font-weight:700;color:#1a4fbf;line-height:1.45;padding:4px 0}
 .cs-engagement-ideas ul{margin-top:auto;margin-bottom:auto}
 .section-intro--wide .section-intro-text{max-width:720px}
 
@@ -300,18 +300,23 @@ details.witness-item[open]::details-content{height:auto}
 }
 
 /* ── Landing intro section ── */
-#intro{background:var(--iw-bg);padding:96px 48px 88px;scroll-margin-top:56px;position:relative;overflow:hidden}
-.intro-inner{max-width:1120px;margin:0 auto}
+#intro{background-color:var(--iw-bg);background-image:radial-gradient(rgba(255,255,255,0.07) 1px,transparent 1px);background-size:28px 28px;padding:96px 48px 80px;scroll-margin-top:56px;position:relative;overflow:hidden;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column}
+.intro-inner{max-width:1120px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
 .intro-headline{font-family:var(--font-display);font-size:clamp(36px,6.5vw,76px);font-weight:700;letter-spacing:-0.025em;line-height:1.07;color:#fff;margin-bottom:32px}
 .intro-accent{color:var(--highlight)}
 .intro-nowrap{white-space:nowrap}
 #how-i-work .section-intro-text .section-subtext{margin-top:40px}
-.intro-subtext{font-family:var(--font-body);font-size:18px;font-weight:400;line-height:1.72;color:rgba(255,255,255,0.88);max-width:88ch;margin-bottom:0}
+.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:56px;margin-bottom:150px}
+.intro-card{padding:0;display:flex;flex-direction:column;align-items:center}
+.intro-card-num{font-family:var(--font-display);font-size:clamp(36px,4vw,56px);font-weight:700;letter-spacing:-0.025em;line-height:1;color:var(--highlight);display:block;margin-bottom:18px}
+.intro-card-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;white-space:nowrap;margin-bottom:14px;display:block}
+.intro-card p strong{color:#fff}
+.intro-card p{font-family:var(--font-body);font-size:15px;color:rgba(255,255,255,0.95);line-height:1.72;margin:0;align-self:stretch;text-align:left;border:1px solid rgba(255,255,255,0.13);border-radius:12px;background:rgba(255,255,255,0.05);padding:24px}
 @media(max-width:680px){
   #intro{padding:64px 24px 56px}
-  .intro-subtext{font-size:16px}
   .desk-br{display:none}
   .intro-nowrap{white-space:normal}
+  .intro-cards{grid-template-columns:1fr;gap:16px;padding-top:40px}
 }
 
 @media print{
@@ -463,21 +468,21 @@ mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.
   .iw-card-name{font-size:10px}
   .iw-card-role{font-size:10px}
   .iw-card-quote p{font-size:12px}
-  .cs-engagement-ideas li{font-size:min(17.5px,4.7vw)}
+  .cs-engagement-ideas li{font-size:min(21px,5.64vw)}
 }
 
 /* ── Password gate ── */
-#pw-gate{position:fixed;inset:0;background:rgba(15,15,15,0.45);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s}
+#pw-gate{position:fixed;inset:0;background:rgba(10,10,10,0.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9999;display:flex;align-items:center;justify-content:center;overflow:hidden;transition:opacity .5s}
 #pw-gate.pw-fade{opacity:0;pointer-events:none}
-#pw-card{position:relative;z-index:1;max-width:380px;width:calc(100% - 48px);padding:40px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px}
-#pw-title{font-family:var(--font-body);font-size:17px;font-weight:600;color:#fff;margin:0 0 10px;line-height:1.4}
-#pw-sub{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.45);margin:0 0 28px;line-height:1.6}
-#pw-input{width:100%;box-sizing:border-box;padding:12px 16px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;font-size:16px;color:#fff;outline:none;margin-bottom:12px;font-family:var(--font-body);letter-spacing:.12em}
-#pw-input::placeholder{color:rgba(255,255,255,0.25);letter-spacing:0}
-#pw-input:focus{border-color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.1)}
-#pw-btn{width:100%;padding:13px;background:#FFEF80;border:none;border-radius:8px;font-size:15px;font-weight:600;color:#1a1a1a;cursor:pointer;font-family:var(--font-ui);transition:background .15s}
+#pw-card{position:relative;z-index:1;max-width:400px;width:calc(100% - 48px);padding:48px 40px;background:rgba(18,18,18,0.92);border:1px solid rgba(255,255,255,0.1);border-radius:16px}
+#pw-title{font-family:var(--font-body);font-size:18px;font-weight:600;color:#fff;margin:0 0 12px;line-height:1.45}
+#pw-sub{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,0.65);margin:0 0 32px;line-height:1.7}
+#pw-input{width:100%;box-sizing:border-box;padding:14px 16px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.22);border-radius:8px;font-size:16px;color:#fff;outline:none;margin-bottom:14px;font-family:var(--font-body);letter-spacing:.12em}
+#pw-input::placeholder{color:rgba(255,255,255,0.35);letter-spacing:0}
+#pw-input:focus{border-color:rgba(255,255,255,0.55);background:rgba(255,255,255,0.13)}
+#pw-btn{width:100%;padding:14px;background:#FFEF80;border:none;border-radius:8px;font-size:15px;font-weight:600;color:#1a1a1a;cursor:pointer;font-family:var(--font-ui);transition:background .15s}
 #pw-btn:hover{background:#ffe940}
-#pw-err{font-size:12px;color:#ff7070;margin-top:10px;display:none;font-family:var(--font-body)}
+#pw-err{font-size:13px;color:#ff8080;margin-top:12px;display:none;font-family:var(--font-body);line-height:1.5}
 body.pw-locked{overflow:hidden}
 </style>
 </head>
@@ -527,7 +532,23 @@ body.pw-locked{overflow:hidden}
   </svg>
   <div class="intro-inner" style="position:relative;z-index:1">
     <h1 class="intro-headline">Pursuing a timeless mission<br> <span class="intro-nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
-    <p class="intro-subtext">A pre-meeting artifact to show the kind of work I can support UWC with.<br class="desk-br"> To show I've lived the kind of life UWC tries to encourage its students to live.<br class="desk-br"> And to think together about a first step or project.</p>
+    <div class="intro-cards">
+      <div class="intro-card">
+        <span class="intro-card-num">1</span>
+        <span class="intro-card-title">What's this site?</span>
+        <p>A pre-meeting artifact to show the kind of work I've done. That I've lived the kind of life UWC tries to encourage. And to open a conversation and think together about the outcomes and lasting impact UWC needs to achieve and how I can support it, starting from a first pro-bono engagement.</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-card-num">2</span>
+        <span class="intro-card-title">The opportunity I'd like to discuss.</span>
+        <p>UWC has an intentional approach to how it develops students and their families' experience. I can support the work that turns the same logic inward — toward how the institution operates, and the experience of the people meant to fulfil the mission in a changing world. I believe closing that asymmetry intentionally is key as conditions and technology change.</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-card-num">3</span>
+        <span class="intro-card-title">Some of the outcomes I see myself supporting.</span>
+        <p><strong>To leadership:</strong> Turn competing priorities into load-bearing action — owning the work that doesn't sit neatly in one vertical, and surfacing the real conditions it has to work under.<br><br><strong>To the Head of Strategy:</strong> The implementation and design partner you rarely get.<br><br><strong>To the structure:</strong> Improve the staff and operational experience with the same intention UWCSEA brings to students.<br><br><strong>To the people delivering the mission:</strong> Like Sam to Frodo — "I can't carry the ring for you, Mr. Frodo, but I can carry you".</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -543,15 +564,7 @@ body.pw-locked{overflow:hidden}
         <span class="section-intro-kicker">How I Work</span>
         <h2 class="section-headline">3+1 <mark class="hl">examples.</mark></h2>
 
-        <p class="section-subtext">Three finished plus one ongoing cases in different organistions,<br class="desk-br"> all trying to do meaningful work in complexity.</p>
-      </div>
-      <div class="cs-engagement-ideas">
-        <span class="cs-engagement-label">Some Engagement Ideas for UWC</span>
-        <ul>
-          <li>Cross-function projects lead</li>
-          <li>Embedded change lead supporting strategy</li>
-          <li>Diagnosis of current initiatives or functions</li>
-        </ul>
+        <p class="section-subtext">Three finished plus one ongoing cases in different organisations,<br class="desk-br"> all trying to do meaningful work in complexity.</p>
       </div>
     </div>
   </div>
@@ -633,15 +646,16 @@ body.pw-locked{overflow:hidden}
             <div class="cs-panel-cols">
               <div class="cs-panel-col">
                 <span class="case-subhead">The Challenge</span>
-                <p>A 400-person APAC agency in Singapore, part of a 1,500-person regional team. Nine function heads each owned their own strategy, alongside a separate regional leadership team. High churn, margins under pressure, scope creep, and multiple failed change initiatives — against KPIs spanning commercial, delivery, talent, and culture.</p>
+                <p>A 400-person APAC agency in Singapore, part of a 1,500-person regional team. Nine function heads each owned their own strategy, alongside a separate regional leadership team. High churn, margins under pressure, scope creep, and multiple failed change initiatives — against KPIs spanning commercial, delivery, talent, and culture. They asked me to bring in project management expertise, unblock initiatives, and upskill teams. But it was clear that to do that I needed to solve other things first.</p>
                 <span class="case-subhead">The Diagnosis</span>
-                <p>The voiced problem was process and consistency. My behavioural read found the real one: the organisation rewarded only revenue gain, pushing every function toward conflicting KPIs. Profitability was an afterthought as long as revenue targets were hit — which created problems everywhere downstream.</p>
+                <p>The voiced problem was process and consistency. But my behavioural and systemic read found the organisation rewarded only revenue gain and self-confidence, pushing every function toward conflicting KPIs, and allowing quiet culture positive overachievers to go unnoticed, while allowing loud culture negative underachievers to hide in the system. Profitability was an afterthought as long as revenue targets were hit — which created problems everywhere downstream.</p>
                 <span class="case-subhead">The Approach</span>
-                <p>With no formal authority, I took a dual approach. One workstream ran a company-wide diagnosis — mapping every department's workflows, pain points, tech, and high- vs low-value work to build playbooks and improvement benchmarks. The other had me volunteering on the team's hardest challenges as a cross-function project manager, sharing the pain. That earned trust fast and showed me the organisation as it behaved, not as people described it in interviews.</p>
-                <p>It led to more work, and soon I was coordinating a strategic cross-function portfolio for the C-suite and head of strategy: new technology, learning and development, vendor partnerships, new-client pitches, large-account onboarding, culture initiatives, and new products and services.</p>
+                <p>With no formal authority, I took a dual approach. One workstream ran a company-wide diagnosis — mapping every department's workflows, pain points, tech, potential for human and machine automation flows based on (high- vs low-value work) to assess conditions fairly, build initial playbooks per function we could use as a base to improve, and improvement goals.</p>
+                <p>The other workstream had me volunteering on the team's hardest challenges as a cross-function project manager, sharing the pain. That earned trust fast and showed me the organisation as it behaved, not as people described it in interviews.</p>
+                <p>It led to more work, and soon I was coordinating a strategic cross-function portfolio for the C-suite and head of strategy, and a culture transformation program: new technology, learning and development, vendor partnerships, new-client pitches, large-account onboarding, culture initiatives, and new products and services.</p>
               </div>
               <div class="cs-panel-col">
-                <p>We couldn't fix everything at once, so we resourced the top priorities and then focused on the single simplest intervention that could snowball the biggest behavioural change. We co-designed a new operating system — DDO — spanning pitch to onboarding, built with input from every team, anchored on one idea: becoming the best agency in APAC at scoping work. Better scoping meant better pricing, controlled profitability, and productised engagements instead of starting from scratch each time. Tested with one team, scaled to nine, with feedback loops and champions so it ran without me.</p>
+                <p>We couldn't fix everything at once, so we resourced the top priorities and then focused on the single simplest intervention that could snowball the biggest behavioural change. We co-designed a new operating system — DDO — spanning client pitch to onboarding, built with input from every team, anchored on one idea: setting our teams for success by becoming the best agency in APAC at scoping work. Better scoping meant better pricing, controlled profitability, and productised engagements instead of starting from scratch each time. Tested with one team, scaled to nine, with feedback loops and champions so it ran without me.</p>
                 <span class="case-subhead">Lasting Outcomes</span>
                 <p>Not attributable to me alone, but to combined effort across departments: churn down 50% in six months · pitch success up 33% on fewer pitches · unprofitable clients from 28% to 0 · ~1 day/week saved per employee. DDO is still partly in use, and several function heads took it with them to their next organisations.</p>
                 <details class="case-ai">
