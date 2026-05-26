@@ -11,7 +11,7 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="Guzmán González — Change &amp; Transformation Lead" />
 <meta name="twitter:description" content="A pre-meeting artifact. Ten years embedding inside organisations to diagnose what blocks change — and building the conditions for it to last." />
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Kalam:wght@400&family=Reenie+Beanie&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=Kalam:wght@400&family=Reenie+Beanie&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -300,18 +300,21 @@ details.witness-item[open]::details-content{height:auto}
 }
 
 /* ── Landing intro section ── */
-#intro{background-color:var(--iw-bg);background-image:radial-gradient(rgba(255,255,255,0.07) 1px,transparent 1px);background-size:28px 28px;padding:96px 48px 80px;scroll-margin-top:56px;position:relative;overflow:hidden;min-height:100vh;box-sizing:border-box;display:flex;flex-direction:column}
-.intro-inner{max-width:1120px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column}
+#intro{background-color:var(--iw-bg);background-image:radial-gradient(rgba(255,255,255,0.07) 1px,transparent 1px);background-size:28px 28px;padding:96px 48px 80px;scroll-margin-top:56px;position:relative;overflow:hidden;min-height:calc(100vh - 100px);box-sizing:border-box;display:flex;flex-direction:column}
+.intro-inner{max-width:1120px;margin:0 auto;width:100%;flex:1;display:flex;flex-direction:column;padding-top:60px}
 .intro-headline{font-family:var(--font-display);font-size:clamp(36px,6.5vw,76px);font-weight:700;letter-spacing:-0.025em;line-height:1.07;color:#fff;margin-bottom:32px}
 .intro-accent{color:var(--highlight)}
 .intro-nowrap{white-space:nowrap}
 #how-i-work .section-intro-text .section-subtext{margin-top:40px}
-.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:56px;margin-bottom:150px}
-.intro-card{padding:0;display:flex;flex-direction:column;align-items:center}
-.intro-card-num{font-family:var(--font-display);font-size:clamp(36px,4vw,56px);font-weight:700;letter-spacing:-0.025em;line-height:1;color:var(--highlight);display:block;margin-bottom:18px}
-.intro-card-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;white-space:nowrap;margin-bottom:14px;display:block}
-.intro-card p strong{color:#fff}
-.intro-card p{font-family:var(--font-body);font-size:15px;color:rgba(255,255,255,0.95);line-height:1.72;margin:0;align-self:stretch;text-align:left;border:1px solid rgba(255,255,255,0.13);border-radius:12px;background:rgba(255,255,255,0.05);padding:24px}
+.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:56px;margin-bottom:200px}
+.intro-card{padding:0;display:flex;flex-direction:column;align-items:stretch;gap:16px}
+.intro-card-header{padding:0 0 16px;display:flex;flex-direction:column;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.35)}
+.intro-card-num{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1;color:#fff}
+.intro-card-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:#fff;white-space:nowrap;text-align:center}
+.intro-card p strong{color:#1a1a1a}
+.intro-card p{font-family:var(--font-body);font-size:18px;font-weight:400;color:#fff;line-height:1.72;margin:0;text-align:left;background:transparent;padding:0;flex:1}
+.intro-card:nth-child(1) p,.intro-card:nth-child(2) p{display:flex;align-items:center}
+.intro-card:nth-child(1) p>span,.intro-card:nth-child(2) p>span{display:block}
 @media(max-width:680px){
   #intro{padding:64px 24px 56px}
   .desk-br{display:none}
@@ -438,6 +441,7 @@ details.witness-item[open]::details-content{height:auto}
 .iw-card-quote p{font-family:var(--font-body);font-size:13.5px;line-height:1.65;color:var(--ink);font-style:italic;margin-bottom:0}
 mark.hl{background:linear-gradient(120deg,rgba(255,222,0,0) 0%,rgba(255,222,0,0.5) 8%,rgba(255,222,0,0.5) 92%,rgba(255,222,0,0) 100%);color:inherit;border-radius:2px;padding:0 2px}
 #impact-witnesses mark.hl{background:linear-gradient(120deg,rgba(255,239,128,0) 0%,#FFEF80 8%,#FFEF80 92%,rgba(255,239,128,0) 100%)}
+#intro mark.hl{background:linear-gradient(120deg,rgba(255,239,128,0) 0%,#FFEF80 8%,#FFEF80 92%,rgba(255,239,128,0) 100%);color:#1a1a1a}
 
 /* Timeline carousel */
 .iw-year-nav{display:flex;gap:6px;margin-bottom:28px;flex-wrap:wrap;justify-content:center}
@@ -534,19 +538,25 @@ body.pw-locked{overflow:hidden}
     <h1 class="intro-headline">Pursuing a timeless mission<br> <span class="intro-nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
     <div class="intro-cards">
       <div class="intro-card">
-        <span class="intro-card-num">1</span>
-        <span class="intro-card-title">What's this site?</span>
-        <p>A pre-meeting artifact to show the kind of work I've done. That I've lived the kind of life UWC tries to encourage. And to open a conversation and think together about the outcomes and lasting impact UWC needs to achieve and how I can support it, starting from a first pro-bono engagement.</p>
+        <div class="intro-card-header">
+          <span class="intro-card-num">1</span>
+          <span class="intro-card-title">What's this site?</span>
+        </div>
+        <p><span>A pre-meeting artifact to show the kind of work I've done. That I've lived the kind of life UWC tries to encourage. And to open a conversation and think together about the outcomes and lasting impact UWC needs to achieve and how I can support it, starting from a first pro-bono engagement.</span></p>
       </div>
       <div class="intro-card">
-        <span class="intro-card-num">2</span>
-        <span class="intro-card-title">The opportunity I'd like to discuss.</span>
-        <p>UWC has an intentional approach to how it develops students and their families' experience. I can support the work that turns the same logic inward — toward how the institution operates, and the experience of the people meant to fulfil the mission in a changing world. I believe closing that asymmetry intentionally is key as conditions and technology change.</p>
+        <div class="intro-card-header">
+          <span class="intro-card-num">2</span>
+          <span class="intro-card-title">The opportunity I see.</span>
+        </div>
+        <p><span>UWC has an intentional approach to how it develops students and their families' experience. I can support the work that turns the same logic inward — toward how the institution operates, and the experience of the people meant to fulfil the mission in a changing world. I believe closing that asymmetry intentionally is key as conditions and technology change.</span></p>
       </div>
       <div class="intro-card">
-        <span class="intro-card-num">3</span>
-        <span class="intro-card-title">Some of the outcomes I see myself supporting.</span>
-        <p><strong>To leadership:</strong> Turn competing priorities into load-bearing action — owning the work that doesn't sit neatly in one vertical, and surfacing the real conditions it has to work under.<br><br><strong>To the Head of Strategy:</strong> The implementation and design partner you rarely get.<br><br><strong>To the structure:</strong> Improve the staff and operational experience with the same intention UWCSEA brings to students.<br><br><strong>To the people delivering the mission:</strong> Like Sam to Frodo — "I can't carry the ring for you, Mr. Frodo, but I can carry you".</p>
+        <div class="intro-card-header">
+          <span class="intro-card-num">3</span>
+          <span class="intro-card-title">How I see myself supporting.</span>
+        </div>
+        <p>Owning the work that doesn't sit neatly in one team, surfacing the real conditions and conflicting priorities. Acting as the implementation and design partner strategy rarely gets. Design the staff experience and operations the same way UWC designs it for students, so that they can continue delivering the mission in a changing world.</p>
       </div>
     </div>
   </div>
@@ -646,23 +656,23 @@ body.pw-locked{overflow:hidden}
             <div class="cs-panel-cols">
               <div class="cs-panel-col">
                 <span class="case-subhead">The Challenge</span>
-                <p>A 400-person APAC agency in Singapore, part of a 1,500-person regional team. Nine function heads each owned their own strategy, alongside a separate regional leadership team. High churn, margins under pressure, scope creep, and multiple failed change initiatives — against KPIs spanning commercial, delivery, talent, and culture. They asked me to bring in project management expertise, unblock initiatives, and upskill teams. But it was clear that to do that I needed to solve other things first.</p>
+                <p>A 400-person APAC agency in Singapore, part of a 1,500-person regional team. Nine function heads each owned their own strategy, alongside a separate regional leadership team. High churn, margins under pressure, scope creep, and multiple failed change initiatives — against KPIs spanning commercial, delivery, talent, and culture. They asked me to bring in project-management expertise, unblock initiatives, and upskill teams. But it was clear that to do that, I needed to solve other things first.</p>
                 <span class="case-subhead">The Diagnosis</span>
-                <p>The voiced problem was process and consistency. But my behavioural and systemic read found the organisation rewarded only revenue gain and self-confidence, pushing every function toward conflicting KPIs, and allowing quiet culture positive overachievers to go unnoticed, while allowing loud culture negative underachievers to hide in the system. Profitability was an afterthought as long as revenue targets were hit — which created problems everywhere downstream.</p>
+                <p>The voiced problem was process and consistency. But my behavioural and systemic read found the organisation rewarded only revenue gain and self-confidence, pushing every function toward conflicting KPIs — allowing quiet, culture-positive overachievers to go unnoticed, while loud, culture-negative underachievers hid in the system. Profitability was an afterthought as long as revenue targets were hit, which created problems everywhere downstream.</p>
                 <span class="case-subhead">The Approach</span>
-                <p>With no formal authority, I took a dual approach. One workstream ran a company-wide diagnosis — mapping every department's workflows, pain points, tech, potential for human and machine automation flows based on (high- vs low-value work) to assess conditions fairly, build initial playbooks per function we could use as a base to improve, and improvement goals.</p>
-                <p>The other workstream had me volunteering on the team's hardest challenges as a cross-function project manager, sharing the pain. That earned trust fast and showed me the organisation as it behaved, not as people described it in interviews.</p>
-                <p>It led to more work, and soon I was coordinating a strategic cross-function portfolio for the C-suite and head of strategy, and a culture transformation program: new technology, learning and development, vendor partnerships, new-client pitches, large-account onboarding, culture initiatives, and new products and services.</p>
+                <p>With no formal authority, I took a dual approach. One workstream ran a company-wide diagnosis — mapping every department's workflows, pain points, tech, and potential for human and machine automation (separating high- from low-value work) to assess conditions fairly, build initial playbooks per function as a base to improve from, and set improvement goals.</p>
+                <p>The other workstream had me volunteering on the teams' hardest challenges as a cross-function project manager, sharing the pain. That earned trust fast and showed me the organisation as it behaved, not as people described it in interviews.</p>
+                <p>It led to more work, and soon I was coordinating a strategic cross-function portfolio for the C-suite and head of strategy, and a culture transformation programme: new technology, learning and development, vendor partnerships, new-client pitches, large-account onboarding, culture initiatives, and new products and services.</p>
               </div>
               <div class="cs-panel-col">
-                <p>We couldn't fix everything at once, so we resourced the top priorities and then focused on the single simplest intervention that could snowball the biggest behavioural change. We co-designed a new operating system — DDO — spanning client pitch to onboarding, built with input from every team, anchored on one idea: setting our teams for success by becoming the best agency in APAC at scoping work. Better scoping meant better pricing, controlled profitability, and productised engagements instead of starting from scratch each time. Tested with one team, scaled to nine, with feedback loops and champions so it ran without me.</p>
+                <p>We couldn't fix everything at once, so we resourced the top priorities and then focused on the single simplest intervention that could snowball the biggest behavioural change. We co-designed a new operating system — DDO (Define, Design, Onboard) — spanning client pitch to onboarding, built with input from every team, anchored on one idea: setting our teams up for success by becoming the best agency in APAC at scoping work. Better scoping meant better pricing, controlled profitability, and productised engagements instead of starting from scratch each time. Tested with one team, scaled to nine, with feedback loops and champions so it ran without me.</p>
                 <span class="case-subhead">Lasting Outcomes</span>
                 <p>Not attributable to me alone, but to combined effort across departments: churn down 50% in six months · pitch success up 33% on fewer pitches · unprofitable clients from 28% to 0 · ~1 day/week saved per employee. DDO is still partly in use, and several function heads took it with them to their next organisations.</p>
                 <details class="case-ai">
                   <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
-                  <p>Diagnosis. I could do two-thirds of the diagnosis in weeks instead of months — and add a fourth source alongside behavioural observation, existing documents and systems, and interviews: reading behaviour directly from the data the organisation produces.</p>
-                  <p>DDO. Instead of a documented playbook, DDO would become a live tool — an AI-powered OS that guides projects and catches one veering off course while there's still time to fix it.</p>
-                  <p>The human part. It wouldn't handle the trust-building, the shared accountability, or the care and positive influence — but it would give me far more time to spend there, where success actually lives.</p>
+                  <p>I could do two-thirds of the diagnosis in weeks instead of months — and add a fourth source alongside behavioural observation: reading behaviour directly from the data the organisation produces.</p>
+                  <p>Instead of a documented playbook, DDO would become a live tool — an AI-powered platform that guides projects, keeps a documented and scannable history, helps with training, and is easier to improve while potentially designed for catching issues while there's still time to fix them.</p>
+                  <p>It wouldn't handle the trust-building, the shared accountability, or the care and positive influence — but it would give me far more time to spend there.</p>
                 </details>
               </div>
             </div>
@@ -689,9 +699,10 @@ body.pw-locked{overflow:hidden}
                 <p>Our custom Pilot ID and Co-Pilot approaches were adopted by Rainmaking for other clients and geographies.</p>
                 <details class="case-ai">
                   <summary>How I Would Do It Today With AI <span class="case-ai-icon">+</span></summary>
-                  <p>Sourcing. Screening 1,000+ partly with AI would scan and shortlist against each vertical's strategy and the SDG goals in days.</p>
-                  <p>Modelling. Ai would generate first pass business cases and the startup–corporate agreements for specific market or vertical terms and scenarios fast, so the team could spend its hours refining, judging, and negotiating rather than building from scratch — letting us run 10 pilots where we could only run 5, and lifting the hit rate potentially past 50%.</p>
-                  <p>Repeatability. Best of all, the whole thing could be productised as a platform — human-and-AI-in-the-loop workflows we'd reuse cycle after cycle for each pilot or client. Our custom methodology would have been built to scale from day one.</p>
+                  <p>Sourcing. Screening 1,000+ partly with AI would scan and shortlist against each vertical's strategy and the SDG goals in days. Same as we could run market and future foresight research in a fraction of the time while improving our decision making.</p>
+                  <p>Modelling. AI would generate first-pass business cases and the startup–corporate agreements for specific market or vertical terms, scenarios, and regulations fast, so the team could spend its hours refining, judging, and negotiating rather than building them — letting us run 10 pilots where we could only run 5, or running longer testing, potentially lifting the hit rate past 50%.</p>
+                  <p>Repeatability. The whole thing could be productised as a platform — human-and-AI-in-the-loop workflows we'd reuse cycle after cycle for each pilot or client. Our custom methodology would have been built to scale from day one.</p>
+                  <p>It wouldn't get me into the CEO's office or tie the VPs' incentives to the lab, or train and upskill my team, or define the best use of time for the VPs' team of experts committing one day a week, or unblock problems. It would just free time for exactly that.</p>
                   <p>The human part. It wouldn't get me into the CEO's office or tie the VPs' incentives to the lab or trained and upskill my team. It would just free far more of my time for exactly that.</p>
                 </details>
               </div>
@@ -705,16 +716,23 @@ body.pw-locked{overflow:hidden}
             <div class="cs-panel-cols">
               <div class="cs-panel-col">
                 <span class="case-subhead">The Challenge</span>
-                <p>Help build and scale a global program from almost nothing, mid-pandemic — from 20 people in 10 countries to 350 across 40, serving 12 products and 4 business lines, in under three years, while budgets grew 10× (4M → 40M per quarter). Remote, across very different cultures, to Apple's standards — and with the complexity itself increasing as we grew: more products, more markets, more regulation, more demanding KPIs each quarter. We were building the ship while sailing it: either we proved we could absorb more scale and complexity while hitting a minimum 95% of our growing quarterly KPIs, or we risked losing the budget.</p>
+                <p>Help build and scale a global program from almost nothing, mid-pandemic — from 20 people in 10 countries to 350 across 40, serving 12 products and 4 business lines, in under three years, while budgets grew 10× (USD 4M → 40M per quarter). Remote, across very different cultures, to Apple's standards — with the complexity itself increasing as we grew: more products, more markets, more regulation, more demanding KPIs each quarter. We were building the ship while sailing it: either we proved we could absorb more scale and complexity while sustaining at least 85% of our growing quarterly KPIs, or we risked losing the budget.</p>
                 <span class="case-subhead">The Diagnosis</span>
-                <p>There was no stable "before" to fix — the ground moved every quarter. So the goal couldn't be the perfect system; one designed for this quarter's complexity would be obsolete by the next. The real need was different: keep everyone working from as much shared context as possible, so 40 people one quarter could act as coherently as 90 the next — without waiting on a few overloaded people who became bottlenecks, and without a head office trying to control every step across every timezone. Coherence, not control: I couldn't see any other way to scale.</p>
+                <p>There was no stable "before" to fix — the ground moved every quarter. So the goal couldn't be the perfect system; one designed for this quarter's complexity would be obsolete by the next. The real need was different: keep everyone working from as much shared context as possible, so 40 people one quarter could act as coherently as 90 the next — without waiting on a few overloaded people who became bottlenecks, and without a head office trying to control every step across every time zone. Coherence, not control: I couldn't see any other way to scale.</p>
                 <span class="case-subhead">The Approach</span>
                 <p>So I designed for coherence over perfection. In practice it came down to five things — which I didn't conjure so much as discover: they presented themselves as the only viable way to both hit the goals and operate with integrity, sometimes later than I'd have liked. In order:</p>
-                <p>Hire smart people with high integrity, committed to the challenge — not the job description.<br>
-                Continuously create shared context and quality expectations.<br>
-                Design how decisions and work flow.<br>
-                Align incentives with our KPIs and how we wanted to hit them — so the system rewarded the behaviours we actually needed.<br>
-                Then get out of the way — or elevate. Stay available to lift others and improve things, rather than wasting their time with noise or politics.</p>
+                <ul style="list-style:none;padding:0;margin:0">
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit">
+                    <span style="position:absolute;left:0;color:var(--ink-soft)">·</span>Hire smart people with high integrity, committed to the challenge — not the job description.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit">
+                    <span style="position:absolute;left:0;color:var(--ink-soft)">·</span>Continuously create shared context and quality expectations.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit">
+                    <span style="position:absolute;left:0;color:var(--ink-soft)">·</span>Design how decisions and work flow.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit">
+                    <span style="position:absolute;left:0;color:var(--ink-soft)">·</span>Align incentives with our KPIs and how we wanted to hit them — so the system rewarded the behaviours we actually needed.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit">
+                    <span style="position:absolute;left:0;color:var(--ink-soft)">·</span>Then get out of the way — or elevate. Stay available to lift others and improve things, rather than wasting their time with noise or politics.</li>
+                </ul>
               </div>
               <div class="cs-panel-col">
                 <p>As one of the leadership team, my role was building and holding those conditions — governance, playbooks, training architecture, the full employee lifecycle, service levels, AI workflows — designed with the heads of all 9 departments, against KPIs that shifted every quarter, and optimised for async work across 40 countries.</p>
@@ -723,10 +741,9 @@ body.pw-locked{overflow:hidden}
                 <p>20→350 people · 400+ onboarded · 100+ offboarded · 40 countries · budget 10× (USD 4M → 40M per quarter) · 85–110% KPI sustained quarterly.</p>
                 <details class="case-ai">
                   <summary>How I Would Take It Further With AI <span class="case-ai-icon">+</span></summary>
-                  <p>We built custom AI automation back then, but it ran steps. Today it would carry the coherence itself — and reach the next frontier: not just processing data and workflows, but recommending solutions and improvements live.</p>
-                  <p>Shared context on demand. The hardest part was keeping 40 countries working from the same picture. An AI layer over our playbooks, decisions, and history would let anyone get a situated answer instantly.</p>
-                  <p>Anticipating complexity before it hits. We could model future growth and let AI read our own operational data to surface where the next bottleneck or drift was forming — before it landed.</p>
-                  <p>The human part. The human complexity, the critical thinking, the on-the-go judgment stay ours. But AI would bring more transparency to people's workloads — so we could design for fairness before the work overwhelmed anyone.</p>
+                  <p>We had custom AI automation back then, but it ran steps. Today it would carry the coherence itself: not just processing data and workflows, but recommending solutions and improvements live based on definable best standards and quality. After all it is a digital performance program, which is highly documented.</p>
+                  <p>The hardest part was keeping 40 countries working from the same picture as things grew in complexity, new projects arrived, changes in regulation or criteria, etc. An AI layer over our playbooks, documentation, and sources would let anyone get a situated answer instantly, plus also understand what we are missing (info, workflows, or touchpoints) — anticipating issues and how to resolve them.</p>
+                  <p>The human complexity across cultures, the critical thinking, the on-the-go judgment stay human. But AI would bring more transparency to people's workloads — so we could design for fairness before the work overwhelmed anyone.</p>
                 </details>
               </div>
             </div>
@@ -739,18 +756,21 @@ body.pw-locked{overflow:hidden}
             <div class="cs-panel-cols">
               <div class="cs-panel-col">
                 <span class="case-subhead">The Challenge</span>
-                <p>Design and launch a new education program outside conventional university logic — built for neurodivergent, gifted, and unconventional learners who want to learn differently, in ways aligned with what the future will actually demand of them. The aim isn't to share knowledge, but to build operators who can act in complexity and uncertainty. They asked me to contribute to both the vision and the execution, giving me a blank canvas, a deadline, and the freedom to choose who I worked with to get the vision defined first.</p>
+                <p>Design and launch an education program for the learners conventional university fails: neurodivergent, gifted, and unconventional minds — often the ones who can solve the hardest problems but get flattened to fit a model, or judged unfit for it (broadly 2–10% of people). The aim isn't to transfer knowledge. It's to build operators who can act under real complexity and uncertainty, with AI in the loop. I was given a blank canvas, a deadline, and freedom to choose who I worked with.</p>
                 <span class="case-subhead">The Diagnosis</span>
-                <p>Most educational design starts from the curriculum and works outward to the student. For the learners this serves, that order produces predictable failure — the student is either flattened to fit the model or judged unfit for it. Most "innovation" in education makes a version of the same mistake: it invents new curricula, then drops them inside 20th-century structures — the perfect setup for the container to eat the content. So we started from the challenge itself, so we could make a falsifiable promise rather than the kind of average mission claim that's engineered to never be wrong: how do you develop balanced generalists who can solve complex problems under uncertainty, with AI in the loop? People with the critical thinking to navigate systems, the integrity and courage to pursue futures worth following, and no interest in accumulating credentials?</p>
+                <p>Most education starts from the curriculum and works outward to the student — which is exactly why it fails these learners. Most "innovation" repeats the mistake: new curricula dropped inside 20th-century structures, where the container eats the content. So we started from a question we could actually be wrong about: how do you develop generalists with the critical thinking to navigate systems, the courage to pursue futures worth following, and no interest in collecting credentials?</p>
                 <span class="case-subhead">The Approach</span>
-                <p>First, listening before designing. We started with students, parents, teachers, school leaders, and the companies that will employ the next generation — and went deep on what neurodivergent and gifted profiles, and families drawn to different ways of learning, actually need (broadly 2–10% of the population).</p>
+                <p>We listened before designing — students, parents, teachers, school leaders, and the employers who'll hire this generation. Then we made concrete choices and stuck to the problem, not our first ideas:</p>
+                <ul style="list-style:none;padding:0;margin:0">
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit"><span style="position:absolute;left:0;color:var(--ink-soft)">·</span>We started aiming only at neurodivergent and gifted profiles — then widened the reach.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit"><span style="position:absolute;left:0;color:var(--ink-soft)">·</span>We kept an existing regulated curriculum, but changed how it's taught, using every bit of flexibility we could find.</li>
+                  <li style="padding:5px 0 5px 16px;position:relative;color:inherit"><span style="position:absolute;left:0;color:var(--ink-soft)">·</span>We killed the original two-speed plan (in-person plus a lagging digital build) because it split our focus — and committed to getting one in-person cohort right first.</li>
+                </ul>
               </div>
               <div class="cs-panel-col">
-                <p>Second, committing to the problem, not the idea or the solution. It's easy to get enamoured with an elegant concept — especially if it's your own. The harder discipline is staying loyal to the challenge, understanding the real conditions, then changing either the solution or the conditions — usually a mix of both. For example, we began aiming only at neurodivergent and gifted profiles, then decided to widen the reach; and we committed to an existing regulated curriculum, but changed how it's taught, using all the flexibility we could find.</p>
-                <p>Third, sizing for quality of delivery first. The original plan was a two-speed build: run the in-person program while developing the digital version on a three-month lag. We stopped it — it split our focus. Instead we're getting one in-person cohort done right first, while separately working out how to translate that experience online, without just copy-pasting a classroom through a screen.</p>
-                <p>I do this in a limited, part-time capacity, alongside Singular Solving's leadership — a complex-problem-solving consultancy, turned foundation, that I've worked with before, with a close relationship and a proven history of care for neurodivergence.</p>
+                <p>I do this part-time, alongside Singular Solving's leadership — a complex-problem-solving consultancy turned foundation I've worked with before, with a proven history of care for neurodivergence.</p>
                 <span class="case-subhead">Where It Stands Now</span>
-                <p>The original project was an alternative to the first year of university. It's now pivoting to a full school: an unexpected chance came up to acquire a complete school in Madrid, which would let us build the long-term vision from the ground up. We're in talks to make that happen.</p>
+                <p>It's outgrowing its original scope. What began as an alternative to the first year of university is becoming a full school: a chance came up to acquire an entire school in Madrid, letting us build the long-term vision from the ground up. We're in talks now.</p>
               </div>
             </div>
           </div>
@@ -774,8 +794,8 @@ body.pw-locked{overflow:hidden}
         <span class="section-intro-kicker">The Arc</span>
         <h2 class="section-headline">Seven chapters,<br> five countries,<br> one <mark class="hl">thread.</mark></h2>
         <div class="arc-subtext-wrap">
-          <p class="section-subtext">I help organisations uncover their hidden patterns, improve meaningfully, and take strategic ideas all the way from whiteboard to impact.</p>
-          <p class="section-subtext">The journey explains this and why I want to collaborate with UWC.<br class="desk-br"> Expand the chapters you are curious about, or read the whole arc.</p>
+          <p class="section-subtext">Being able to help organisations uncover their hidden patterns, improve meaningfully, and take strategic ideas all the way from whiteboard to impact, regardless of the industry or problem space is a direct consequence of my biography — both personal and professional. And it explains why I want to collaborate with UWC.</p>
+          <p class="section-subtext">Expand the chapters you are curious about, or read the whole arc.</p>
         </div>
       </div>
       <div class="section-intro-img section-intro-img--photo">
@@ -1018,8 +1038,8 @@ body.pw-locked{overflow:hidden}
     <div class="section-intro-inner">
       <div class="section-intro-text">
         <span class="section-intro-kicker">Impact Witnesses</span>
-        <h2 class="section-headline">But don't just take it from me.</h2>
-        <p class="section-subtext">The voices below come from CEOs, COOs, peers, direct reports, and clients across 10 years and different chapters, independently arriving at similar observations.</p>
+        <h2 class="section-headline">But <span style="color:var(--highlight)">don't</span> just take my word for it.</h2>
+        <p class="section-subtext" style="margin-top:30px">Rather than references that explain responsibility and role, I rather produce impact witnesses across managers, clients, peers, and direct reports arriving independently at similar observations.</p>
 
         <!-- Stats row -->
         <div class="iw-stats" role="list">
