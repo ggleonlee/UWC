@@ -327,7 +327,7 @@ details.witness-item[open]::details-content{height:auto}
   .intro-headline{font-size:clamp(45px,8.125vw,95px)}
   .desk-br{display:none}
   .intro-nowrap{white-space:normal}
-  .intro-hero-zone{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px;padding-bottom:80px}
+  .intro-hero-zone{height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px;overflow:hidden}
   .intro-scroll-hint{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:66px;left:50%;transform:translateX(-50%);animation:scroll-hint 1.6s ease-in-out infinite}
   .intro-scroll-arrow{width:18px;height:18px;border-right:2px solid rgba(255,255,255,0.65);border-bottom:2px solid rgba(255,255,255,0.65);transform:rotate(45deg)}
   @keyframes scroll-hint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
@@ -548,7 +548,7 @@ body.pw-locked{overflow:hidden}
   </svg>
   <div class="intro-inner" style="position:relative;z-index:1">
     <div class="intro-hero-zone">
-      <h1 class="intro-headline">Pursuing a timeless mission<br> <span class="intro-nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
+      <h1 class="intro-headline">A timeless<br class="mob-br"> mission<br class="desk-br"> in<br class="mob-br"> a world that's<br class="mob-br"> changing <span class="intro-accent">how</span></h1>
       <div class="intro-scroll-hint" aria-hidden="true"><div class="intro-scroll-arrow"></div></div>
     </div>
     <div class="intro-cards">
