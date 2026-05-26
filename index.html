@@ -310,7 +310,9 @@ details.witness-item[open]::details-content{height:auto}
 .intro-accent{color:var(--highlight)}
 .intro-nowrap{white-space:nowrap}
 #how-i-work .section-intro-text .section-subtext{margin-top:40px}
-.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:56px;margin-bottom:200px}
+.intro-hero-zone{flex:1;display:flex;flex-direction:column;justify-content:center}
+.intro-scroll-hint{display:none}
+.intro-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:0;padding-top:56px;margin-bottom:200px}
 .intro-card{padding:0;display:flex;flex-direction:column;align-items:stretch;gap:16px}
 .intro-card-header{padding:0 0 16px;display:flex;flex-direction:column;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.35)}
 .intro-card-num{font-family:var(--font-display);font-size:32px;font-weight:600;line-height:1;color:#fff}
@@ -320,10 +322,15 @@ details.witness-item[open]::details-content{height:auto}
 .intro-card:nth-child(1) p,.intro-card:nth-child(2) p{display:flex;align-items:center}
 .intro-card:nth-child(1) p>span,.intro-card:nth-child(2) p>span{display:block}
 @media(max-width:680px){
-  #intro{padding:64px 24px 56px}
+  #intro{padding:0 24px 56px;min-height:auto}
+  .intro-inner{padding-top:0}
   .desk-br{display:none}
   .intro-nowrap{white-space:normal}
-  .intro-cards{grid-template-columns:1fr;gap:16px;padding-top:40px}
+  .intro-hero-zone{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px;padding-bottom:80px}
+  .intro-scroll-hint{display:flex;flex-direction:column;align-items:center;position:absolute;bottom:36px;left:50%;transform:translateX(-50%);animation:scroll-hint 1.6s ease-in-out infinite}
+  .intro-scroll-arrow{width:18px;height:18px;border-right:2px solid rgba(255,255,255,0.65);border-bottom:2px solid rgba(255,255,255,0.65);transform:rotate(45deg)}
+  @keyframes scroll-hint{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+  .intro-cards{grid-template-columns:1fr;gap:16px;padding-top:40px;margin-top:0;margin-bottom:56px}
 }
 
 @media print{
@@ -539,7 +546,10 @@ body.pw-locked{overflow:hidden}
     </g>
   </svg>
   <div class="intro-inner" style="position:relative;z-index:1">
-    <h1 class="intro-headline">Pursuing a timeless mission<br> <span class="intro-nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
+    <div class="intro-hero-zone">
+      <h1 class="intro-headline">Pursuing a timeless mission<br> <span class="intro-nowrap">in a world that's changing <span class="intro-accent">how</span></span></h1>
+      <div class="intro-scroll-hint" aria-hidden="true"><div class="intro-scroll-arrow"></div></div>
+    </div>
     <div class="intro-cards">
       <div class="intro-card">
         <div class="intro-card-header">
@@ -763,6 +773,8 @@ body.pw-locked{overflow:hidden}
                 <p>Design and launch an education program for the learners conventional university fails: neurodivergent, gifted, and unconventional minds — often the ones who can solve the hardest problems but get flattened to fit a model, or judged unfit for it (broadly 2–10% of people). The aim isn't to transfer knowledge. It's to build operators who can act under real complexity and uncertainty, with AI in the loop. I was given a blank canvas, a deadline, and freedom to choose who I worked with.</p>
                 <span class="case-subhead">The Diagnosis</span>
                 <p>Most education starts from the curriculum and works outward to the student — which is exactly why it fails these learners. Most "innovation" repeats the mistake: new curricula dropped inside 20th-century structures, where the container eats the content. So we started from a question we could actually be wrong about: how do you develop generalists with the critical thinking to navigate systems, the courage to pursue futures worth following, and no interest in collecting credentials?</p>
+              </div>
+              <div class="cs-panel-col">
                 <span class="case-subhead">The Approach</span>
                 <p>We listened before designing — students, parents, teachers, school leaders, and the employers who'll hire this generation. Then we made concrete choices and stuck to the problem, not our first ideas:</p>
                 <ul style="list-style:none;padding:0;margin:0">
@@ -770,8 +782,6 @@ body.pw-locked{overflow:hidden}
                   <li style="padding:5px 0 5px 16px;position:relative;color:inherit"><span style="position:absolute;left:0;color:var(--ink-soft)">·</span>We kept an existing regulated curriculum, but changed how it's taught, using every bit of flexibility we could find.</li>
                   <li style="padding:5px 0 5px 16px;position:relative;color:inherit"><span style="position:absolute;left:0;color:var(--ink-soft)">·</span>We killed the original two-speed plan (in-person plus a lagging digital build) because it split our focus — and committed to getting one in-person cohort right first.</li>
                 </ul>
-              </div>
-              <div class="cs-panel-col">
                 <p>I do this part-time, alongside Singular Solving's leadership — a complex-problem-solving consultancy turned foundation I've worked with before, with a proven history of care for neurodivergence.</p>
                 <span class="case-subhead">Where It Stands Now</span>
                 <p>It's outgrowing its original scope. What began as an alternative to the first year of university is becoming a full school: a chance came up to acquire an entire school in Madrid, letting us build the long-term vision from the ground up. We're in talks now.</p>
