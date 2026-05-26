@@ -1218,17 +1218,19 @@ body.pw-locked{overflow:hidden}
 
 
 <script>
-/* ── Mobile hero zone height (real viewport, bypasses iOS dvh quirks) ── */
+/* ── Mobile hero zone height (uses visualViewport for true iOS visible height) ── */
 (function(){
   function setHeroH(){
     if(window.innerWidth > 680) return;
-    var nav = document.querySelector('.nav');
+    var nav  = document.querySelector('.nav');
     var zone = document.querySelector('.intro-hero-zone');
     if(!zone) return;
-    zone.style.height = (window.innerHeight - (nav ? nav.offsetHeight : 52)) + 'px';
+    var vph  = (window.visualViewport ? window.visualViewport.height : window.innerHeight);
+    zone.style.height = (vph - (nav ? nav.offsetHeight : 52)) + 'px';
   }
   setHeroH();
   window.addEventListener('resize', setHeroH);
+  if(window.visualViewport) window.visualViewport.addEventListener('resize', setHeroH);
 })();
 
 /* ── Scroll-reveal (respects prefers-reduced-motion) ── */
